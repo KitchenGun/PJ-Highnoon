@@ -36,7 +36,5 @@ public class MM_GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(5);
     }
-
-
     
 }
