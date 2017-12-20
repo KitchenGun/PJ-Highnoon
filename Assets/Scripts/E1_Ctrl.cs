@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class E1_Ctrl : MonoBehaviour {
-
+public class E1_Ctrl : MonoBehaviour
+{
+    //대기,공격,사망,플레이어사망
     public enum E1_State
-    {
-        Idle,//대기 
-        Attack,//공격
-        Die,//사망
-        PDie//플레이어사망
-
-    };
+    { Idle, Attack, Die, PDie };
     //적캐릭터의 현재 상태 정보를 저장할 Enum 변수
     public E1_State e1_state = E1_State.Idle;
 
@@ -36,23 +31,29 @@ public class E1_Ctrl : MonoBehaviour {
 
     IEnumerator CheckEnemy1()
     {
+        while (!isdie)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     IEnumerator E1_Action()
     {
-            while (!isdie)
+        while (!isdie)
+        {
+            switch (e1_state)
             {
-                switch (E1_State)
-                {
                 //대기상태
                 case E1_State.Idle:
+                    animator.SetBool("IsAttack", false);
                     break;
 
+                //공격상태
                 case E1_State.Attack:
-                    animator.SetBool("isattack",true);
+                    animator.SetBool("Isattack", true);
                     break;
-                }
-
             }
+            yield return null;
+        }
     }
 }
