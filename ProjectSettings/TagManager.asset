@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gun
+  - Enemy
+  - Ground
+  - SB
+  - HTPB
+  - EB
+  - EZTB
+  - NTB
+  - BTB
   layers:
   - Default
   - TransparentFX
