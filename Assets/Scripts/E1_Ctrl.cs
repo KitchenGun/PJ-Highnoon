@@ -16,6 +16,8 @@ public class E1_Ctrl : MonoBehaviour
     private bool isdie = false;
     //적 캐릭터 생명 변수
     private int E1_hp = 100;
+    //공격 사거리
+    public float AttackDist = 2.0f;
 
     void Start()
     {
