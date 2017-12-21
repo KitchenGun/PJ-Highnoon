@@ -15,9 +15,9 @@ public class E1_Ctrl : MonoBehaviour
     //적캐릭터 사망여부
     private bool isdie = false;
     //적 캐릭터 생명 변수
-    private int hp = 100;
+    private int E1_hp = 100;
 
-    private void Start()
+    void Start()
     {
         //Animator 컴포넌트 할당
         animator = this.gameObject.GetComponent<Animator>();
@@ -45,6 +45,7 @@ public class E1_Ctrl : MonoBehaviour
             {
                 //대기상태
                 case E1_State.Idle:
+
                     animator.SetBool("IsAttack", false);
                     break;
 
@@ -55,5 +56,36 @@ public class E1_Ctrl : MonoBehaviour
             }
             yield return null;
         }
+    }
+   
+    //적 캐릭터 피격
+    void E_OnAttack(object[] _params)
+    {
+        Debug.Log(string.Format("Hit ray {0} : {1}", _params[0], _params[1]));
+
+        //맞은 총알의 데미지를 추출해 적 캐릭터 체력 차감
+        E1_hp -= (int)_params[1];
+        if (E1_hp <=0)
+        {
+            E1_Die();
+        }
+
+        //IsHit트리거 발생
+        animator.SetTrigger("isHit");
+    }
+    //적 캐릭터 사망
+    void E1_Die()
+    {
+            //모든 코루틴 정지
+            StopAllCoroutines();
+            //사망트리거 실행
+            animator.SetTrigger("isDie");
+    }
+    //플레이어 사망
+    void PlayerDie()
+    {
+
+        StopAllCoroutines();
+        
     }
 }
