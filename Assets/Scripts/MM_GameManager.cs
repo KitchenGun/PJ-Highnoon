@@ -37,4 +37,8 @@ public class MM_GameManager : MonoBehaviour
         SceneManager.LoadScene(5);
     }
     
+    public void ExitScene()//프로그램 종료
+    {
+        Application.Quit();
+    }
 }
