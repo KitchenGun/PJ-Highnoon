@@ -31,37 +31,37 @@ public class OVRPlayerController : MonoBehaviour
 	/// <summary>
 	/// The rate acceleration during movement.
 	/// </summary>
-	public float Acceleration = 0.1f;
+	public float Acceleration = 0.1f;//가속
 
 	/// <summary>
 	/// The rate of damping on movement.
 	/// </summary>
-	public float Damping = 0.3f;
+	public float Damping = 0.3f;//제동
 
 	/// <summary>
 	/// The rate of additional damping when moving sideways or backwards.
 	/// </summary>
-	public float BackAndSideDampen = 0.5f;
+	public float BackAndSideDampen = 0.5f;//옆으로 또는 뒤로 움직일 때 추가 댐핑 속도.
 
-	/// <summary>
-	/// The force applied to the character when jumping.
-	/// </summary>
-	public float JumpForce = 0.3f;
+    /// <summary>
+    /// The force applied to the character when jumping.
+    /// </summary>
+    public float JumpForce = 0.3f;//점프시 캐릭터에 적용되는 힘
 
 	/// <summary>
 	/// The rate of rotation when using a gamepad.
 	/// </summary>
-	public float RotationAmount = 1.5f;
+	public float RotationAmount = 1.5f;//게임패드사용시 회전 속도
 
 	/// <summary>
 	/// The rate of rotation when using the keyboard.
 	/// </summary>
-	public float RotationRatchet = 45.0f;
+	public float RotationRatchet = 45.0f;//키보드 사용시 회전속도
 
 	/// <summary>
 	/// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
 	/// </summary>
-	public bool HmdResetsY = true;
+	public bool HmdResetsY = true;//컨트롤러 초기 요yaw를 재 설정
 
 	/// <summary>
 	/// If true, tracking data from a child OVRCameraRig will update the direction of movement.
