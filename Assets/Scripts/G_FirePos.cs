@@ -22,7 +22,8 @@ public class G_FirePos : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.Mouse0)&&G_isReady==true)//마우스버튼 클릭시 발포성공
+        Debug.DrawRay(G_FirePosition.position, Vector3.forward*100, Color.green);
+        if (Input.GetKeyDown(KeyCode.Mouse0)&&G_isReady==true)//마우스버튼 클릭시 발포성공
         {
             G_Fire();
         }

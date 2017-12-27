@@ -95,6 +95,8 @@ public class OVRPlayerController : MonoBehaviour
 	private float SimulationRate = 60f;
 	private float buttonRotation = 0f;
 
+    public static PlayerController Playsc;
+
 	void Start()
 	{
 		// Add eye-depth as a camera offset from the player controller ´«³ôÀÌ¿¡ Ä«¸Þ¶ó ¿ÀÇÁ¼Â Ãß°¡
@@ -105,7 +107,16 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Awake()
 	{
-		Controller = gameObject.GetComponent<CharacterController>();
+        if (Playsc == null)//½Ì±ÛÅæ 
+        {
+            Playsc = gameObject.GetComponent<PlayerController>();
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
+
+        Controller = gameObject.GetComponent<CharacterController>();
 
 		if(Controller == null)
 			Debug.LogWarning("OVRPlayerController: No CharacterController attached.");
@@ -122,6 +133,7 @@ public class OVRPlayerController : MonoBehaviour
 			CameraRig = CameraRigs[0];
 
 		InitialYRotation = transform.rotation.eulerAngles.y;
+
 	}
 
 	void OnEnable()
