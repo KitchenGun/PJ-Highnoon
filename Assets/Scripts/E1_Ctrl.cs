@@ -18,6 +18,10 @@ public class E1_Ctrl : MonoBehaviour
     private int E1_hp = 100;
     //공격 사거리
     public float AttackDist = 2.0f;
+    public Transform G_FirePosition;//발사위치
+    private int G_Bullet = 6;//6발
+    private bool G_isReady = false;//총을 쏠수 있는가?
+
 
     void Start()
     {
@@ -54,6 +58,7 @@ public class E1_Ctrl : MonoBehaviour
                 //공격상태
                 case E1_State.Attack:
                     animator.SetBool("Isattack", true);
+                    E1_Attack();
                     break;
             }
             yield return null;
@@ -78,18 +83,25 @@ public class E1_Ctrl : MonoBehaviour
     //적 캐릭터 사망
     void E1_Die()
     {
-            //모든 코루틴 정지
-            StopAllCoroutines();
-            //사망트리거 실행
-            animator.SetTrigger("isDie");
-    }
-    //플레이어 사망
-    void PlayerDie()
-    {
-
+        //모든 코루틴 정지
         StopAllCoroutines();
-        //플레이어 사망시 적 캐릭터 애니메이션 실행
-        animator.SetBool("IsPDie", true);
-        
+        //사망트리거 실행
+        animator.SetTrigger("isDie");
+    }
+
+    void E1_Attack()
+    {
+        RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
+        if (Physics.Raycast(G_FirePosition.position, transform.forward, out hit, 100.0f))//레이 탐색 
+        {
+            if (hit.collider.tag == "Player")//적 탐지시
+            {
+                object[] _params = new object[2];//레이피격시 내부 정보추출
+                _params[0] = hit.point;
+                _params[1] = 50;
+                //몬스터에 대미지 입히는 함수
+                hit.collider.gameObject.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
+            }
+        }
     }
 }
