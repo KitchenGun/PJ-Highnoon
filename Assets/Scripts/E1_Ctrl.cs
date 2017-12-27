@@ -88,6 +88,8 @@ public class E1_Ctrl : MonoBehaviour
     {
 
         StopAllCoroutines();
+        //플레이어 사망시 적 캐릭터 애니메이션 실행
+        animator.SetBool("IsPDie", true);
         
     }
 }
