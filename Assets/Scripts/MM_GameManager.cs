@@ -39,6 +39,7 @@ public class MM_GameManager : MonoBehaviour
     
     public void ExitScene()//프로그램 종료
     {
+        Debug.Log("Quit");
         Application.Quit();
     }
 }

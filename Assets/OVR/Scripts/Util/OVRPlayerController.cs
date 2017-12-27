@@ -277,7 +277,7 @@ public class OVRPlayerController : MonoBehaviour
 
 		MoveScale *= SimulationRate * Time.deltaTime;
 
-		// Compute this for key movement
+		// Compute this for key movement//움직임 입력
 		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 		// Run!

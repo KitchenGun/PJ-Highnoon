@@ -26,6 +26,7 @@ public class G_FirePos : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0)&&G_isReady==true)//마우스버튼 클릭시 발포성공
         {
             G_Fire();
+            Debug.Log("fire");
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady != true)//마우스버튼 클릭시 발포 실패
         {
@@ -59,7 +60,7 @@ public class G_FirePos : MonoBehaviour
             if (hit.collider.tag == "SB")//시작 버튼 탐지시
             {
                 //씬호출
-                hit.collider.gameObject.SendMessage("StartScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("LevelScene", SendMessageOptions.DontRequireReceiver);
             }
             if (hit.collider.tag == "HTPB")//튜토리얼버튼 탐지시
             {
