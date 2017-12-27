@@ -66,17 +66,17 @@ public class OVRPlayerController : MonoBehaviour
 	/// <summary>
 	/// If true, tracking data from a child OVRCameraRig will update the direction of movement.
 	/// </summary>
-	public bool HmdRotatesY = true;
+	public bool HmdRotatesY = true;//ovrcamrig의 데이터를 추적하면 이동 방향이 업데이트 됨
 
 	/// <summary>
 	/// Modifies the strength of gravity.
 	/// </summary>
-	public float GravityModifier = 0.379f;
+	public float GravityModifier = 0.379f;//중력 강도
 	
 	/// <summary>
 	/// If true, each OVRPlayerController will use the player's physical height.
 	/// </summary>
-	public bool useProfileData = true;
+	public bool useProfileData = true; //true시 ovrplayercontroller는 실제 높이로 사용
 
 	protected CharacterController Controller = null;
 	protected OVRCameraRig CameraRig = null;
@@ -84,8 +84,8 @@ public class OVRPlayerController : MonoBehaviour
 	private float MoveScale = 1.0f;
 	private Vector3 MoveThrottle = Vector3.zero;
 	private float FallSpeed = 0.0f;
-	private OVRPose? InitialPose;
-	private float InitialYRotation = 0.0f;
+	private OVRPose? InitialPose;//초기 포즈
+	private float InitialYRotation = 0.0f; //초기 회전
 	private float MoveScaleMultiplier = 1.0f;
 	private float RotationScaleMultiplier = 1.0f;
 	private bool  SkipMouseRotation = false;
@@ -97,7 +97,7 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Start()
 	{
-		// Add eye-depth as a camera offset from the player controller
+		// Add eye-depth as a camera offset from the player controller 눈높이에 카메라 오프셋 추가
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
@@ -110,8 +110,8 @@ public class OVRPlayerController : MonoBehaviour
 		if(Controller == null)
 			Debug.LogWarning("OVRPlayerController: No CharacterController attached.");
 
-		// We use OVRCameraRig to set rotations to cameras,
-		// and to be influenced by rotation
+		// We use OVRCameraRig to set rotations to cameras,//카메라 회전 설정
+		// and to be influenced by rotation//회전의 영향을 받는다
 		OVRCameraRig[] CameraRigs = gameObject.GetComponentsInChildren<OVRCameraRig>();
 
 		if(CameraRigs.Length == 0)
@@ -126,11 +126,11 @@ public class OVRPlayerController : MonoBehaviour
 
 	void OnEnable()
 	{
-		OVRManager.display.RecenteredPose += ResetOrientation;
+		OVRManager.display.RecenteredPose += ResetOrientation; //vr 디스플레이 최근포즈
 
 		if (CameraRig != null)
 		{
-			CameraRig.UpdatedAnchors += UpdateTransform;
+			CameraRig.UpdatedAnchors += UpdateTransform; 
 		}
 	}
 
@@ -146,7 +146,7 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Update()
 	{
-		//Use keys to ratchet rotation
+		//Use keys to ratchet rotation 버튼누르면 키보드 회전만큼 이동
 		if (Input.GetKeyDown(KeyCode.Q))
 			buttonRotation -= RotationRatchet;
 
@@ -160,8 +160,8 @@ public class OVRPlayerController : MonoBehaviour
 		{
 			if (InitialPose == null)
 			{
-				// Save the initial pose so it can be recovered if useProfileData
-				// is turned off later.
+				// Save the initial pose so it can be recovered if useProfileData //실제 높이 사용시  초기 포즈를 저장
+				// is turned off later. 곧꺼짐
 				InitialPose = new OVRPose()
 				{
 					position = CameraRig.transform.localPosition,
@@ -228,7 +228,7 @@ public class OVRPlayerController : MonoBehaviour
 			MoveThrottle += (actualXZ - predictedXZ) / (SimulationRate * Time.deltaTime);
 	}
 
-	public virtual void UpdateMovement()
+	public virtual void UpdateMovement()//이동
 	{
 		if (HaltUpdateMovement)
 			return;
