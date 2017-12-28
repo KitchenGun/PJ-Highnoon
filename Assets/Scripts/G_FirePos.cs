@@ -32,12 +32,16 @@ public class G_FirePos : MonoBehaviour
         {
             G_FireF();
         }
+        if(Input.GetKeyDown(KeyCode.R)&&G_isReady==false)
+        {
+            G_Reload();
+        }
     }
 
     void G_Fire()//발사
     {
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
-        if (Physics.Raycast(G_FirePosition.position, transform.forward, out hit, 100.0f))//레이 탐색 
+        if (Physics.Raycast(G_FirePosition.position, Vector3.forward, out hit, 100.0f))//레이 탐색 
         {
             if (hit.collider.tag == "Enemy")//적 탐지시
             {
@@ -48,7 +52,7 @@ public class G_FirePos : MonoBehaviour
                 hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
 
-            if (hit.collider.tag == "Player")//적 탐지시
+            if (hit.collider.name == "Player")//적 탐지시
             {
                 object[] _params = new object[2];//레이피격시 내부 정보추출
                 _params[0] = hit.point;
@@ -57,10 +61,11 @@ public class G_FirePos : MonoBehaviour
                 hit.collider.gameObject.SendMessage("OnAttack", SendMessageOptions.DontRequireReceiver);
             }
             
-            if (hit.collider.tag == "SB")//시작 버튼 탐지시
+            if (hit.collider.name == "SB")//시작 버튼 탐지시
             {
+                Debug.Log("hit");
                 //씬호출
-                hit.collider.gameObject.SendMessage("LevelScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("LevelScene");
             }
             if (hit.collider.tag == "HTPB")//튜토리얼버튼 탐지시
             {

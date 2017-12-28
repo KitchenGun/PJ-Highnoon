@@ -277,8 +277,8 @@ public class OVRPlayerController : MonoBehaviour
 
 		MoveScale *= SimulationRate * Time.deltaTime;
 
-		// Compute this for key movement//움직임 입력
-		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+        // Compute this for key movement//움직임 입력
+        float moveInfluence = 0;// Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 		// Run!
 		if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
