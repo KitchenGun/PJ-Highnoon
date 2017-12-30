@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player_Ctrl : MonoBehaviour {
 
-    private int P_HP = 100;
+    public int P_HP = 100;
+    private Animator animator;
    
     
     //플레이어 피격
@@ -26,8 +27,8 @@ public class Player_Ctrl : MonoBehaviour {
     void P_Die()
     {
             StopAllCoroutines();
-            //플레이어 사망시 적 캐릭터 애니메이션 실행
-            //animator.SetBool("IsPDie", true);
+        //플레이어 사망시 적 캐릭터 애니메이션 실행
+        GameObject.Find("E1").GetComponent<E1_Ctrl>().Player_Die();
 
     }
 }

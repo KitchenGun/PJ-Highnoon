@@ -11,11 +11,11 @@ public class E1_Ctrl : MonoBehaviour
     //적캐릭터의 현재 상태 정보를 저장할 Enum 변수
     public E1_State e1_state = E1_State.Idle;
 
-    private Animator animator;
+    public Animator animator;
     //적캐릭터 사망여부
     private bool isdie = false;
     //적 캐릭터 생명 변수
-    private int E1_hp = 100;
+    public int E1_hp = 100;
     //공격 사거리
     public float AttackDist = 2.0f;
     public Transform G_FirePosition;//발사위치
@@ -57,8 +57,8 @@ public class E1_Ctrl : MonoBehaviour
 
                 //공격상태
                 case E1_State.Attack:
-                    animator.SetBool("Isattack", true);
                     E1_Attack();
+                    animator.SetBool("Isattack", true);
                     break;
             }
             yield return null;
@@ -99,9 +99,14 @@ public class E1_Ctrl : MonoBehaviour
                 object[] _params = new object[2];//레이피격시 내부 정보추출
                 _params[0] = hit.point;
                 _params[1] = 50;
-                //몬스터에 대미지 입히는 함수
+                //플레이어에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
+    }
+
+    public void Player_Die()
+    {
+        animator.SetBool("IsPDie",true);
     }
 }
