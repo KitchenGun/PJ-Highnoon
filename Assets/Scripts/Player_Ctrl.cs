@@ -1,13 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
-public class Player_Ctrl : MonoBehaviour {
+public class Player_Ctrl : MonoBehaviour
+{
+
+    public Transform P_Head;
+    public Transform P_Body;
+
+    private Vector3 P_originPos;
 
     public int P_HP = 100;
     private Animator animator;
-   
-    
+
+    private void Awake()
+    {
+        Init();
+        P_originPos = this.transform.position;
+    }
+
+    void Init()//vr초기화
+    {
+        //VR 해상도
+        XRSettings.eyeTextureResolutionScale = 1.0f;
+
+        //VR 시스템을 활성화할거임?
+        XRSettings.enabled = true;
+
+        //포지션 트랙킹 사용안할거임?
+        InputTracking.disablePositionalTracking = false;
+
+        //카메라 오토트랙킹을 사용안할거임?
+        XRDevice.DisableAutoXRCameraTracking(Camera.main, true);
+    }
+
+    private void Update()
+    {
+        //현재 VR헤드셋의 위치, 방향을 원점, 정면으로
+        if (Input.GetButtonDown("Button.One"))
+        {
+            InputTracking.Recenter();
+        }
+
+        //VR 사용유무
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            XRSettings.enabled = !XRSettings.enabled;
+        }
+    }
+
     //플레이어 피격
     void P_OnAttack(object[] _params)
     {
