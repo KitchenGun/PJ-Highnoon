@@ -38,7 +38,7 @@ public class Player_Ctrl : MonoBehaviour
     private void Update()
     {
         //현재 VR헤드셋의 위치, 방향을 원점, 정면으로
-        if (Input.GetButtonDown("Button.One"))
+        if (Input.GetButtonDown("Fire1"))
         {
             InputTracking.Recenter();
         }
@@ -48,6 +48,25 @@ public class Player_Ctrl : MonoBehaviour
         {
             XRSettings.enabled = !XRSettings.enabled;
         }
+    }
+
+    //지형 위에서 걷기
+    private void OnGround()
+    {
+        Vector3 pos = transform.position;
+        pos.y = Terrain.activeTerrain.SampleHeight(transform.position) + Terrain.activeTerrain.GetPosition().y;
+        transform.position = pos;
+    }
+
+    //수동 트랙킹
+    private void ManualTracking()
+    {
+        Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
+        Vector3 headEularAngle = InputTracking.GetLocalRotation(XRNode.Head).eulerAngles;
+        //		Vector3 leftHandControllerPos =  InputTracking.GetLocalPosition (XRNode.LeftHand);
+
+        transform.position = P_originPos + (headPosition * 3);
+        //		transform.eulerAngles = new Vector3 (0, headEularAngle.y, 0);
     }
 
     //플레이어 피격
