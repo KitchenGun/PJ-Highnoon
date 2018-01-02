@@ -8,6 +8,8 @@ public class Player_Ctrl : MonoBehaviour
 
     public Transform P_Head;
     public Transform P_Body;
+    public Transform P_HandR;
+    public Transform P_HandL;
 
     private Vector3 P_originPos;
 
@@ -63,8 +65,8 @@ public class Player_Ctrl : MonoBehaviour
     {
         Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
         Vector3 headEularAngle = InputTracking.GetLocalRotation(XRNode.Head).eulerAngles;
-        //		Vector3 leftHandControllerPos =  InputTracking.GetLocalPosition (XRNode.LeftHand);
-
+        Vector3 leftHandControllerPos =  InputTracking.GetLocalPosition (XRNode.LeftHand);
+        Vector3 rightHandControllerPos = InputTracking.GetLocalPosition(XRNode.RightHand);
         transform.position = P_originPos + (headPosition * 3);
         //		transform.eulerAngles = new Vector3 (0, headEularAngle.y, 0);
     }

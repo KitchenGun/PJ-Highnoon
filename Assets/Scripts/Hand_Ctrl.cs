@@ -11,7 +11,9 @@ public class Hand_Ctrl : MonoBehaviour
     private bool G_isGrap=false;//총 잡았는가?
     private bool G_isReady = false;//총을 쏠수 있는가?
 
+    private int G_Bullet = 6;//6발
 
+    
 
     private void Start()
     {
@@ -22,16 +24,16 @@ public class Hand_Ctrl : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(G_FirePosition.position, Vector3.forward * 100, Color.green);
-        if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady == true)//마우스버튼 클릭시 발포성공
+        if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady == true && G_isGrap == true)//마우스버튼 클릭시 발포성공
         {
             G_Fire();
             Debug.Log("fire");
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady != true)//마우스버튼 클릭시 발포 실패
+        if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady != true && G_isGrap == true)//마우스버튼 클릭시 발포 실패
         {
             G_FireF();
         }
-        if (Input.GetKeyDown(KeyCode.R) && G_isReady == false)
+        if (Input.GetKeyDown(KeyCode.R) && G_isReady == false && G_isGrap == true)
         {
             G_Reload();
         }
