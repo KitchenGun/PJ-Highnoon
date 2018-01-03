@@ -40,21 +40,24 @@ public class E1_Ctrl : MonoBehaviour
         StartCoroutine(this.E1_Action());
 
     }
-
-
-    void Test()
+    private void Update()
     {
-        if(StartCount<=0.0f)
-        {
-            Debug.Log("Start");
-        }
+        StartCount -= Time.deltaTime;
     }
-
     IEnumerator CheckEnemy1()
     {
         while (!isdie)
         {
             yield return new WaitForSeconds(0.2f);
+            if(StartCount<=0)
+            {
+                e1_state = E1_State.Attack;
+            }
+            else
+            {
+                e1_state = E1_State.Idle;
+            }
+
         }
     }
 
@@ -100,8 +103,12 @@ public class E1_Ctrl : MonoBehaviour
     {
         //모든 코루틴 정지
         StopAllCoroutines();
-        //사망트리거 실행
-        animator.SetTrigger("isDie");
+        //사망판정
+        isdie = true;
+        //적캐릭터 상태 변환
+        e1_state = E1_State.Die;
+        //적캐릭터 사망 애니메이션 실행
+        animator.SetTrigger("IsDie");
         //다음 스테이지로 넘김
         SceneManager.LoadScene("normal");
 
