@@ -52,7 +52,13 @@ public class Player_Ctrl : MonoBehaviour
         }
     }
 
-   
+    //지형 위에서 걷기
+    private void OnGround()
+    {
+        Vector3 pos = transform.position;
+        pos.y = Terrain.activeTerrain.SampleHeight(transform.position) + Terrain.activeTerrain.GetPosition().y;
+        transform.position = pos;
+    }
 
     //수동 트랙킹
     private void ManualTracking()
