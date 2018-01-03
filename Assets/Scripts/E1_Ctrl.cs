@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class E1_Ctrl : MonoBehaviour
 {
@@ -18,9 +19,14 @@ public class E1_Ctrl : MonoBehaviour
     public int E1_hp = 100;
     //공격 사거리
     public float AttackDist = 2.0f;
-    public Transform G_FirePosition;//발사위치
-    private int G_Bullet = 6;//6발
-    private bool G_isReady = false;//총을 쏠수 있는가?
+    //발사위치
+    public Transform G_FirePosition;
+    //6발
+    private int G_Bullet = 6;
+    //총발사 가능 여부
+    private bool G_isReady = false;
+    //시작 카운트
+    public float StartCount = 3.0f;
 
 
     void Start()
@@ -33,6 +39,15 @@ public class E1_Ctrl : MonoBehaviour
         //몬스터의 상태에 따라 동작하는 루틴을 실행하는 코루틴 함수 실행
         StartCoroutine(this.E1_Action());
 
+    }
+
+
+    void Test()
+    {
+        if(StartCount<=0.0f)
+        {
+            Debug.Log("Start");
+        }
     }
 
     IEnumerator CheckEnemy1()
@@ -87,6 +102,9 @@ public class E1_Ctrl : MonoBehaviour
         StopAllCoroutines();
         //사망트리거 실행
         animator.SetTrigger("isDie");
+        //다음 스테이지로 넘김
+        SceneManager.LoadScene("normal");
+
     }
 
     void E1_Attack()
