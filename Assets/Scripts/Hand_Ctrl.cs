@@ -24,18 +24,27 @@ public class Hand_Ctrl : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
-        if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady == true && G_isGrap == true)//마우스버튼 클릭시 발포성공
+        if (G_isGrap == true)
         {
-            G_Fire();
-            Debug.Log("fire");
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady != true && G_isGrap == true)//마우스버튼 클릭시 발포 실패
-        {
-            G_FireF();
-        }
-        if (Input.GetKeyDown(KeyCode.R) && G_isReady == false && G_isGrap == true)
-        {
-            G_Reload();
+            if (G_isReady == true)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetAxis("Oculus_GearVR_RIndexTrigger") <= -1)//마우스버튼 클릭시 발포성공
+                {
+                    G_Fire();
+                    Debug.Log("fire");
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetAxis("Oculus_GearVR_RIndexTrigger") <= -1)//마우스버튼 클릭시 발포 실패
+                {
+                    G_FireF();
+                }
+                if (Input.GetKeyDown(KeyCode.R)|| Input.GetAxis("Oculus_GearVR_RThumbstickY") ==-1)//재장전
+                {
+                    G_Reload();
+                }
+            }
         }
 
     }
@@ -104,14 +113,20 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireF()//총발사 실패
     {
-
+        Debug.Log("Icantfire");
         //오디오
     }
 
     void G_Reload()//재장전
     {
-
-        G_isReady = true;
+        if(G_Bullet<=0)
+        {
+            G_isReady = false;
+        }
+        else
+        {
+            G_isReady = true;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)//손에 충돌시
@@ -120,6 +135,7 @@ public class Hand_Ctrl : MonoBehaviour
         {
             if(HandCurr==HandnGun)
             {
+                Debug.Log("교체");
                 HandCurr = HandGun;
                 G_isGrap = true;
                 G_isReady = true;
