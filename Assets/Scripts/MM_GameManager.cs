@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MM_GameManager : MonoBehaviour
 {
-
+    public MeshRenderer a;
 
     public void StartScene()//시작화면씬 시작
     {
