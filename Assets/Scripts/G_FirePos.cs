@@ -5,14 +5,13 @@ using UnityEngine;
 public class G_FirePos : MonoBehaviour
 {
 
-    public MeshRenderer Gun;//총의 랜더러
-    public MeshRenderer Gun1;//총 노리쇠의 랜더러
+    public GameObject Gun;//총의 랜더러
+    
     private void OnCollisionEnter(Collision collision)//충돌처리
     {
-        if (collision.gameObject.tag == "P_hand")
+        if (collision.gameObject.tag == "PH")
         {
-            Gun.enabled=false;
-            Gun1.enabled = false;
+            Destroy(Gun);
         }
     }
 }

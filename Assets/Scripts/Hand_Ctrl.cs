@@ -5,9 +5,9 @@ using UnityEngine;
 public class Hand_Ctrl : MonoBehaviour
 {
     public Transform G_FirePosition;//발사위치
-    public GameObject HandnGun;//총없는손
-    public GameObject HandGun;//총있는손
-    public GameObject HandCurr;//현재 손
+    public MeshRenderer HandnGun;//총없는손
+    public MeshRenderer HandGun1;//총없는손
+    public MeshRenderer HandGun;//총있는손
     private bool G_isGrap=false;//총 잡았는가?
     private bool G_isReady = false;//총을 쏠수 있는가?
 
@@ -19,10 +19,18 @@ public class Hand_Ctrl : MonoBehaviour
     {
         G_isGrap = false;
         G_isReady = false;
+        HandGun.enabled = false;
+        HandnGun.enabled = true;
+        HandGun1.enabled = false;
     }
 
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            H_change();
+        }
         Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
         if (G_isGrap == true)
         {
@@ -129,17 +137,17 @@ public class Hand_Ctrl : MonoBehaviour
         }
     }
 
+    void H_change()//손모양 교체
+    {
+        HandGun.enabled=true;
+        HandnGun.enabled=false;
+        HandGun1.enabled = true;
+    }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
         if(collision.gameObject.tag=="Gun")
         {
-            if(HandCurr==HandnGun)
-            {
-                Debug.Log("교체");
-                HandCurr = HandGun;
-                G_isGrap = true;
-                G_isReady = true;
-            }
+            H_change();//손모양 교체
         }
     }
 
