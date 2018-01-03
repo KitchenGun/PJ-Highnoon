@@ -5,6 +5,7 @@ using UnityEngine.XR;
 
 public class Player_Ctrl : MonoBehaviour
 {
+    public static Player_Ctrl Playsc;//플레이어 스크립트
 
     public Transform P_Head;
     public Transform P_Body;
@@ -18,6 +19,15 @@ public class Player_Ctrl : MonoBehaviour
 
     private void Awake()
     {
+        if (Playsc == null)//싱글톤 
+        {
+            Playsc = gameObject.GetComponent<Player_Ctrl>();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         Init();
         P_originPos = this.transform.position;
     }
