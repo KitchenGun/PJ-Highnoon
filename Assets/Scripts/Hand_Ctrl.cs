@@ -23,7 +23,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(G_FirePosition.position, Vector3.forward * 100, Color.green);
+        Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
         if (Input.GetKeyDown(KeyCode.Mouse0) && G_isReady == true && G_isGrap == true)//마우스버튼 클릭시 발포성공
         {
             G_Fire();
