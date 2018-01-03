@@ -132,6 +132,7 @@ public class E1_Ctrl : MonoBehaviour
 
     public void Player_Die()
     {
+        StopAllCoroutines();
         animator.SetBool("IsPDie",true);
     }
 }
