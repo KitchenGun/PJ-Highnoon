@@ -10,12 +10,9 @@ public class G_FirePos : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)//충돌처리
     {
-        if(Input.GetButtonDown("Grap"))//잡기버튼
+        if (collision.gameObject.tag == "PH")
         {
-            if (collision.gameObject.tag == "PH")
-            {
-                Destroy(Gun);
-            }
+            Destroy(Gun);
         }
     }
 }

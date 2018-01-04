@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Hand_Ctrl : MonoBehaviour
 {
+    public OVRInput.Controller Controller;
+
     public Transform G_FirePosition;//발사위치
     public MeshRenderer HandnGun;//총없는손
     public MeshRenderer HandGun1;//총없는손
@@ -12,31 +15,32 @@ public class Hand_Ctrl : MonoBehaviour
     private bool G_isReady = false;//총을 쏠수 있는가?
 
     private int G_Bullet = 6;//6발
-
     
 
     private void Start()
     {
         G_isGrap = false;
-        G_isReady = false;
+        G_isReady = true;
         HandGun.enabled = false;
         HandnGun.enabled = true;
         HandGun1.enabled = false;
+        
     }
 
     void Update()
     {
-
-        if(Input.GetKeyDown(KeyCode.A))
+        this.transform.localPosition = OVRInput.GetLocalControllerPosition(Controller)+new Vector3(0,1,0);
+        Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
+        if (Input.GetKeyDown(KeyCode.A))
         {
             H_change();
         }
-        Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
+       
         if (G_isGrap == true)
         {
             if (G_isReady == true)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetAxis("Oculus_GearVR_RIndexTrigger") <= -1)//마우스버튼 클릭시 발포성공
+                if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger))//마우스버튼 클릭시 발포성공
                 {
                     G_Fire();
                     Debug.Log("fire");
@@ -44,11 +48,11 @@ public class Hand_Ctrl : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetAxis("Oculus_GearVR_RIndexTrigger") <= -1)//마우스버튼 클릭시 발포 실패
+                if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger))//마우스버튼 클릭시 발포 실패
                 {
                     G_FireF();
                 }
-                if (Input.GetKeyDown(KeyCode.R)|| Input.GetAxis("Oculus_GearVR_RThumbstickY") ==-1)//재장전
+                if (Input.GetKeyDown(KeyCode.R)||OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickDown))//재장전
                 {
                     G_Reload();
                 }
@@ -139,6 +143,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     void H_change()//손모양 교체
     {
+        G_isGrap = true;
         HandGun.enabled=true;
         HandnGun.enabled=false;
         HandGun1.enabled = true;
@@ -150,7 +155,7 @@ public class Hand_Ctrl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
-        if (collision.gameObject.tag == "Gun" && Input.GetButtonDown("Grap"))
+        if (collision.gameObject.tag == "Gun")
         {
             H_change();//손모양 교체
         }

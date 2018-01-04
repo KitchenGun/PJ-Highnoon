@@ -15,6 +15,8 @@ public class Player_Ctrl : MonoBehaviour
     private Vector3 P_originPos;
 
     public GameObject RHandG;
+    public GameObject LHandG;
+
 
     public int P_HP = 100;
     private Animator animator;
@@ -44,10 +46,10 @@ public class Player_Ctrl : MonoBehaviour
         XRSettings.enabled = true;
 
         //포지션 트랙킹 사용안할거임?
-        InputTracking.disablePositionalTracking = false;
+        InputTracking.disablePositionalTracking = true;
 
         //카메라 오토트랙킹을 사용안할거임?
-        XRDevice.DisableAutoXRCameraTracking(Camera.main, true);
+        XRDevice.DisableAutoXRCameraTracking(Camera.main, false);
     }
 
     private void Update()
@@ -63,24 +65,17 @@ public class Player_Ctrl : MonoBehaviour
         {
             XRSettings.enabled = !XRSettings.enabled;
         }
+        ManualTracking();
     }
 
-    //지형 위에서 걷기
-    private void OnGround()
-    {
-        Vector3 pos = transform.position;
-        pos.y = Terrain.activeTerrain.SampleHeight(transform.position) + Terrain.activeTerrain.GetPosition().y;
-        transform.position = pos;
-    }
+   
 
     //수동 트랙킹
     private void ManualTracking()
     {
         Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
         Vector3 headEularAngle = InputTracking.GetLocalRotation(XRNode.Head).eulerAngles;
-        Vector3 leftHandControllerPos =  InputTracking.GetLocalPosition (XRNode.LeftHand);
-        Vector3 rightHandControllerPos = InputTracking.GetLocalPosition(XRNode.RightHand);
-        transform.position = P_originPos + (headPosition * 3);
+        transform.position = P_originPos + (headPosition * 4);
         //		transform.eulerAngles = new Vector3 (0, headEularAngle.y, 0);
     }
 
