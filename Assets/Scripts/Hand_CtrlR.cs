@@ -31,8 +31,8 @@ public class Hand_CtrlR : MonoBehaviour {
 		{
 		this.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)+new Vector3(0,2f,0);//Vector3(-0.125f,2,0)
 		this.transform.localRotation=OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
-		Debug.Log (this.transform.localRotation);
-		Debug.DrawRay(G_FirePosition.localPosition, Vector3.forward * -100, Color.green);
+
+		Debug.DrawRay(G_FirePosition.position, Vector3.forward * 100, Color.green);
 			if (Input.GetKeyDown(KeyCode.A))
 			{
 				H_change();
@@ -42,7 +42,7 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//마우스버튼 클릭시 발포성공
+					if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//마우스버튼 클릭시 발포성공
 					{
 						G_Fire();
 						Debug.Log("fire");

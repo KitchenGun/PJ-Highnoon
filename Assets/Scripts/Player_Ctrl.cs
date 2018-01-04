@@ -75,7 +75,7 @@ public class Player_Ctrl : MonoBehaviour
     {
         Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
         Vector3 headEularAngle = InputTracking.GetLocalRotation(XRNode.Head).eulerAngles;
-        transform.position = P_originPos + (headPosition * 4);
+        transform.position = P_originPos + (headPosition);
         //		transform.eulerAngles = new Vector3 (0, headEularAngle.y, 0);
     }
 
