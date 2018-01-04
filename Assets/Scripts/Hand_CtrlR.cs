@@ -29,7 +29,7 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void Update()
 		{
-		this.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)+new Vector3(0,2f,0);//Vector3(-0.125f,2,0)
+		this.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);//Vector3(-0.125f,2,0)
 		this.transform.localRotation=OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
 
 		Debug.DrawRay(G_FirePosition.position, Vector3.forward * 100, Color.green);
