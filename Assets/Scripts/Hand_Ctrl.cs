@@ -144,14 +144,13 @@ public class Hand_Ctrl : MonoBehaviour
         HandGun1.enabled = true;
     }
 
-    void G_allReload()
+    void G_allReload()//총의 총알 초기화
     {
-        
         G_Bullet = 6;
     }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
-        if(collision.gameObject.tag=="Gun")
+        if (collision.gameObject.tag == "Gun" && Input.GetButtonDown("Grap"))
         {
             H_change();//손모양 교체
         }
