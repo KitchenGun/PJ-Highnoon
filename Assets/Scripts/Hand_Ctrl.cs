@@ -5,7 +5,7 @@ using UnityEngine.XR;
 
 public class Hand_Ctrl : MonoBehaviour
 {
-    public OVRInput.Controller Controller;
+    //public OVRInput.Controller Controller;
 
     public Transform G_FirePosition;//발사위치
     public MeshRenderer HandnGun;//총없는손
@@ -29,7 +29,8 @@ public class Hand_Ctrl : MonoBehaviour
 
     void Update()
     {
-		this.transform.localPosition = OVRInput.GetLocalControllerPosition(Controller)+new Vector3(0.2f,2,0);//Vector3(-0.125f,2,0)
+		this.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)+new Vector3(0,2f,0);//Vector3(-0.125f,2,0)
+		this.transform.localRotation=OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch)*new Quaternion(10f,10f,10f,10f);
         Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
         if (Input.GetKeyDown(KeyCode.A))
         {
