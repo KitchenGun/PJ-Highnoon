@@ -42,7 +42,7 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger))//마우스버튼 클릭시 발포성공
+					if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//마우스버튼 클릭시 발포성공
 					{
 						G_Fire();
 						Debug.Log("fire");
@@ -50,7 +50,7 @@ public class Hand_CtrlR : MonoBehaviour {
 				}
 				else
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger))//마우스버튼 클릭시 발포 실패
+					if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//마우스버튼 클릭시 발포 실패
 					{
 						G_FireF();
 					}
