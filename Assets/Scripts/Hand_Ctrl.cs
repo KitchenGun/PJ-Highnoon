@@ -143,6 +143,12 @@ public class Hand_Ctrl : MonoBehaviour
         HandnGun.enabled=false;
         HandGun1.enabled = true;
     }
+
+    void G_allReload()
+    {
+        
+        G_Bullet = 6;
+    }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
         if(collision.gameObject.tag=="Gun")

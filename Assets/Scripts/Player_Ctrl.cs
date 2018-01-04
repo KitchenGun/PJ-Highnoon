@@ -14,6 +14,8 @@ public class Player_Ctrl : MonoBehaviour
 
     private Vector3 P_originPos;
 
+    public GameObject RHandG;
+
     public int P_HP = 100;
     private Animator animator;
 
@@ -27,6 +29,7 @@ public class Player_Ctrl : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            RHandG.SendMessage("G_allReload");
         }
         Init();
         P_originPos = this.transform.position;
