@@ -29,7 +29,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     void Update()
     {
-        this.transform.localPosition = OVRInput.GetLocalControllerPosition(Controller)+new Vector3(0,1,0);
+		this.transform.localPosition = OVRInput.GetLocalControllerPosition(Controller)+new Vector3(0.2f,2,0);//Vector3(-0.125f,2,0)
         Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
         if (Input.GetKeyDown(KeyCode.A))
         {
