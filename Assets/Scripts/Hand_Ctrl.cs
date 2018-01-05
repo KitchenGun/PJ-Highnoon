@@ -8,7 +8,7 @@ public class Hand_Ctrl : MonoBehaviour
     //public OVRInput.Controller Controller;
 
     public Transform G_FirePosition;//발사위치
-    public MeshRenderer HandnGun;//총없는손
+    public GameObject HandnGun;//총없는손
     public GameObject HandGun;//총있는손
     private bool G_isGrap=false;//총 잡았는가?
     private bool G_isReady = false;//총을 쏠수 있는가?
@@ -21,7 +21,7 @@ public class Hand_Ctrl : MonoBehaviour
         G_isGrap = false;
         G_isReady = true;
         HandGun.SetActive(false);
-        HandnGun.enabled = true;
+        HandnGun.SetActive(true);
         
     }
     
@@ -145,7 +145,7 @@ public class Hand_Ctrl : MonoBehaviour
     {
         G_isGrap = true;
         HandGun.SetActive(true);
-        HandnGun.enabled=false;
+        HandnGun.SetActive(false);
         
     }
 
