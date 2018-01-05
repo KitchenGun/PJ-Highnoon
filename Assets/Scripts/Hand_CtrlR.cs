@@ -9,8 +9,7 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		public Transform G_FirePosition;//발사위치
 		public MeshRenderer HandnGun;//총없는손
-		public MeshRenderer HandGun1;//총없는손
-		public MeshRenderer HandGun;//총있는손
+        public GameObject G_gunhand;//총있는손
 		private bool G_isGrap=false;//총 잡았는가?
 		private bool G_isReady = false;//총을 쏠수 있는가?
 
@@ -21,9 +20,9 @@ public class Hand_CtrlR : MonoBehaviour {
 		{
 			G_isGrap = false;
 			G_isReady = true;
-			HandGun.enabled = false;
-			HandnGun.enabled = true;
-			HandGun1.enabled = false;
+            G_gunhand.SetActive(false);
+            HandnGun.enabled = true;
+			
 
 		}
 
@@ -146,9 +145,8 @@ public class Hand_CtrlR : MonoBehaviour {
 		void H_change()//손모양 교체
 		{
 			G_isGrap = true;
-			HandGun.enabled=true;
+            G_gunhand.SetActive(true);
 			HandnGun.enabled=false;
-			HandGun1.enabled = true;
 		}
 
 		void G_allReload()//총의 총알 초기화
@@ -159,6 +157,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		{
 			if (collision.gameObject.tag == "Gun")
 			{
+                Debug.Log("충돌");
 				H_change();//손모양 교체
 			}
 		}
