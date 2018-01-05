@@ -28,9 +28,9 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void Update()
 		{
-            float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
-            float G_Reloadf = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;
-        Debug.Log(Firetrigger_resultf);
+		float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+		float G_Reloadf = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+        //Debug.Log(Firetrigger_resultf);
         Debug.Log(G_Reloadf);
         Debug.DrawRay(G_FirePosition.localPosition, Vector3.forward * 100, Color.green);
 			if (Input.GetKeyDown(KeyCode.A))
@@ -42,7 +42,7 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0)||Firetrigger_resultf <= 1)//마우스버튼 클릭시 발포성공
+				if (Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공Input.GetKeyDown(KeyCode.Mouse0)||
 					{
 						G_Fire();
 						Debug.Log("fire");
@@ -50,11 +50,11 @@ public class Hand_CtrlR : MonoBehaviour {
 				}
 				else
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf <= 1)//마우스버튼 클릭시 발포 실패
+				if (Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
 					{
 						G_FireF();
 					}
-					if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf == 1)//재장전
+					if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf <=-0.5f)//재장전
 					{
 						G_Reload();
 					}
@@ -133,6 +133,9 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void G_Reload()//재장전
 		{
+		Debug.Log("reload");
+		if(G_isReady == false)
+		{
 			if(G_Bullet<=0)
 			{
 				G_isReady = false;
@@ -142,6 +145,8 @@ public class Hand_CtrlR : MonoBehaviour {
 				G_isReady = true;
 			}
 		}
+	}
+
 
 		void H_change()//손모양 교체
 		{
