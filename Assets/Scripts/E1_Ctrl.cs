@@ -53,7 +53,7 @@ public class E1_Ctrl : MonoBehaviour
             {
                 e1_state = E1_State.Attack;
             }
-            else if()
+            else if(StartCount > 0)
             {
                 e1_state = E1_State.PDie;
             }

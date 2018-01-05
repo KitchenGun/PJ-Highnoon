@@ -944,52 +944,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!1001 &361372321
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -2.1648906e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 2.1648903e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0b0bc9922f894024690e725f8ac7a283, type: 2}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6f45be84431b6fa4981091b438c80be2, type: 3}
-  m_IsPrefabParent: 0
 --- !u!4 &380075397 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 01a0727320dfea84186077b025ae663f, type: 3}
