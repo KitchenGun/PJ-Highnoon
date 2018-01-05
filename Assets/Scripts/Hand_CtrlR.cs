@@ -32,8 +32,8 @@ public class Hand_CtrlR : MonoBehaviour {
 		float G_Reloadf = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
         //Debug.Log(Firetrigger_resultf);
         //Debug.Log(G_Reloadf);
-		Debug.DrawRay(G_FirePosition.localPosition, Vector3.forward*100, out hit, 100.0f);
-			if (Input.GetKeyDown(KeyCode.A))
+        Debug.DrawRay(G_FirePosition.position, G_FirePosition.right * 100, Color.green);
+        if (Input.GetKeyDown(KeyCode.A))
 			{
 				H_change();
 			}
@@ -42,10 +42,9 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
-				    if (Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공Input.GetKeyDown(KeyCode.Mouse0)||
+                    if (Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공Input.GetKeyDown(KeyCode.Mouse0)||
 					{
 						G_Fire();
-                        Debug.DrawRay(G_FirePosition.localPosition, Vector3.up * -100, Color.green);
                         Debug.Log("fire");
 					}
 				}
@@ -66,7 +65,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		void G_Fire()//발사
 		{
 			RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
-		    if (Physics.Raycast(G_FirePosition.localPosition, Vector3.forward*100, out hit, 100.0f))//레이 탐색 
+		    if (Physics.Raycast(G_FirePosition.position, G_FirePosition.right*100f, out hit, 100.0f))//레이 탐색 
 			{
 				if (hit.collider.tag == "Enemy")//적 탐지시
 				{
