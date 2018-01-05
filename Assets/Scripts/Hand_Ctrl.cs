@@ -9,8 +9,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     public Transform G_FirePosition;//발사위치
     public MeshRenderer HandnGun;//총없는손
-    public MeshRenderer HandGun1;//총없는손
-    public MeshRenderer HandGun;//총있는손
+    public GameObject HandGun;//총있는손
     private bool G_isGrap=false;//총 잡았는가?
     private bool G_isReady = false;//총을 쏠수 있는가?
 
@@ -21,17 +20,16 @@ public class Hand_Ctrl : MonoBehaviour
     {
         G_isGrap = false;
         G_isReady = true;
-        HandGun.enabled = false;
+        HandGun.SetActive(false);
         HandnGun.enabled = true;
-        HandGun1.enabled = false;
         
     }
-
+    
     void Update()
     {
-		this.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)+new Vector3(0,2f,0);//Vector3(-0.125f,2,0)
-		this.transform.localRotation=OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch)*new Quaternion(10f,10f,10f,10f);
-        Debug.DrawRay(G_FirePosition.position, Vector3.up * -100, Color.green);
+        float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+        float G_Reloadf=OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+        Debug.DrawRay(G_FirePosition.localPosition, Vector3.up * -100, Color.green);
         if (Input.GetKeyDown(KeyCode.A))
         {
             H_change();
@@ -41,7 +39,7 @@ public class Hand_Ctrl : MonoBehaviour
         {
             if (G_isReady == true)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))//마우스버튼 클릭시 발포성공
+                if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf<=1)//마우스버튼 클릭시 발포성공
                 {
                     G_Fire();
                     Debug.Log("fire");
@@ -49,11 +47,11 @@ public class Hand_Ctrl : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))//마우스버튼 클릭시 발포 실패
+                if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf <= 1)//마우스버튼 클릭시 발포 실패
                 {
                     G_FireF();
                 }
-                if (Input.GetKeyDown(KeyCode.R)||OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickDown))//재장전
+                if (Input.GetKeyDown(KeyCode.R)||G_Reloadf==1)//재장전
                 {
                     G_Reload();
                 }
@@ -64,7 +62,7 @@ public class Hand_Ctrl : MonoBehaviour
     void G_Fire()//발사
     {
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
-        if (Physics.Raycast(G_FirePosition.position, Vector3.forward, out hit, 100.0f))//레이 탐색 
+        if (Physics.Raycast(G_FirePosition.localPosition, Vector3.forward, out hit, 100.0f))//레이 탐색 
         {
             if (hit.collider.tag == "Enemy")//적 탐지시
             {
@@ -145,9 +143,9 @@ public class Hand_Ctrl : MonoBehaviour
     void H_change()//손모양 교체
     {
         G_isGrap = true;
-        HandGun.enabled=true;
+        HandGun.SetActive(true);
         HandnGun.enabled=false;
-        HandGun1.enabled = true;
+        
     }
 
     void G_allReload()//총의 총알 초기화

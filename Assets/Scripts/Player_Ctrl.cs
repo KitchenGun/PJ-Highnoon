@@ -33,52 +33,8 @@ public class Player_Ctrl : MonoBehaviour
             Destroy(gameObject);
             RHandG.SendMessage("G_allReload");
         }
-        //Init();
-        //P_originPos = this.transform.position;
     }
-
-    //void Init()//vr초기화
-    //{
-    //    //VR 해상도
-    //    XRSettings.eyeTextureResolutionScale = 1.0f;
-    //
-    //    //VR 시스템을 활성화할거임?
-    //    XRSettings.enabled = true;
-    //
-    //    //포지션 트랙킹 사용안할거임?
-    //    InputTracking.disablePositionalTracking = true;
-    //
-    //    //카메라 오토트랙킹을 사용안할거임?
-    //    XRDevice.DisableAutoXRCameraTracking(Camera.main, false);
-    //}
-    //
-    //private void Update()
-    //{
-    //    //현재 VR헤드셋의 위치, 방향을 원점, 정면으로
-    //    if (Input.GetButtonDown("Fire1"))
-    //    {
-    //        InputTracking.Recenter();
-    //    }
-    //
-    //    //VR 사용유무
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        XRSettings.enabled = !XRSettings.enabled;
-    //    }
-    //    ManualTracking();
-    //}
-    //
-    //
-    //
-    ////수동 트랙킹
-    //private void ManualTracking()
-    //{
-    //    Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
-    //    Vector3 headEularAngle = InputTracking.GetLocalRotation(XRNode.Head).eulerAngles;
-    //    transform.position = P_originPos + (headPosition);
-    //    //		transform.eulerAngles = new Vector3 (0, headEularAngle.y, 0);
-    //}
-
+    
     //플레이어 피격
     void P_OnAttack(object[] _params)
     {

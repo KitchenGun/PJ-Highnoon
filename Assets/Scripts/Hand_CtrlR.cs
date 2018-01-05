@@ -28,10 +28,11 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void Update()
 		{
-		this.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);//Vector3(-0.125f,2,0)
-		this.transform.localRotation=OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
-
-		Debug.DrawRay(G_FirePosition.position, Vector3.forward * 100, Color.green);
+            float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+            float G_Reloadf = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;
+        Debug.Log(Firetrigger_resultf);
+        Debug.Log(G_Reloadf);
+        Debug.DrawRay(G_FirePosition.localPosition, Vector3.forward * 100, Color.green);
 			if (Input.GetKeyDown(KeyCode.A))
 			{
 				H_change();
@@ -41,7 +42,7 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
-					if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//마우스버튼 클릭시 발포성공
+					if (Input.GetKeyDown(KeyCode.Mouse0)||Firetrigger_resultf <= 1)//마우스버튼 클릭시 발포성공
 					{
 						G_Fire();
 						Debug.Log("fire");
@@ -49,11 +50,11 @@ public class Hand_CtrlR : MonoBehaviour {
 				}
 				else
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//마우스버튼 클릭시 발포 실패
+					if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf <= 1)//마우스버튼 클릭시 발포 실패
 					{
 						G_FireF();
 					}
-					if (Input.GetKeyDown(KeyCode.R)||OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickDown))//재장전
+					if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf == 1)//재장전
 					{
 						G_Reload();
 					}
@@ -64,7 +65,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		void G_Fire()//발사
 		{
 			RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
-		if (Physics.Raycast(G_FirePosition.localPosition, Vector3.forward, out hit, 100.0f))//레이 탐색 
+		    if (Physics.Raycast(G_FirePosition.localPosition, Vector3.forward, out hit, 100.0f))//레이 탐색 
 			{
 				if (hit.collider.tag == "Enemy")//적 탐지시
 				{
