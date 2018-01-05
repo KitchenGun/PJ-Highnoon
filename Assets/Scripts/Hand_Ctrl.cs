@@ -52,7 +52,7 @@ public class Hand_Ctrl : MonoBehaviour
                 {
                     G_FireF();
                 }
-                if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf <= -0.9f)//재장전
+				if (Input.GetKeyDown(KeyCode.R)||G_Reloadf <-0.8f)//재장전
                 {
                     G_Reload();
                 }

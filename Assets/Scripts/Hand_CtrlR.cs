@@ -32,7 +32,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		float G_Reloadf = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
         //Debug.Log(Firetrigger_resultf);
         //Debug.Log(G_Reloadf);
-       
+		Debug.DrawRay(G_FirePosition.localPosition, Vector3.forward*100, out hit, 100.0f);
 			if (Input.GetKeyDown(KeyCode.A))
 			{
 				H_change();
@@ -55,7 +55,7 @@ public class Hand_CtrlR : MonoBehaviour {
 					{
 						G_FireF();
 					}
-					if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf <=-0.9f)//재장전
+					if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf <-0.8f)//재장전
 					{
 						G_Reload();
 					}
@@ -66,7 +66,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		void G_Fire()//발사
 		{
 			RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
-		    if (Physics.Raycast(G_FirePosition.localPosition, Vector3.forward, out hit, 100.0f))//레이 탐색 
+		    if (Physics.Raycast(G_FirePosition.localPosition, Vector3.forward*100, out hit, 100.0f))//레이 탐색 
 			{
 				if (hit.collider.tag == "Enemy")//적 탐지시
 				{
@@ -86,7 +86,7 @@ public class Hand_CtrlR : MonoBehaviour {
 					hit.collider.gameObject.SendMessage("OnAttack", SendMessageOptions.DontRequireReceiver);
 				}
 
-				if (hit.collider.name == "SB")//시작 버튼 탐지시
+				if (hit.collider.tag == "SB")//시작 버튼 탐지시
 				{
 					Debug.Log("hit");
 					//씬호출
@@ -134,17 +134,18 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void G_Reload()//재장전
 		{
-		Debug.Log("reload");
-		if(G_isReady == false)
-		{
-			if(G_Bullet<=0)
+		
+			if(G_isReady == false)
 			{
-				G_isReady = false;
-			}
-			else
-			{
-				G_isReady = true;
-			}
+				if(G_Bullet<=0)
+				{
+					G_isReady = false;
+				}
+				else
+				{
+					Debug.Log("reload");
+					G_isReady = true;
+				}
 		}
 	}
 
