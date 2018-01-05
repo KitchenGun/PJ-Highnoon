@@ -18,8 +18,8 @@ public class Player_Ctrl : MonoBehaviour
     public GameObject LHandG;
 
 
-    public int P_HP = 100;
     private Animator animator;
+    public bool IsPDie = false;
 
     private void Awake()
     {
@@ -40,12 +40,9 @@ public class Player_Ctrl : MonoBehaviour
     {
         Debug.Log(string.Format("Hit ray {0} : {1}", _params[0], _params[1]));
 
-        //맞은 총알의 데미지를 추출해 플레이어 체력 차감
-        P_HP -= (int)_params[1];
-        if (P_HP <= 0)
-        {
-            P_Die();
-        }
+        //총에맞을시 플레이어 사망
+        P_Die();
+        GameObject.Find("E1").SendMessage("Player_Die");
 
         //IsHit트리거 발생
         //animator.SetTrigger("isHit");
@@ -53,9 +50,11 @@ public class Player_Ctrl : MonoBehaviour
 
     void P_Die()
     {
-            StopAllCoroutines();
+
+        animator.SetBool("IsPDie", true);
         //플레이어 사망시 적 캐릭터 애니메이션 실행
         GameObject.Find("E1").GetComponent<E1_Ctrl>().Player_Die();
+
 
     }
 }

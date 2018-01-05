@@ -46,18 +46,21 @@ public class E1_Ctrl : MonoBehaviour
     }
     IEnumerator CheckEnemy1()
     {
-        while (!isdie)
+        while (E1_hp > 0)
         {
             yield return new WaitForSeconds(0.2f);
-            if(StartCount<=0)
+            if (StartCount <= 0)
             {
                 e1_state = E1_State.Attack;
+            }
+            else if()
+            {
+                e1_state = E1_State.PDie;
             }
             else
             {
                 e1_state = E1_State.Idle;
             }
-
         }
     }
 
@@ -69,7 +72,6 @@ public class E1_Ctrl : MonoBehaviour
             {
                 //대기상태
                 case E1_State.Idle:
-
                     animator.SetBool("IsAttack", false);
                     break;
 
@@ -78,6 +80,12 @@ public class E1_Ctrl : MonoBehaviour
                     E1_Attack();
                     animator.SetBool("Isattack", true);
                     break;
+
+                //플레이어사망 애니메이션
+                case E1_State.PDie:
+                    Player_Die();
+                    animator.SetTrigger("IsPDie");
+                    break;     
             }
             yield return null;
         }
@@ -123,7 +131,6 @@ public class E1_Ctrl : MonoBehaviour
             {
                 object[] _params = new object[2];//레이피격시 내부 정보추출
                 _params[0] = hit.point;
-                _params[1] = 50;
                 //플레이어에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
@@ -131,8 +138,7 @@ public class E1_Ctrl : MonoBehaviour
     }
 
     public void Player_Die()
-    {
-        StopAllCoroutines();
-        animator.SetBool("IsPDie",true);
+    { 
+
     }
 }
