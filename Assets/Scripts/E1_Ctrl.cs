@@ -27,6 +27,9 @@ public class E1_Ctrl : MonoBehaviour
     private bool G_isReady = false;
     //시작 카운트
     public float StartCount = 3.0f;
+    RaycastHit hit;
+  
+
 
 
     void Start()
@@ -43,6 +46,8 @@ public class E1_Ctrl : MonoBehaviour
     private void Update()
     {
         StartCount -= Time.deltaTime;
+        transform.Translate(new Vector3(0.0f, 0.0f, -3.0f) * Time.deltaTime);
+
     }
     IEnumerator CheckEnemy1()
     {
@@ -53,7 +58,7 @@ public class E1_Ctrl : MonoBehaviour
             {
                 e1_state = E1_State.Attack;
             }
-            else if(StartCount > 0)
+            else if(hit.collider.tag== "Player")
             {
                 e1_state = E1_State.PDie;
             }
@@ -61,6 +66,11 @@ public class E1_Ctrl : MonoBehaviour
             {
                 e1_state = E1_State.Idle;
             }
+        }
+        while (E1_hp <= 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+            e1_state = E1_State.Die;
         }
     }
 
@@ -137,8 +147,18 @@ public class E1_Ctrl : MonoBehaviour
         }
     }
 
-    public void Player_Die()
-    { 
+    public void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == ("StopE1"))
+        {
+            //Time.timeScale = 0;
+            Debug.Log("Stoped");
+            //animator.SetTrigger("StopE1");
+        }
+    }
+
+    void Player_Die()
+    {
 
     }
 }

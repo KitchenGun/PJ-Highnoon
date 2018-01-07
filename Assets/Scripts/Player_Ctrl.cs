@@ -94,11 +94,6 @@ public class Player_Ctrl : MonoBehaviour
 
     void P_Die()
     {
-
         animator.SetBool("IsPDie", true);
-        //플레이어 사망시 적 캐릭터 애니메이션 실행
-        GameObject.Find("E1").GetComponent<E1_Ctrl>().Player_Die();
-
-
     }
 }
