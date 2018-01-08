@@ -47,8 +47,11 @@ public class Hand_CtrlR : MonoBehaviour {
 				{
                     if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
 					{
-						G_Fire();
-                        Debug.Log("fire");
+                        if(G_Reloadf>-0.8f)
+                        {
+                            G_Fire();
+                            Debug.Log("fire");
+                        }
 					}
 				}
 				else
