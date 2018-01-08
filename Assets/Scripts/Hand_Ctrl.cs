@@ -13,6 +13,9 @@ public class Hand_Ctrl : MonoBehaviour
     private bool G_isGrap=false;//총 잡았는가?
     private bool G_isReady = false;//총을 쏠수 있는가?
 
+    public Animator HandLAni;//애니메이터
+
+
     private int G_Bullet = 6;//6발
     
 
@@ -62,6 +65,7 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_Fire()//발사
     {
+        HandLAni.SetTrigger("Fire");
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
         if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
         {
@@ -125,13 +129,15 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireF()//총발사 실패
     {
+        HandLAni.SetTrigger("FireFalse");
         Debug.Log("Icantfire");
         //오디오
     }
 
     void G_Reload()//재장전
     {
-        if(G_Bullet<=0)
+        HandLAni.SetTrigger("Reload");
+        if (G_Bullet<=0)
         {
             G_isReady = false;
         }

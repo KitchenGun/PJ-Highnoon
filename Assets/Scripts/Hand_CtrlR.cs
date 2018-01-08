@@ -13,6 +13,9 @@ public class Hand_CtrlR : MonoBehaviour {
 		private bool G_isGrap=false;//총 잡았는가?
 		private bool G_isReady = false;//총을 쏠수 있는가?
 
+        public Animator HandRAni;//애니메이터
+        
+
 		private int G_Bullet = 6;//6발
 
 
@@ -47,7 +50,7 @@ public class Hand_CtrlR : MonoBehaviour {
 				{
                     if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
 					{
-                        if(G_Reloadf>-0.8f)
+                        if(G_Reloadf>-0.3f)
                         {
                             G_Fire();
                             Debug.Log("fire");
@@ -70,6 +73,8 @@ public class Hand_CtrlR : MonoBehaviour {
 		}
 		void G_Fire()//발사
 		{
+            
+            HandRAni.SetTrigger("Fire");//총사격 애니메이션
 			RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
 		    if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
 			{
@@ -133,13 +138,14 @@ public class Hand_CtrlR : MonoBehaviour {
 		}
 		void G_FireF()//총발사 실패
 		{
+            HandRAni.SetTrigger("FireFalse");
 			Debug.Log("Icantfire");
 			//오디오
 		}
 
 		void G_Reload()//재장전
 		{
-		
+            HandRAni.SetTrigger("Reload");
 			if(G_isReady == false)
 			{
 				if(G_Bullet<=0)
@@ -171,7 +177,7 @@ public class Hand_CtrlR : MonoBehaviour {
         float HandRG =
             OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
         Debug.Log(HandRG);
-        if (collision.gameObject.tag == "Gun"&&HandRG>0.8f)
+        if (collision.gameObject.tag == "Gun"&&HandRG>=0.8f)
 			{
                 Debug.Log("충돌");
 				H_change();//손모양 교체

@@ -235,7 +235,7 @@ Animator:
   m_GameObject: {fileID: 41096597}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c2abaf1b5a990124a901d90c9db13047, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1c5fa6b598d2a9439ebc0576d1f872f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1171,6 +1171,7 @@ MonoBehaviour:
   G_FirePosition: {fileID: 910103335}
   HandnGun: {fileID: 729512906}
   HandGun: {fileID: 41096597}
+  HandLAni: {fileID: 41096598}
 --- !u!4 &343182007
 Transform:
   m_ObjectHideFlags: 0
@@ -3550,6 +3551,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun: {fileID: 1274958605}
+--- !u!135 &1274958608
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274958605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.66
+  m_Center: {x: 0.008723489, y: 0.65759486, z: -0.3477303}
 --- !u!1 &1303843915 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
@@ -3566,6 +3579,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun: {fileID: 1303843915}
+--- !u!135 &1303843918
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1303843915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.66
+  m_Center: {x: 0.008723571, y: 0.65759486, z: -0.34773222}
 --- !u!1 &1320209055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,6 +3945,7 @@ MonoBehaviour:
   G_FirePosition: {fileID: 132225642}
   HandnGun: {fileID: 1390981960}
   G_gunhand: {fileID: 791452083}
+  HandRAni: {fileID: 791452085}
 --- !u!1001 &1383916848
 Prefab:
   m_ObjectHideFlags: 0
@@ -4387,7 +4413,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.9412
+      value: -4.888
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalRotation.x

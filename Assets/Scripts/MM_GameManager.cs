@@ -8,51 +8,57 @@ public class MM_GameManager : MonoBehaviour
     public MeshRenderer a; //버튼이 되는병
     public GameObject B_Piece;//병 조각
 
+
+    private void Start()
+    {
+        a.enabled = true;
+    }
+
     public void StartScene()
     { 
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("StartScene1", 2.0f);
     }
 
     public void LevelScene()
     {
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("LevelScene1", 2.0f);
     }
 
     public void EasyScene()
     {
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("EasyScene1", 2.0f);
     }
 
     public void NormalScene()
     {
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("NormalScene1", 2.0f);
     }
 
     public void HardScene()
     {
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("HardScene1", 2.0f);
     }
 
     public void HowToPlayScene()
     {
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("HowToPlayScene1", 2.0f);
     }
     
     public void ExitScene()
     {
-        a.enabled = true;
+        a.enabled = false;
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("ExitScene1", 2.0f);
     }
