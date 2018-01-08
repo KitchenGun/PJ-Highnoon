@@ -48,6 +48,8 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
+                    
+                    HandRAni.SetBool("GisReady", true);
                     if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
 					{
                         if(G_Reloadf>-0.3f)
@@ -59,7 +61,8 @@ public class Hand_CtrlR : MonoBehaviour {
 				}
 				else
 				{
-				if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
+                    HandRAni.SetBool("GisReady", false);
+				    if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
 					{
 						G_FireF();
 					}
@@ -75,6 +78,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		{
             
             HandRAni.SetTrigger("Fire");//총사격 애니메이션
+            
 			RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
 		    if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
 			{

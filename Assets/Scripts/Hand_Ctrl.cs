@@ -42,6 +42,7 @@ public class Hand_Ctrl : MonoBehaviour
         {
             if (G_isReady == true)
             {
+                HandLAni.SetBool("GisReady",true);
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
                 {
                     G_Fire();
@@ -51,6 +52,7 @@ public class Hand_Ctrl : MonoBehaviour
             }
             else
             {
+                HandLAni.SetBool("GisReady", false);
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포 실패
                 {
                     G_FireF();
