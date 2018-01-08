@@ -236,7 +236,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c2abaf1b5a990124a901d90c9db13047, type: 3}
   m_Controller: {fileID: 9100000, guid: b1c5fa6b598d2a9439ebc0576d1f872f, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -376,7 +376,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132225641}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0233, y: 0.102, z: 0.416}
+  m_LocalPosition: {x: 0.032, y: 0.095, z: 0.416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1366142143}
@@ -1168,10 +1168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587e908f0353c95499b77091ed03cc50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  G_FirePosition: {fileID: 910103335}
-  HandnGun: {fileID: 729512906}
-  HandGun: {fileID: 41096597}
-  HandLAni: {fileID: 41096598}
+  G_FirePositionL: {fileID: 910103335}
+  HandnGunL: {fileID: 729512906}
+  G_gunhandL: {fileID: 41096597}
+  HandRAniL: {fileID: 41096598}
 --- !u!4 &343182007
 Transform:
   m_ObjectHideFlags: 0
@@ -2778,7 +2778,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910103334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023299992, y: 0.102, z: 0.4159999}
+  m_LocalPosition: {x: 0.035000008, y: 0.09500003, z: 0.4159999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 343182007}
