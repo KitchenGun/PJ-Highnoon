@@ -508,6 +508,11 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &559445601 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4366262626630720, guid: 9b4289acaa926fe479da5bf9c956430a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997763350}
 --- !u!1001 &572028986
 Prefab:
   m_ObjectHideFlags: 0
@@ -550,6 +555,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &802729493 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1473312905789268, guid: 9b4289acaa926fe479da5bf9c956430a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997763350}
+--- !u!95 &802729495 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95886341545767500, guid: 9b4289acaa926fe479da5bf9c956430a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997763350}
 --- !u!1001 &879392124
 Prefab:
   m_ObjectHideFlags: 0
@@ -655,6 +670,26 @@ Prefab:
       propertyPath: m_TagString
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 114212857273863446, guid: 9b4289acaa926fe479da5bf9c956430a,
+        type: 2}
+      propertyPath: HandnGunL
+      value: 
+      objectReference: {fileID: 1862440379}
+    - target: {fileID: 114212857273863446, guid: 9b4289acaa926fe479da5bf9c956430a,
+        type: 2}
+      propertyPath: G_gunhandL
+      value: 
+      objectReference: {fileID: 802729493}
+    - target: {fileID: 114212857273863446, guid: 9b4289acaa926fe479da5bf9c956430a,
+        type: 2}
+      propertyPath: G_FirePositionL
+      value: 
+      objectReference: {fileID: 559445601}
+    - target: {fileID: 114212857273863446, guid: 9b4289acaa926fe479da5bf9c956430a,
+        type: 2}
+      propertyPath: HandRAniL
+      value: 
+      objectReference: {fileID: 802729495}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b4289acaa926fe479da5bf9c956430a, type: 2}
   m_IsPrefabParent: 0
@@ -1161,3 +1196,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3896fddf5528c54da605a0f61b32e26, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1862440379 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1088832233874268, guid: 9b4289acaa926fe479da5bf9c956430a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997763350}
