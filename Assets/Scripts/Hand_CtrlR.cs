@@ -32,10 +32,10 @@ public class Hand_CtrlR : MonoBehaviour {
 		void Update()
 		{
 		float Firetrigger_resultf = 
-            OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);//방아쇠컨트롤러버튼
+            OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);//방아쇠컨트롤러버튼
 
         float G_Reloadf = 
-            OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
+            OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
         //Debug.Log(Firetrigger_resultf);
         //Debug.Log(G_Reloadf);
         Debug.DrawRay(G_FirePosition.position, G_FirePosition.forward * 100, Color.green);

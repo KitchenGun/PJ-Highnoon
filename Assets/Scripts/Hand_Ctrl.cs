@@ -30,8 +30,8 @@ public class Hand_Ctrl : MonoBehaviour
     
     void Update()
     {
-        float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);//방아쇠컨트롤러버튼
-        float G_Reloadf=OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
+        float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);//방아쇠컨트롤러버튼
+        float G_Reloadf=OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
         
         if (Input.GetKeyDown(KeyCode.A))
         {
