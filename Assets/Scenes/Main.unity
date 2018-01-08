@@ -550,7 +550,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4717961140153146, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
@@ -1039,36 +1039,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: {fileID: 1464329354}
   B_Piece: {fileID: 1981681178539574, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
+--- !u!4 &1482426372 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4558540862025036, guid: 9b4289acaa926fe479da5bf9c956430a,
+    type: 2}
+  m_PrefabInternal: {fileID: 997763350}
 --- !u!1001 &1508978736
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1482426372}
     m_Modifications:
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.24353
+      value: 0.019529998
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0735
+      value: -0.8125
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.888
+      value: -0.055000246
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1076,7 +1081,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1cd5f7cf4883df245825bb0e8edd8386, type: 3}
       propertyPath: m_LocalScale.x
