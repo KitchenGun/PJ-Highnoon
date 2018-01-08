@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 20faedc7739b9574d8c0b19aca4500e6
-timeCreated: 1514441118
+guid: 1cd5f7cf4883df245825bb0e8edd8386
+timeCreated: 1515385980
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,17 +8,23 @@ ModelImporter:
     100000: //RootNode
     100002: Box001
     100004: Box002
+    100006: Box003
     400000: //RootNode
     400002: Box001
     400004: Box002
-    2100000: 08 - Default
-    2100002: 09 - Default
+    400006: Box003
+    2100000: 01 - Default
+    2100002: 08 - Default
     2300000: Box001
     2300002: Box002
+    2300004: Box003
     3300000: Box001
     3300002: Box002
+    3300004: Box003
     4300000: Box001
     4300002: Box002
+    4300004: Box003
+    7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
   materials:

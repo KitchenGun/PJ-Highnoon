@@ -28,8 +28,11 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void Update()
 		{
-		float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
-		float G_Reloadf = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+		float Firetrigger_resultf = 
+            OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);//방아쇠컨트롤러버튼
+
+        float G_Reloadf = 
+            OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
         //Debug.Log(Firetrigger_resultf);
         //Debug.Log(G_Reloadf);
         Debug.DrawRay(G_FirePosition.position, G_FirePosition.forward * 100, Color.green);
@@ -42,7 +45,7 @@ public class Hand_CtrlR : MonoBehaviour {
 			{
 				if (G_isReady == true)
 				{
-                    if (Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공Input.GetKeyDown(KeyCode.Mouse0)||
+                    if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
 					{
 						G_Fire();
                         Debug.Log("fire");
@@ -50,7 +53,7 @@ public class Hand_CtrlR : MonoBehaviour {
 				}
 				else
 				{
-				if (Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
+				if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
 					{
 						G_FireF();
 					}
@@ -162,7 +165,10 @@ public class Hand_CtrlR : MonoBehaviour {
 		}
 		private void OnCollisionEnter(Collision collision)//손에 충돌시
 		{
-			if (collision.gameObject.tag == "Gun")
+        float HandRG =
+            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+        Debug.Log(HandRG);
+        if (collision.gameObject.tag == "Gun"&&HandRG>0.8f)
 			{
                 Debug.Log("충돌");
 				H_change();//손모양 교체

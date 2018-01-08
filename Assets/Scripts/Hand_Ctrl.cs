@@ -27,8 +27,8 @@ public class Hand_Ctrl : MonoBehaviour
     
     void Update()
     {
-        float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
-        float G_Reloadf=OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;
+        float Firetrigger_resultf = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);//방아쇠컨트롤러버튼
+        float G_Reloadf=OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
         
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -155,7 +155,9 @@ public class Hand_Ctrl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
-        if (collision.gameObject.tag == "Gun")
+        float HandLG =
+            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+        if (collision.gameObject.tag == "Gun"&&HandLG>=0.8f)
         {
             H_change();//손모양 교체
         }
