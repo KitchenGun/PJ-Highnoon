@@ -21,6 +21,21 @@ public class Player_Ctrl : MonoBehaviour
     private Animator animator;
     public bool IsPDie = false;
 
+    //발사위치
+    public Transform G_FirePosition;
+    //시작 종소리 사운드
+    public AudioClip AplusSound;
+    //AudioSource 컴포넌트를 저장할 변수
+    private AudioSource source = null;
+
+
+
+    private void Start()
+    {
+        //AudioSource 컴포넌트를 추출한 후 변수에 할당
+        source = GetComponent<AudioSource>();
+    }
+
     private void Awake()
     {
         if (Playsc == null)//싱글톤 
@@ -95,5 +110,20 @@ public class Player_Ctrl : MonoBehaviour
     void P_Die()
     {
         animator.SetBool("IsPDie", true);
+    }
+
+    void A_Plus()
+    {
+        RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
+        if (Physics.Raycast(G_FirePosition.position, transform.forward, out hit, 100.0f))//레이 탐색 
+        {
+            if (hit.collider.tag == "APlus")//적 탐지시
+            {
+                object[] _params = new object[2];//레이피격시 내부 정보추출
+                _params[0] = hit.point;
+                //에이플러스 사운드 처리
+                GetComponent<AudioSource>().Play();
+            }
+        }
     }
 }

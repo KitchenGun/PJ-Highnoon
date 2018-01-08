@@ -28,7 +28,10 @@ public class E1_Ctrl : MonoBehaviour
     //시작 카운트
     public float StartCount = 3.0f;
     RaycastHit hit;
+    //적캐릭터 이동속도
+    private int Speed = -3;
   
+
 
 
 
@@ -46,7 +49,7 @@ public class E1_Ctrl : MonoBehaviour
     private void Update()
     {
         StartCount -= Time.deltaTime;
-        transform.Translate(new Vector3(0.0f,0.0f,-3.0f)* Time.deltaTime);
+        transform.Translate(new Vector3(0.0f,0.0f,Speed)* Time.deltaTime);
 
     }
     IEnumerator CheckEnemy1()
@@ -151,15 +154,14 @@ public class E1_Ctrl : MonoBehaviour
     {
         if (col.gameObject.tag == ("StopE1"))
         {
-            //Time.timeScale = 0;
-            transform.Translate(new Vector3(0.0f, 0.0f, 0.0f)*0);
+            Speed = 0;
             Debug.Log("Stoped");
-            //animator.SetTrigger("StopE1");
         }
     }
 
     void Player_Die()
     {
-
+        Debug.Log("유다희");
+        animator.SetTrigger("IsPDie");
     }
 }
