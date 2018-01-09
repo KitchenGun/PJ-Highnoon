@@ -13,9 +13,14 @@ public class Hand_Ctrl : MonoBehaviour
     public GameObject G_gunhandL;//총있는손
     private bool G_isGrapL = false;//총 잡았는가?
     private bool G_isReadyL = false;//총을 쏠수 있는가?
+    public GameObject G_MF;//머즐플래쉬
 
     public Animator HandRAniL;//애니메이터
 
+    public AudioSource GunSfxL;
+    public AudioClip Reload;//사운드
+    public AudioClip FireSfx;
+    public AudioClip FireFSfx;
 
     private int G_BulletL = 6;//6발
 
@@ -26,8 +31,6 @@ public class Hand_Ctrl : MonoBehaviour
         G_isReadyL = true;
         G_gunhandL.SetActive(false);
         HandnGunL.SetActive(true);
-
-
     }
 
     void Update()
@@ -77,7 +80,9 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireL()//발사
     {
-
+        //이펙트 사운드
+        GunSfxL.PlayOneShot(FireSfx);
+        G_MF.SendMessage("Play");
         HandRAniL.SetTrigger("Fire");//총사격 애니메이션
 
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
@@ -139,10 +144,12 @@ public class Hand_Ctrl : MonoBehaviour
 
         }
         G_BulletL--;
+       
         G_isReadyL = false;
     }
     void G_FireFL()//총발사 실패
     {
+        GunSfxL.PlayOneShot(FireFSfx);
         HandRAniL.SetTrigger("FireFalse");
         Debug.Log("Icantfire");
         //오디오
@@ -150,6 +157,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     void G_ReloadL()//재장전
     {
+        GunSfxL.PlayOneShot(Reload);
         HandRAniL.SetTrigger("Reload");
         if (G_isReadyL == false)
         {

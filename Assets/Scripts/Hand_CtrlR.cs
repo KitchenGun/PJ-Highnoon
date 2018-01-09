@@ -12,9 +12,14 @@ public class Hand_CtrlR : MonoBehaviour {
         public GameObject G_gunhand;//총있는손
 		private bool G_isGrap=false;//총 잡았는가?
 		private bool G_isReady = false;//총을 쏠수 있는가?
+        public GameObject G_MF;//머즐플래쉬
 
         public Animator HandRAni;//애니메이터
-        
+
+        public AudioSource GunSfxR;
+        public AudioClip Reload;//사운드
+        public AudioClip FireSfx;
+        public AudioClip FireFSfx;
 
 		private int G_Bullet = 6;//6발
 
@@ -76,7 +81,9 @@ public class Hand_CtrlR : MonoBehaviour {
 		}
 		void G_Fire()//발사
 		{
-            
+            //이펙트 사운드
+            GunSfxR.PlayOneShot(FireSfx);
+            G_MF.SendMessage("Play");
             HandRAni.SetTrigger("Fire");//총사격 애니메이션
             
 			RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
@@ -142,6 +149,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		}
 		void G_FireF()//총발사 실패
 		{
+            GunSfxR.PlayOneShot(FireFSfx);
             HandRAni.SetTrigger("FireFalse");
 			Debug.Log("Icantfire");
 			//오디오
@@ -149,6 +157,7 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void G_Reload()//재장전
 		{
+            GunSfxR.PlayOneShot(Reload);
             HandRAni.SetTrigger("Reload");
 			if(G_isReady == false)
 			{
