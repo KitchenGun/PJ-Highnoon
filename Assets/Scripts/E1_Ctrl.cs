@@ -135,6 +135,7 @@ public class E1_Ctrl : MonoBehaviour
 
     }
 
+    //적캐릭터 공격
     void E1_Attack()
     {
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
@@ -156,6 +157,7 @@ public class E1_Ctrl : MonoBehaviour
         {
             Speed = 0;
             Debug.Log("Stoped");
+            Player_Die();
         }
     }
 
