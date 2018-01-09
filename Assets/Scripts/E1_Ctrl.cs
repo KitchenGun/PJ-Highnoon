@@ -129,7 +129,7 @@ public class E1_Ctrl : MonoBehaviour
         //적캐릭터 상태 변환
         e1_state = E1_State.Die;
         //적캐릭터 사망 애니메이션 실행
-        animator.SetTrigger("IsDie");
+        //animator.SetTrigger("IsDie");
         //다음 스테이지로 넘김
         SceneManager.LoadScene("normal");
 
