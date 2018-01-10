@@ -149,7 +149,10 @@ public class Hand_CtrlR : MonoBehaviour {
 		}
 		void G_FireF()//총발사 실패
 		{
-            GunSfxR.PlayOneShot(FireFSfx);
+            if(!GunSfxR.isPlaying)
+            {
+                GunSfxR.PlayOneShot(FireFSfx);
+            }
             HandRAni.SetTrigger("FireFalse");
 			Debug.Log("Icantfire");
 			//오디오

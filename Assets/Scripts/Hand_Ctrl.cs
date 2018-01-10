@@ -81,7 +81,7 @@ public class Hand_Ctrl : MonoBehaviour
     void G_FireL()//발사
     {
         //이펙트 사운드
-        
+        GunSfxL.PlayOneShot(FireSfx);
         G_MF.SendMessage("Play");
         HandRAniL.SetTrigger("Fire");//총사격 애니메이션
 
@@ -109,7 +109,6 @@ public class Hand_Ctrl : MonoBehaviour
             if (hit.collider.tag == "SB")//시작 버튼 탐지시
             {
                 Debug.Log("hit");
-                GunSfxL.PlayOneShot(FireSfx);
                 //씬호출
                 hit.collider.gameObject.SendMessage("LevelScene");
             }
@@ -150,7 +149,10 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireFL()//총발사 실패
     {
-        //GunSfxL.PlayOneShot(FireFSfx);
+        if (!GunSfxL.isPlaying)
+        {
+            GunSfxL.PlayOneShot(FireFSfx);
+        }
         HandRAniL.SetTrigger("FireFalse");
         Debug.Log("Icantfire");
         //오디오
