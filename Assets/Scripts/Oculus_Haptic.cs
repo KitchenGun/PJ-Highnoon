@@ -17,24 +17,24 @@ public class Oculus_Haptic : MonoBehaviour
     void OnTriggerEnter(Collider c)
     {
         if (useHaptics)
-            PlayHaptics(c);
+            PlayHaptics();
 
         if (useSound)
-            PlaySound(c);
+            PlaySound();
     }
 
     void OnCollisionEnter(Collision c)
     {
         if (useHaptics)
-            PlayHaptics(c.collider);
+            PlayHaptics();
 
         if (useSound)
-            PlaySound(c.collider);
+            PlaySound();
     }
 
-    void PlayHaptics(Collider c)
+    void PlayHaptics()
     {
-        var source = c.GetComponent<AudioSource>();
+        var source = GetComponent<AudioSource>();
         if (source == null)
             return;
 
@@ -56,9 +56,9 @@ public class Oculus_Haptic : MonoBehaviour
             OVRHaptics.RightChannel.Preempt(hapticsClip);
     }
 
-    void PlaySound(Collider c)
+    void PlaySound()
     {
-        var source = c.GetComponent<AudioSource>();
+        var source = GetComponent<AudioSource>();
         if (source && !source.isPlaying)
             source.PlayDelayed(0.1f);
     }

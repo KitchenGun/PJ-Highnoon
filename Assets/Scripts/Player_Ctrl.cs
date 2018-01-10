@@ -14,9 +14,8 @@ public class Player_Ctrl : MonoBehaviour
 
     private Animator animator;
     public bool IsPDie = false;
+    
 
-    //발사위치
-    public Transform G_FirePosition;
     //시작 종소리 사운드
     public AudioClip AplusSound;
     //AudioSource 컴포넌트를 저장할 변수

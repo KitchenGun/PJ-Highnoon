@@ -743,6 +743,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &912863636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 912863634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042673f65a32708459f86ae1c8578bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useHaptics: 0
+  useSound: 1
+  controller: 0
 --- !u!1 &957460157 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1618106208530364, guid: 9b4289acaa926fe479da5bf9c956430a,
@@ -828,6 +842,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &957460159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957460157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042673f65a32708459f86ae1c8578bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useHaptics: 0
+  useSound: 1
+  controller: 0
 --- !u!1001 &997763350
 Prefab:
   m_ObjectHideFlags: 0
@@ -955,44 +983,6 @@ Prefab:
     - {fileID: 82655241440869414, guid: 9b4289acaa926fe479da5bf9c956430a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9b4289acaa926fe479da5bf9c956430a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &997763351 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1030623415749090, guid: 9b4289acaa926fe479da5bf9c956430a,
-    type: 2}
-  m_PrefabInternal: {fileID: 997763350}
---- !u!1 &997763352 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1368516390508364, guid: 9b4289acaa926fe479da5bf9c956430a,
-    type: 2}
-  m_PrefabInternal: {fileID: 997763350}
---- !u!114 &997763353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 997763351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042673f65a32708459f86ae1c8578bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHaptics: 0
-  useSound: 1
-  controller: 1
---- !u!114 &997763354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 997763352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042673f65a32708459f86ae1c8578bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHaptics: 0
-  useSound: 1
-  controller: 2
 --- !u!1 &1060466463
 GameObject:
   m_ObjectHideFlags: 0
