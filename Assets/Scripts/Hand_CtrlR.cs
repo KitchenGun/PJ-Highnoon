@@ -69,8 +69,12 @@ public class Hand_CtrlR : MonoBehaviour {
                     HandRAni.SetBool("GisReady", false);
 				    if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
 					{
-						G_FireF();
-					}
+                        if (G_Reloadf > -0.3f)
+                        {
+                            G_FireF();
+                            Debug.Log("firef");
+                        }
+                }
 					if (Input.GetKeyDown(KeyCode.R)|| G_Reloadf <-0.8f)//재장전
 					{
 						G_Reload();
