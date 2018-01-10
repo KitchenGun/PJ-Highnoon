@@ -49,12 +49,15 @@ public class E1_Ctrl : MonoBehaviour
     private void Update()
     {
         StartCount -= Time.deltaTime;
-        //transform.Translate(new Vector3(0.0f,0.0f,Speed)* Time.deltaTime);
+        if (isdie == true)
+        {
+            transform.Translate(new Vector3(0.0f, 0.0f, Speed) * Time.deltaTime);
+        }
 
     }
     IEnumerator CheckEnemy1()
     {
-        while (E1_hp > 0)
+        while (!isdie)
         {
             yield return new WaitForSeconds(0.2f);
             if (StartCount <= 0)
@@ -70,7 +73,7 @@ public class E1_Ctrl : MonoBehaviour
                 e1_state = E1_State.Idle;
             }
         }
-        while (E1_hp <= 0)
+        while (isdie)
         {
             yield return new WaitForSeconds(0.2f);
             e1_state = E1_State.Die;
@@ -102,6 +105,10 @@ public class E1_Ctrl : MonoBehaviour
             }
             yield return null;
         }
+        while (isdie)
+        {
+            E1_Die();
+        }
     }
    
     //적 캐릭터 피격
@@ -113,7 +120,7 @@ public class E1_Ctrl : MonoBehaviour
         E1_hp -= (int)_params[1];
         if (E1_hp <=0)
         {
-            E1_Die();
+            isdie = true;
         }
 
         //IsHit트리거 발생
@@ -123,15 +130,13 @@ public class E1_Ctrl : MonoBehaviour
     void E1_Die()
     {
         //모든 코루틴 정지
-        //StopAllCoroutines();
-        //사망판정
-        //isdie = true;
+        StopAllCoroutines();
         //적캐릭터 상태 변환
         e1_state = E1_State.Die;
         //적캐릭터 사망 애니메이션 실행
-        //animator.SetTrigger("IsDie");
+        animator.SetTrigger("IsDie");
         //다음 스테이지로 넘김
-        //SceneManager.LoadScene("normal");
+        SceneManager.LoadScene("normal");
         Debug.Log("히다희");
     }
 
@@ -157,13 +162,13 @@ public class E1_Ctrl : MonoBehaviour
         {
             Speed = 0;
             Debug.Log("Stoped");
-           // Player_Die();
+            Player_Die();
         }
     }
 
-   // void Player_Die()
-    //{
-      //  Debug.Log("유다희");
-        //animator.SetTrigger("IsPDie");
-    //}
+    void Player_Die()
+    {
+        Debug.Log("유다희");
+        animator.SetTrigger("IsPDie");
+    }
 }

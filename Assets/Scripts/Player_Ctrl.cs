@@ -105,19 +105,4 @@ public class Player_Ctrl : MonoBehaviour
     {
         animator.SetBool("IsPDie", true);
     }
-
-    void A_Plus()
-    {
-        RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
-        if (Physics.Raycast(G_FirePosition.position, transform.forward, out hit, 100.0f))//레이 탐색 
-        {
-            if (hit.collider.tag == "APlus")//적 탐지시
-            {
-                object[] _params = new object[2];//레이피격시 내부 정보추출
-                _params[0] = hit.point;
-                //에이플러스 사운드 처리
-                GetComponent<AudioSource>().Play();
-            }
-        }
-    }
 }
