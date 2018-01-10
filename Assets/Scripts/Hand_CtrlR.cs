@@ -30,7 +30,7 @@ public class Hand_CtrlR : MonoBehaviour
     {
         G_isGrapR = false;
         G_isReadyR = true;
-        G_TriggerBack = false;
+        G_TriggerBack = true;
         G_gunhandR.SetActive(false);
         HandnGunR.SetActive(true);
     }
@@ -68,8 +68,12 @@ public class Hand_CtrlR : MonoBehaviour
                 HandRAniR.SetBool("GisReady", false);
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포 실패
                 {
-                    G_FireFR();
-                    HandRAniR.SetTrigger("FireFalse");
+                    if(G_TriggerBack!=false)
+                    {
+                        G_FireFR();
+                        HandRAniR.SetTrigger("FireFalse");
+                    }
+                    
                 }
                 if (Input.GetKeyDown(KeyCode.R) || G_Reloadf < -0.8f)//재장전
                 {
@@ -151,10 +155,10 @@ public class Hand_CtrlR : MonoBehaviour
     }
     void G_FireFR()//총발사 실패
     {
-        
+
+        G_TriggerBack = false;
         if (!GunSfxR.isPlaying)
         {
-            
             GunSfxR.PlayOneShot(FireFSfx);
         }
         Debug.Log("Icantfire");
@@ -163,7 +167,7 @@ public class Hand_CtrlR : MonoBehaviour
 
     void G_ReloadR()//재장전
     {
-        G_TriggerBack = true;
+        
         if (G_isReadyR == false && G_TriggerBack == false)
         {
             if (G_BulletR <= 0)
@@ -176,6 +180,7 @@ public class Hand_CtrlR : MonoBehaviour
                     GunSfxR.PlayOneShot(Reload);
                 }
                 G_isReadyR = false;
+                G_TriggerBack = true;
             }
             else
             {
@@ -193,7 +198,7 @@ public class Hand_CtrlR : MonoBehaviour
                 }
                 Debug.Log("reload");
                 G_isReadyR = true;
-
+                G_TriggerBack = true;
             }
         }
     }
