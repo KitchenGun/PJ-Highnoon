@@ -36,7 +36,6 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void Update()
 		{
-        G_gunhand.SendMessage("Vibration");
 
         float Firetrigger_resultf = 
             OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);//방아쇠컨트롤러버튼
@@ -165,17 +164,23 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void G_Reload()//재장전
 		{
-            GunSfxR.PlayOneShot(Reload);
+            
+            
             HandRAni.SetTrigger("Reload");
 			if(G_isReady == false)
 			{
 				if(G_Bullet<=0)
 				{
-					G_isReady = false;
+                if (!GunSfxR.isPlaying)
+                {
+                    GunSfxR.PlayOneShot(Reload);
+                }
+                G_isReady = false;
 				}
 				else
 				{
-					Debug.Log("reload");
+                    GunSfxR.PlayOneShot(Reload);
+                    Debug.Log("reload");
 					G_isReady = true;
 				}
 		}
