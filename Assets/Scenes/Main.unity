@@ -172,7 +172,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4622549529988598, guid: 9ad6703cb637b73458b3c48f6f1ebcac, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.74
+      value: -2.371
       objectReference: {fileID: 0}
     - target: {fileID: 4622549529988598, guid: 9ad6703cb637b73458b3c48f6f1ebcac, type: 2}
       propertyPath: m_LocalPosition.y
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 151511117}
+  b: {fileID: 151511118}
   B_Piece: {fileID: 1981681178539574, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
 --- !u!1001 &154553730
 Prefab:
@@ -798,6 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 1060466464}
+  b: {fileID: 1060466465}
   B_Piece: {fileID: 1981681178539574, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
 --- !u!1001 &1225792858
 Prefab:
@@ -989,6 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 1464329354}
+  b: {fileID: 1464329355}
   B_Piece: {fileID: 1981681178539574, guid: d44e2de920d0b974dbd9cd017955fd24, type: 2}
 --- !u!1 &1685545573
 GameObject:

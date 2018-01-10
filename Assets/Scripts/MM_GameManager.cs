@@ -6,17 +6,20 @@ using UnityEngine.SceneManagement;
 public class MM_GameManager : MonoBehaviour
 {
     public MeshRenderer a; //버튼이 되는병
+    public Collider b;//콜라이더
     public GameObject B_Piece;//병 조각
 
 
     private void Start()
     {
         a.enabled = true;
+       
     }
 
     public void StartScene()
     { 
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("StartScene1", 2.0f);
     }
@@ -24,6 +27,7 @@ public class MM_GameManager : MonoBehaviour
     public void LevelScene()
     {
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("LevelScene1", 2.0f);
     }
@@ -31,6 +35,7 @@ public class MM_GameManager : MonoBehaviour
     public void EasyScene()
     {
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("EasyScene1", 2.0f);
     }
@@ -38,6 +43,7 @@ public class MM_GameManager : MonoBehaviour
     public void NormalScene()
     {
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("NormalScene1", 2.0f);
     }
@@ -45,6 +51,7 @@ public class MM_GameManager : MonoBehaviour
     public void HardScene()
     {
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("HardScene1", 2.0f);
     }
@@ -52,6 +59,7 @@ public class MM_GameManager : MonoBehaviour
     public void HowToPlayScene()
     {
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("HowToPlayScene1", 2.0f);
     }
@@ -59,6 +67,7 @@ public class MM_GameManager : MonoBehaviour
     public void ExitScene()
     {
         a.enabled = false;
+        Destroy(b);
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("ExitScene1", 2.0f);
     }

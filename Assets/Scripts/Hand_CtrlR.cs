@@ -103,7 +103,7 @@ public class Hand_CtrlR : MonoBehaviour
                 hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
 
-            if (hit.collider.name == "Player")//적 탐지시
+            if (hit.collider.tag == "Player")//적 탐지시
             {
                 object[] _params = new object[2];//레이피격시 내부 정보추출
                 _params[0] = hit.point;
