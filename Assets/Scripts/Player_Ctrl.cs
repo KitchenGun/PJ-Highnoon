@@ -7,13 +7,7 @@ public class Player_Ctrl : MonoBehaviour
 {
     public static Player_Ctrl Playsc;//플레이어 스크립트
 
-    //public Transform P_Head;
-    //public Transform P_Body;
-    //public Transform P_HandR;
-    //public Transform P_HandL;
-    //
-    //private Vector3 P_originPos;
-    //
+    
     public GameObject RHandG;
     public GameObject LHandG;
 
@@ -47,9 +41,9 @@ public class Player_Ctrl : MonoBehaviour
         {
             Destroy(gameObject);
             RHandG.SendMessage("G_allReload");
+            LHandG.SendMessage("G_allReload");
         }
-        //Init();
-        //P_originPos = this.transform.position;
+        
     }
 
     //void Init()//vr초기화
