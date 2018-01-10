@@ -13,6 +13,7 @@ public class Hand_CtrlR : MonoBehaviour
     public GameObject G_gunhandR;//총있는손
     private bool G_isGrapR = false;//총 잡았는가?
     private bool G_isReadyR = false;//총을 쏠수 있는가?
+    private bool G_TriggerBack;//노리쇠후퇴
     public GameObject G_MFR;//머즐플래쉬
 
     public Animator HandRAniR;//애니메이터
@@ -29,6 +30,7 @@ public class Hand_CtrlR : MonoBehaviour
     {
         G_isGrapR = false;
         G_isReadyR = true;
+        G_TriggerBack = false;
         G_gunhandR.SetActive(false);
         HandnGunR.SetActive(true);
     }
@@ -79,6 +81,7 @@ public class Hand_CtrlR : MonoBehaviour
     }
     void G_FireR()//발사
     {
+        G_TriggerBack = false;
         //이펙트 사운드
         FireSfxR();
         HandRAniR.SetTrigger("Fire");
@@ -160,13 +163,12 @@ public class Hand_CtrlR : MonoBehaviour
 
     void G_ReloadR()//재장전
     {
-
-        
-        if (G_isReadyR == false)
+        G_TriggerBack = true;
+        if (G_isReadyR == false && G_TriggerBack == false)
         {
             if (G_BulletR <= 0)
             {
-                //GunSfxR.PlayOneShot(Reload);
+                
                 HandRAniR.SetBool("GisReady", false);
                 HandRAniR.SetTrigger("Reload");
                 if (!GunSfxR.isPlaying)
