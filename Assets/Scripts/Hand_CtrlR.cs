@@ -54,7 +54,7 @@ public class Hand_CtrlR : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
                 {
-                    if (G_Reloadf > -0.3f && !GunSfxR.isPlaying)
+                    if (G_Reloadf > -0.3f)
                     {
                         G_FireR();
                         Debug.Log("fire");
@@ -67,6 +67,7 @@ public class Hand_CtrlR : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포 실패
                 {
                     G_FireFR();
+                    HandRAniR.SetTrigger("FireFalse");
                 }
                 if (Input.GetKeyDown(KeyCode.R) || G_Reloadf < -0.8f)//재장전
                 {
@@ -80,7 +81,9 @@ public class Hand_CtrlR : MonoBehaviour
     {
         //이펙트 사운드
         FireSfxR();
+        HandRAniR.SetTrigger("Fire");
         G_MFR.SendMessage("Play");
+
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
         if (Physics.Raycast(G_FirePositionR.position, G_FirePositionR.forward, out hit, 100.0f))//레이 탐색 
         {
@@ -145,7 +148,12 @@ public class Hand_CtrlR : MonoBehaviour
     }
     void G_FireFR()//총발사 실패
     {
-        GunSfxR.PlayOneShot(FireFSfx);
+        
+        if (!GunSfxR.isPlaying)
+        {
+            
+            GunSfxR.PlayOneShot(FireFSfx);
+        }
         Debug.Log("Icantfire");
         //오디오
     }
@@ -158,16 +166,27 @@ public class Hand_CtrlR : MonoBehaviour
         {
             if (G_BulletR <= 0)
             {
-                GunSfxR.PlayOneShot(Reload);
+                HandRAniR.SetBool("GisReady", false);
+                HandRAniR.SetTrigger("Reload");
+                if (!GunSfxR.isPlaying)
+                {
+                    GunSfxR.PlayOneShot(Reload);
+                }
                 G_isReadyR = false;
-               
             }
             else
             {
-                G_isReadyR = true;
-                GunSfxR.PlayOneShot(Reload);
+
+                HandRAniR.SetBool("GisReady", true);
+                HandRAniR.SetTrigger("Reload");
+               
+                if (!GunSfxR.isPlaying)
+                {
+                    GunSfxR.PlayOneShot(Reload);
+                }
                 Debug.Log("reload");
-                
+                G_isReadyR = true;
+
             }
         }
     }
@@ -186,10 +205,10 @@ public class Hand_CtrlR : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
-        float HandRG =
-            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-        Debug.Log(HandRG);
-        if (collision.gameObject.tag == "Gun" && HandRG >= 0.8f)
+        //float HandRG =
+       //     OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+       // Debug.Log(HandRG);
+        if (collision.gameObject.tag == "Gun")
         {
             Debug.Log("충돌");
             H_changeR();//손모양 교체
