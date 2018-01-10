@@ -123,9 +123,9 @@ public class E1_Ctrl : MonoBehaviour
     void E1_Die()
     {
         //모든 코루틴 정지
-        StopAllCoroutines();
+        //StopAllCoroutines();
         //사망판정
-        isdie = true;
+        //isdie = true;
         //적캐릭터 상태 변환
         e1_state = E1_State.Die;
         //적캐릭터 사망 애니메이션 실행
