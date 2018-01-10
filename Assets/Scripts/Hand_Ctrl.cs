@@ -19,7 +19,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     public AudioSource GunSfxL;
     public AudioClip Reload;//사운드
-    public AudioClip FireSfx;
+    public AudioClip[] FireSfx;
     public AudioClip FireFSfx;
 
     private int G_BulletL = 6;//6발
@@ -80,8 +80,10 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireL()//발사
     {
+        int a = Random.Range(0, 2);
+
         //이펙트 사운드
-        GunSfxL.PlayOneShot(FireSfx);
+        FireSfxL();
         G_MF.SendMessage("Play");
         HandRAniL.SetTrigger("Fire");//총사격 애니메이션
 
@@ -198,6 +200,12 @@ public class Hand_Ctrl : MonoBehaviour
             Debug.Log("충돌");
             H_changeL();//손모양 교체
         }
+    }
+
+    void FireSfxL()
+    {
+        GunSfxL.clip = FireSfx[Random.Range(0, 2)];
+        GunSfxL.Play();
     }
 
 }

@@ -18,7 +18,7 @@ public class Hand_CtrlR : MonoBehaviour {
 
         public AudioSource GunSfxR;
         public AudioClip Reload;//사운드
-        public AudioClip FireSfx;
+        public AudioClip[] FireSfx;
         public AudioClip FireFSfx;
 
 		private int G_Bullet = 6;//6발
@@ -86,7 +86,7 @@ public class Hand_CtrlR : MonoBehaviour {
 		void G_Fire()//발사
 		{
             //이펙트 사운드
-            GunSfxR.PlayOneShot(FireSfx);
+            FireSfxR();
             G_MF.SendMessage("Play");
             HandRAni.SetTrigger("Fire");//총사격 애니메이션
             
@@ -204,4 +204,9 @@ public class Hand_CtrlR : MonoBehaviour {
 			}
 		}
 
+    void FireSfxR()
+    {
+        GunSfxR.clip = FireSfx[Random.Range(0, 2)];
+        GunSfxR.Play();
+    }
 }
