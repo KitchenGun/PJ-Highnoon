@@ -166,6 +166,7 @@ public class Hand_CtrlR : MonoBehaviour
         {
             if (G_BulletR <= 0)
             {
+                GunSfxR.PlayOneShot(Reload);
                 HandRAniR.SetBool("GisReady", false);
                 HandRAniR.SetTrigger("Reload");
                 if (!GunSfxR.isPlaying)
@@ -176,7 +177,11 @@ public class Hand_CtrlR : MonoBehaviour
             }
             else
             {
-
+                GunSfxR.PlayOneShot(Reload);
+                if (!GunSfxR.isPlaying)
+                {
+                    GunSfxR.PlayOneShot(Reload);
+                }
                 HandRAniR.SetBool("GisReady", true);
                 HandRAniR.SetTrigger("Reload");
                
