@@ -14,10 +14,10 @@ public class Player_Ctrl : MonoBehaviour
 
     private Animator animator;
     public bool IsPDie = false;
-    
 
-    //시작 종소리 사운드
-    public AudioClip AplusSound;
+
+    //엔딩 사운드
+    public AudioClip Ending;
     //AudioSource 컴포넌트를 저장할 변수
     private AudioSource source = null;
 
@@ -103,5 +103,6 @@ public class Player_Ctrl : MonoBehaviour
     void P_Die()
     {
         animator.SetBool("IsPDie", true);
+        GetComponent<AudioSource>().Play();
     }
 }

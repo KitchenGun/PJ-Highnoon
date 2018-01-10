@@ -30,7 +30,11 @@ public class E1_Ctrl : MonoBehaviour
     RaycastHit hit;
     //적캐릭터 이동속도
     private int Speed = -3;
-  
+    //엔딩 사운드
+    public AudioClip Ending;
+    //AudioSource 컴포넌트를 저장할 변수
+    private AudioSource source = null;
+
 
 
 
@@ -44,6 +48,8 @@ public class E1_Ctrl : MonoBehaviour
 
         //몬스터의 상태에 따라 동작하는 루틴을 실행하는 코루틴 함수 실행
         StartCoroutine(this.E1_Action());
+        //AudioSource 컴포넌트를 추출한 후 변수에 할당
+        source = GetComponent<AudioSource>();
 
     }
     private void Update()
@@ -121,6 +127,7 @@ public class E1_Ctrl : MonoBehaviour
         if (E1_hp <=0)
         {
             isdie = true;
+            GetComponent<AudioSource>().Play();
         }
 
         //IsHit트리거 발생
