@@ -36,7 +36,9 @@ public class Hand_CtrlR : MonoBehaviour {
 
 		void Update()
 		{
-		float Firetrigger_resultf = 
+        G_gunhand.SendMessage("Vibration");
+
+        float Firetrigger_resultf = 
             OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);//방아쇠컨트롤러버튼
 
         float G_Reloadf = 
@@ -69,7 +71,7 @@ public class Hand_CtrlR : MonoBehaviour {
                     HandRAni.SetBool("GisReady", false);
 				    if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >=0.9f)//마우스버튼 클릭시 발포 실패
 					{
-                        if (G_Reloadf > -0.3f)
+                        if (G_Reloadf > -0.3f&&!GunSfxR.isPlaying)
                         {
                             G_FireF();
                             Debug.Log("firef");
@@ -159,7 +161,6 @@ public class Hand_CtrlR : MonoBehaviour {
             }
             HandRAni.SetTrigger("FireFalse");
 			Debug.Log("Icantfire");
-			//오디오
 		}
 
 		void G_Reload()//재장전

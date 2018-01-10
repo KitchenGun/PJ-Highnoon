@@ -23,7 +23,7 @@ public class Oculus_Haptic : MonoBehaviour
             PlaySound();
     }
 
-    void OnCollisionEnter(Collision c)
+    void Vibration()
     {
         if (useHaptics)
             PlayHaptics();
