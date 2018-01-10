@@ -13,7 +13,8 @@ public class Hand_Ctrl : MonoBehaviour
     public GameObject G_gunhandL;//총있는손
     private bool G_isGrapL = false;//총 잡았는가?
     private bool G_isReadyL = false;//총을 쏠수 있는가?
-    public GameObject G_MF;//머즐플래쉬
+    private bool G_TriggerBackL;//노리쇠후퇴
+    public GameObject G_MFL;//머즐플래쉬
 
     public Animator HandRAniL;//애니메이터
 
@@ -29,6 +30,7 @@ public class Hand_Ctrl : MonoBehaviour
     {
         G_isGrapL = false;
         G_isReadyL = true;
+        G_TriggerBackL = true;
         G_gunhandL.SetActive(false);
         HandnGunL.SetActive(true);
     }
@@ -36,10 +38,10 @@ public class Hand_Ctrl : MonoBehaviour
     void Update()
     {
         float Firetrigger_resultf =
-            OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);//방아쇠컨트롤러버튼
+            OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);//방아쇠컨트롤러버튼
 
         float G_Reloadf =
-            OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
+            OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y;//스틱컨트롤러y축 버튼
         //Debug.Log(Firetrigger_resultf);
         //Debug.Log(G_Reloadf);
         Debug.DrawRay(G_FirePositionL.position, G_FirePositionL.forward * 100, Color.green);
@@ -52,11 +54,9 @@ public class Hand_Ctrl : MonoBehaviour
         {
             if (G_isReadyL == true)
             {
-
-                HandRAniL.SetBool("GisReady", true);
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포성공
                 {
-                    if (G_Reloadf > -0.3f && !GunSfxL.isPlaying)
+                    if (G_Reloadf > -0.3f)
                     {
                         G_FireL();
                         Debug.Log("fire");
@@ -68,7 +68,12 @@ public class Hand_Ctrl : MonoBehaviour
                 HandRAniL.SetBool("GisReady", false);
                 if (Input.GetKeyDown(KeyCode.Mouse0) || Firetrigger_resultf >= 0.9f)//마우스버튼 클릭시 발포 실패
                 {
-                    G_FireFL();
+                    if (G_TriggerBackL != false)
+                    {
+                        G_FireFL();
+                        HandRAniL.SetTrigger("FireFalse");
+                    }
+
                 }
                 if (Input.GetKeyDown(KeyCode.R) || G_Reloadf < -0.8f)//재장전
                 {
@@ -80,10 +85,11 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireL()//발사
     {
+        G_TriggerBackL = false;
         //이펙트 사운드
         FireSfxL();
-        G_MF.SendMessage("Play");
-        HandRAniL.SetTrigger("Fire");//총사격 애니메이션
+        HandRAniL.SetTrigger("Fire");
+        G_MFL.SendMessage("Play");
 
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
         if (Physics.Raycast(G_FirePositionL.position, G_FirePositionL.forward, out hit, 100.0f))//레이 탐색 
@@ -97,7 +103,7 @@ public class Hand_Ctrl : MonoBehaviour
                 hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
 
-            if (hit.collider.name == "Player")//적 탐지시
+            if (hit.collider.tag == "Player")//적 탐지시
             {
                 object[] _params = new object[2];//레이피격시 내부 정보추출
                 _params[0] = hit.point;
@@ -144,39 +150,55 @@ public class Hand_Ctrl : MonoBehaviour
 
         }
         G_BulletL--;
-       
+
         G_isReadyL = false;
     }
     void G_FireFL()//총발사 실패
     {
+
+        G_TriggerBackL = false;
         if (!GunSfxL.isPlaying)
         {
             GunSfxL.PlayOneShot(FireFSfx);
         }
-        HandRAniL.SetTrigger("FireFalse");
         Debug.Log("Icantfire");
         //오디오
     }
 
     void G_ReloadL()//재장전
     {
-        
-        HandRAniL.SetTrigger("Reload");
-        if (G_isReadyL == false)
+
+        if (G_isReadyL == false && G_TriggerBackL == false)
         {
             if (G_BulletL <= 0)
             {
+
+                HandRAniL.SetBool("GisReady", false);
+                HandRAniL.SetTrigger("Reload");
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
                 }
                 G_isReadyL = false;
+                G_TriggerBackL = true;
             }
             else
             {
                 GunSfxL.PlayOneShot(Reload);
+                if (!GunSfxL.isPlaying)
+                {
+                    GunSfxL.PlayOneShot(Reload);
+                }
+                HandRAniL.SetBool("GisReady", true);
+                HandRAniL.SetTrigger("Reload");
+
+                if (!GunSfxL.isPlaying)
+                {
+                    GunSfxL.PlayOneShot(Reload);
+                }
                 Debug.Log("reload");
                 G_isReadyL = true;
+                G_TriggerBackL = true;
             }
         }
     }
@@ -195,20 +217,19 @@ public class Hand_Ctrl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)//손에 충돌시
     {
-        float HandRG =
-            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-        Debug.Log(HandRG);
-        if (collision.gameObject.tag == "Gun" && HandRG >= 0.8f)
+        //float HandRG =
+        //     OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+        // Debug.Log(HandRG);
+        if (collision.gameObject.tag == "Gun")
         {
             Debug.Log("충돌");
             H_changeL();//손모양 교체
         }
     }
 
-    void FireSfxL()
+    void FireSfxL()//발사음 랜덤재생
     {
         GunSfxL.clip = FireSfx[Random.Range(0, 2)];
         GunSfxL.Play();
     }
-
 }
