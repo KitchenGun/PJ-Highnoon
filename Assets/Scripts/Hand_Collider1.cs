@@ -9,7 +9,7 @@ public class Hand_Collider1 : MonoBehaviour {
     private void Update()
     {
         Grap_F =
-            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+            OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.LTouch);
         Debug.Log(Grap_F);
     }
     private void OnCollisionStay(Collision c)
