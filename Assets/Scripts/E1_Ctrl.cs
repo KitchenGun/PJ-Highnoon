@@ -40,6 +40,9 @@ public class E1_Ctrl : MonoBehaviour
     //혈흔 데칼 효과 프리팹
     public GameObject bloodDecal;
 
+    private Transform E1_Tr;
+    private Transform PlayerTr;
+
 
 
 
@@ -191,5 +194,19 @@ public class E1_Ctrl : MonoBehaviour
         //혈흔 효과 생성
         GameObject blood1 = (GameObject)Instantiate(bloodEffect, pos, Quaternion.identity);
         Destroy(blood1, 2.0f);
+
+        //데칼 생성 위치 - 바닥에서 조금 올린 위치 산출
+        Vector3 decalpos = E1_Tr.position + (Vector3.up * 0.05f);
+        //데칼의 회전값을 무작위로 설정
+        Quaternion decalrot = Quaternion.Euler(90, 0, Random.Range(0, 360));
+
+        //데칼 프리팹 생성
+        GameObject blood2 = (GameObject)Instantiate(bloodDecal, decalpos, decalrot);
+        //데칼의 크기도 불규칙 적으로 나타나게끔 스케일 조정
+        float scale = Random.Range(1.5f, 3.5f);
+        blood2.transform.localScale = Vector3.one * scale;
+
+        //.2초 후에 혈흔효과 제거
+        Destroy(blood2, 5.0f);
     }
 }
