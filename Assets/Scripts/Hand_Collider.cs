@@ -16,6 +16,7 @@ public class Hand_Collider : MonoBehaviour
         
         if (c.gameObject.tag=="PH")
         {
+            Debug.Log("ddd");
             c.gameObject.SendMessage("H_ChangeL");
         }
     }
