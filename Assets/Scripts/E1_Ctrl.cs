@@ -127,9 +127,10 @@ public class E1_Ctrl : MonoBehaviour
         Debug.Log(string.Format("Hit ray {0} : {1}", _params[0], _params[1]));
 
         //혈흔효과 함수 호출
-        CreateBloodEffect((Vector3)_params[0]);
+        CreateBloodEffect((Vector3) _params[0]);
+        
         //맞은 총알의 데미지를 추출해 적 캐릭터 체력 차감
-        E1_hp -= (int)_params[1];
+        E1_hp -= (int) _params[1];
         if (E1_hp <=0)
         {
             IsDie = true;
