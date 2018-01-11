@@ -61,9 +61,8 @@ public class Hand_Ctrl : MonoBehaviour
                 {
                     if (G_Reloadf > -0.3f)
                     {
-                        HandRAniL.SetTrigger("Fire");
-                        G_TriggerBackL = false;
-                        Invoke("G_FireL", 0.1f);
+
+                        G_FireL();
                         Debug.Log("fire");
                     }
                 }
@@ -90,8 +89,9 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireL()//발사
     {
-        
         //이펙트 사운드
+        HandRAniL.SetTrigger("Fire");
+        G_TriggerBackL = false;
         FireSfxL();
         G_MFL.SendMessage("Play");
 
