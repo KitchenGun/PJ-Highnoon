@@ -35,6 +35,10 @@ public class E1_Ctrl : MonoBehaviour
     //AudioSource 컴포넌트를 저장할 변수
     private AudioSource source = null;
     private bool isPDie = false;
+    //혈흔 효과 프리팹
+    public GameObject bloodEffect;
+    //혈흔 데칼 효과 프리팹
+    public GameObject bloodDecal;
 
 
 
@@ -122,6 +126,8 @@ public class E1_Ctrl : MonoBehaviour
     {
         Debug.Log(string.Format("Hit ray {0} : {1}", _params[0], _params[1]));
 
+        //혈흔효과 함수 호출
+        CreateBloodEffect((Vector3)_params[0]);
         //맞은 총알의 데미지를 추출해 적 캐릭터 체력 차감
         E1_hp -= (int)_params[1];
         if (E1_hp <=0)
@@ -177,5 +183,12 @@ public class E1_Ctrl : MonoBehaviour
     {
         Debug.Log("유다희");
         animator.SetTrigger("Spread");
+    }
+
+    void CreateBloodEffect(Vector3 pos)
+    {
+        //혈흔 효과 생성
+        GameObject blood1 = (GameObject)Instantiate(bloodEffect, pos, Quaternion.identity);
+        Destroy(blood1, 2.0f);
     }
 }
