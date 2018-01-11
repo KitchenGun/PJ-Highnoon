@@ -60,7 +60,9 @@ public class Hand_Ctrl : MonoBehaviour
                 {
                     if (G_Reloadf > -0.3f)
                     {
-                        G_FireL();
+                        HandRAniL.SetTrigger("Fire");
+                        G_TriggerBackL = false;
+                        Invoke("G_FireL", 0.1f);
                         Debug.Log("fire");
                     }
                 }
@@ -72,8 +74,8 @@ public class Hand_Ctrl : MonoBehaviour
                 {
                     if (G_TriggerBackL != false)
                     {
-                        G_FireFL();
                         HandRAniL.SetTrigger("FireFalse");
+                        G_FireFL();
                     }
 
                 }
@@ -87,10 +89,9 @@ public class Hand_Ctrl : MonoBehaviour
     }
     void G_FireL()//발사
     {
-        G_TriggerBackL = false;
+        
         //이펙트 사운드
         FireSfxL();
-        HandRAniL.SetTrigger("Fire");
         G_MFL.SendMessage("Play");
 
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
@@ -117,23 +118,27 @@ public class Hand_Ctrl : MonoBehaviour
             if (hit.collider.tag == "SB")//시작 버튼 탐지시
             {
                 Debug.Log("hit");
+                G_BulletL++;
                 //씬호출
                 hit.collider.gameObject.SendMessage("LevelScene");
             }
             if (hit.collider.tag == "HTPB")//튜토리얼버튼 탐지시
             {
+                G_BulletL++;
                 //씬호출
                 hit.collider.gameObject.SendMessage("HowToPlayScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "EB")//나가기 버튼 탐지시
             {
+                G_BulletL++;
                 //씬호출
                 hit.collider.gameObject.SendMessage(" ExitScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "EZTB")// 쉬움상대 버튼 탐지시
             {
+                G_BulletL++;
                 P_Go.SendMessage("Set");
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
@@ -141,12 +146,14 @@ public class Hand_Ctrl : MonoBehaviour
 
             if (hit.collider.tag == "NTB")// 중간상대 버튼 탐지시
             {
+                G_BulletL++;
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "BTB")// 어려운상대 버튼 탐지시
             {
+                G_BulletL++;
                 //씬호출
                 hit.collider.gameObject.SendMessage(" ExitScene", SendMessageOptions.DontRequireReceiver);
             }
@@ -216,17 +223,7 @@ public class Hand_Ctrl : MonoBehaviour
     {
         G_BulletL = 6;
     }
-    private void OnCollisionEnter(Collision collision)//손에 충돌시
-    {
-        //float HandRG =
-        //     OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-        // Debug.Log(HandRG);
-        if (collision.gameObject.tag == "Gun")
-        {
-            Debug.Log("충돌");
-            H_changeL();//손모양 교체
-        }
-    }
+    
 
     void FireSfxL()//발사음 랜덤재생
     {

@@ -5,7 +5,7 @@ using UnityEngine.XR;
 
 public class Hand_CtrlR : MonoBehaviour
 {
-    public GameObject P_Go;
+    public GameObject P_Go;//플레이어
     //public OVRInput.Controller Controller;
 
     public Transform G_FirePositionR;//발사위치

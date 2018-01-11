@@ -47,9 +47,12 @@ public class Player_Ctrl : MonoBehaviour
 
     void Set()
     {
+        Invoke("SetDelay",2.0f);
+    }
+    void SetDelay()
+    {
         this.transform.position = new Vector3(0, 1, -4.5f);
     }
-
     //void Init()//vr초기화
     //{
     //    //VR 해상도
