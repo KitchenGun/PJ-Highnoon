@@ -5,7 +5,7 @@ using UnityEngine.XR;
 
 public class Hand_CtrlR : MonoBehaviour
 {
-
+    public GameObject P_Go;
     //public OVRInput.Controller Controller;
 
     public Transform G_FirePositionR;//발사위치
@@ -132,6 +132,7 @@ public class Hand_CtrlR : MonoBehaviour
 
             if (hit.collider.tag == "EZTB")// 쉬움상대 버튼 탐지시
             {
+                P_Go.SendMessage("Set");
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
             }

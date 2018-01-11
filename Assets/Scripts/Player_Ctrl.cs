@@ -45,6 +45,11 @@ public class Player_Ctrl : MonoBehaviour
         
     }
 
+    void Set()
+    {
+        this.transform.position = new Vector3(0, 1, -4.5f);
+    }
+
     //void Init()//vr초기화
     //{
     //    //VR 해상도

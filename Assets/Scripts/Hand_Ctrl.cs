@@ -8,6 +8,8 @@ public class Hand_Ctrl : MonoBehaviour
 
     //public OVRInput.Controller Controller;
 
+    public GameObject P_Go;//플레이어 오브젝트
+
     public Transform G_FirePositionL;//발사위치
     public GameObject HandnGunL;//총없는손
     public GameObject G_gunhandL;//총있는손
@@ -132,6 +134,7 @@ public class Hand_Ctrl : MonoBehaviour
 
             if (hit.collider.tag == "EZTB")// 쉬움상대 버튼 탐지시
             {
+                P_Go.SendMessage("Set");
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
             }
