@@ -19,9 +19,10 @@ public class Hand_CtrlR : MonoBehaviour
     public Animator HandRAniR;//애니메이터
 
     public AudioSource GunSfxR;
-    public AudioClip Reload;//사운드
+    public AudioClip Reload;//사운드&진동
     public AudioClip[] FireSfx;
     public AudioClip FireFSfx;
+    private int wave = 0;
 
     private int G_BulletR = 6;//6발
 
@@ -231,6 +232,7 @@ public class Hand_CtrlR : MonoBehaviour
     void FireSfxR()//발사음 랜덤재생
     {
         GunSfxR.clip = FireSfx[Random.Range(0, 2)];
+        OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxR.clip));
         GunSfxR.Play();
     }
 
