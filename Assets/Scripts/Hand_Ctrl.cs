@@ -44,6 +44,7 @@ public class Hand_Ctrl : MonoBehaviour
 
         float G_Reloadf =
             OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;//스틱컨트롤러y축 버튼
+        
         //Debug.Log(Firetrigger_resultf);
         //Debug.Log(G_Reloadf);
         Debug.DrawRay(G_FirePositionL.position, G_FirePositionL.forward * 100, Color.green);
