@@ -14,7 +14,7 @@ public class E1_Ctrl : MonoBehaviour
 
     public Animator animator;
     //적캐릭터 사망여부
-    private bool isdie = false;
+    private bool IsDie = false;
     //적 캐릭터 생명 변수
     public int E1_hp = 100;
     //공격 사거리
@@ -22,11 +22,11 @@ public class E1_Ctrl : MonoBehaviour
     //발사위치
     public Transform G_FirePosition;
     //6발
-    private int G_Bullet = 6;
+    //private int G_Bullet = 6;
     //총발사 가능 여부
     private bool G_isReady = false;
     //시작 카운트
-    public float StartCount = 3.0f;
+    public float StartCount = 20.0f;
     RaycastHit hit;
     //적캐릭터 이동속도
     private int Speed = -3;
@@ -34,6 +34,7 @@ public class E1_Ctrl : MonoBehaviour
     public AudioClip Ending;
     //AudioSource 컴포넌트를 저장할 변수
     private AudioSource source = null;
+    private bool isPDie = false;
 
 
 
@@ -55,7 +56,7 @@ public class E1_Ctrl : MonoBehaviour
     private void Update()
     {
         StartCount -= Time.deltaTime;
-        if (isdie == true)
+        if (isPDie == true)
         {
             transform.Translate(new Vector3(0.0f, 0.0f, Speed) * Time.deltaTime);
         }
@@ -63,23 +64,23 @@ public class E1_Ctrl : MonoBehaviour
     }
     IEnumerator CheckEnemy1()
     {
-        while (!isdie)
+        while (IsDie == false)
         {
             yield return new WaitForSeconds(0.2f);
-            if (StartCount <= 0)
+            if (StartCount <= 0.0f)
             {
                 e1_state = E1_State.Attack;
             }
-            else if(hit.collider.tag== "Player")
-            {
-                e1_state = E1_State.PDie;
-            }
+            //lse if(hit.collider.tag== "Player")
+            //{
+                //e1_state = E1_State.PDie;
+            //}
             else
             {
                 e1_state = E1_State.Idle;
             }
         }
-        while (isdie)
+        while (IsDie == true)
         {
             yield return new WaitForSeconds(0.2f);
             e1_state = E1_State.Die;
@@ -88,19 +89,18 @@ public class E1_Ctrl : MonoBehaviour
 
     IEnumerator E1_Action()
     {
-        while (!isdie)
+        while (IsDie == false)
         {
             switch (e1_state)
             {
                 //대기상태
                 case E1_State.Idle:
-                    animator.SetBool("IsAttack", false);
                     break;
 
                 //공격상태
                 case E1_State.Attack:
                     E1_Attack();
-                    animator.SetBool("Isattack", true);
+                    animator.SetTrigger("IsAttack");
                     break;
 
                 //플레이어사망 애니메이션
@@ -111,7 +111,7 @@ public class E1_Ctrl : MonoBehaviour
             }
             yield return null;
         }
-        while (isdie)
+        while (IsDie == true)
         {
             E1_Die();
         }
@@ -126,7 +126,7 @@ public class E1_Ctrl : MonoBehaviour
         E1_hp -= (int)_params[1];
         if (E1_hp <=0)
         {
-            isdie = true;
+            IsDie = true;
             GetComponent<AudioSource>().Play();
         }
 
@@ -140,8 +140,6 @@ public class E1_Ctrl : MonoBehaviour
         StopAllCoroutines();
         //적캐릭터 상태 변환
         e1_state = E1_State.Die;
-        //적캐릭터 사망 애니메이션 실행
-        animator.SetTrigger("IsDie");
         //다음 스테이지로 넘김
         SceneManager.LoadScene("normal");
         Debug.Log("히다희");
@@ -172,10 +170,10 @@ public class E1_Ctrl : MonoBehaviour
             Player_Die();
         }
     }
-
+    //술 뿌리기
     void Player_Die()
     {
         Debug.Log("유다희");
-        animator.SetTrigger("IsPDie");
+        animator.SetTrigger("Spread");
     }
 }
