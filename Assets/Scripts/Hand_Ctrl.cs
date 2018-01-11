@@ -74,8 +74,9 @@ public class Hand_Ctrl : MonoBehaviour
                 {
                     if (G_TriggerBackL != false)
                     {
-                        HandRAniL.SetTrigger("FireFalse");
+                       
                         G_FireFL();
+                        HandRAniL.SetTrigger("FireFalse");
                     }
 
                 }
@@ -171,6 +172,7 @@ public class Hand_Ctrl : MonoBehaviour
         if (!GunSfxL.isPlaying)
         {
             GunSfxL.PlayOneShot(FireFSfx);
+            OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(FireFSfx));
         }
         Debug.Log("Icantfire");
         //오디오
@@ -189,6 +191,7 @@ public class Hand_Ctrl : MonoBehaviour
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
+                    OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));
                 }
                 G_isReadyL = false;
                 G_TriggerBackL = true;
@@ -199,6 +202,7 @@ public class Hand_Ctrl : MonoBehaviour
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
+                    OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));
                 }
                 HandRAniL.SetBool("GisReady", true);
                 HandRAniL.SetTrigger("Reload");
@@ -206,6 +210,7 @@ public class Hand_Ctrl : MonoBehaviour
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
+                    OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));
                 }
                 Debug.Log("reload");
                 G_isReadyL = true;
@@ -229,6 +234,7 @@ public class Hand_Ctrl : MonoBehaviour
     void FireSfxL()//발사음 랜덤재생
     {
         GunSfxL.clip = FireSfx[Random.Range(0, 2)];
+        OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxL.clip));
         GunSfxL.Play();
     }
 }

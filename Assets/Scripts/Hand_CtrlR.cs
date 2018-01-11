@@ -161,6 +161,7 @@ public class Hand_CtrlR : MonoBehaviour
         G_TriggerBack = false;
         if (!GunSfxR.isPlaying)
         {
+            OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(FireFSfx));
             GunSfxR.PlayOneShot(FireFSfx);
         }
         Debug.Log("Icantfire");
@@ -179,6 +180,7 @@ public class Hand_CtrlR : MonoBehaviour
                 HandRAniR.SetTrigger("Reload");
                 if (!GunSfxR.isPlaying)
                 {
+                    OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));
                     GunSfxR.PlayOneShot(Reload);
                 }
                 G_isReadyR = false;
@@ -189,6 +191,7 @@ public class Hand_CtrlR : MonoBehaviour
                 GunSfxR.PlayOneShot(Reload);
                 if (!GunSfxR.isPlaying)
                 {
+                    OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));
                     GunSfxR.PlayOneShot(Reload);
                 }
                 HandRAniR.SetBool("GisReady", true);
@@ -196,6 +199,7 @@ public class Hand_CtrlR : MonoBehaviour
                
                 if (!GunSfxR.isPlaying)
                 {
+                    OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));
                     GunSfxR.PlayOneShot(Reload);
                 }
                 Debug.Log("reload");
@@ -221,7 +225,7 @@ public class Hand_CtrlR : MonoBehaviour
     void FireSfxR()//발사음 랜덤재생
     {
         GunSfxR.clip = FireSfx[Random.Range(0, 2)];
-        OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxR.clip));
+        OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(GunSfxR.clip));
         GunSfxR.Play();
     }
 
