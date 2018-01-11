@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: c4655ba2e3b1d1646875bf5641b10b34
-timeCreated: 1515570024
+guid: 013155c377f70094cb04dbc8a340e2bf
+timeCreated: 1515657798
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Box002
-    100002: //RootNode
+    100002: Line001
     100004: mixamorig:Head
     100006: mixamorig:HeadTop_End
     100008: mixamorig:Hips
@@ -73,8 +73,9 @@ ModelImporter:
     100130: mixamorig:Spine1
     100132: mixamorig:Spine2
     100134: Object001
+    100136: //RootNode
     400000: Box002
-    400002: //RootNode
+    400002: Line001
     400004: mixamorig:Head
     400006: mixamorig:HeadTop_End
     400008: mixamorig:Hips
@@ -141,13 +142,18 @@ ModelImporter:
     400130: mixamorig:Spine1
     400132: mixamorig:Spine2
     400134: Object001
+    400136: //RootNode
     2100000: 02 - Default
-    2100002: 09 - Default
+    2100002: No Name
+    2100004: 09 - Default
     2300000: Box002
+    2300002: Line001
     3300000: Box002
+    3300002: Line001
     4300000: Object001
-    4300002: Box002
-    7400000: Drawing Gun
+    4300002: Line001
+    4300004: Box002
+    7400000: Walk
     9500000: //RootNode
     13700000: Object001
   externalObjects: {}
@@ -178,10 +184,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Drawing Gun
+      name: Walk
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 76
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

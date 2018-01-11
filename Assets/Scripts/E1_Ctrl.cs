@@ -89,7 +89,7 @@ public class E1_Ctrl : MonoBehaviour
 
     IEnumerator E1_Action()
     {
-        while (IsDie == false)
+        while (E1_hp >0)
         {
             switch (e1_state)
             {
@@ -111,7 +111,7 @@ public class E1_Ctrl : MonoBehaviour
             }
             yield return null;
         }
-        while (IsDie == true)
+        while (E1_hp <=0)
         {
             E1_Die();
         }
@@ -133,6 +133,7 @@ public class E1_Ctrl : MonoBehaviour
         //IsHit트리거 발생
         animator.SetTrigger("isHit");
     }
+
     //적 캐릭터 사망
     void E1_Die()
     {
@@ -170,6 +171,7 @@ public class E1_Ctrl : MonoBehaviour
             Player_Die();
         }
     }
+
     //술 뿌리기
     void Player_Die()
     {
