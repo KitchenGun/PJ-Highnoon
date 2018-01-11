@@ -16176,7 +16176,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012600100}
-  m_LocalRotation: {x: 0.28159243, y: -0.28159234, z: -0.6486184, w: 0.6486182}
+  m_LocalRotation: {x: 0.28159246, y: -0.28159237, z: -0.64861846, w: 0.6486183}
   m_LocalPosition: {x: -0.95901394, y: -5.565754, z: 42.780655}
   m_LocalScale: {x: 0.005066911, y: 0.005066915, z: 0.005066915}
   m_Children: []
@@ -19033,6 +19033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9516669aea0a14f9f16a9715dd1d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunL: {fileID: 349666056}
 --- !u!1 &1199759748
 GameObject:
   m_ObjectHideFlags: 0
@@ -19734,6 +19735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9516669aea0a14f9f16a9715dd1d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunL: {fileID: 349666056}
 --- !u!135 &1261772556
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19744,7 +19746,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.16
+  m_Radius: 3
   m_Center: {x: 0.008723572, y: 0.6575871, z: -0.34773225}
 --- !u!23 &1261772557
 MeshRenderer:
@@ -26395,6 +26397,7 @@ GameObject:
   - component: {fileID: 1513618028}
   - component: {fileID: 1513618027}
   - component: {fileID: 1513618029}
+  - component: {fileID: 1513618025}
   m_Layer: 0
   m_Name: Box002
   m_TagString: Gun
@@ -26416,6 +26419,18 @@ Transform:
   m_Father: {fileID: 135969455}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1513618025
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513618023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0.008721665, y: 0.65760237, z: -0.3477475}
 --- !u!23 &1513618027
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26465,11 +26480,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1513618023}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be9516669aea0a14f9f16a9715dd1d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunL: {fileID: 1612486495}
 --- !u!1 &1515445875
 GameObject:
   m_ObjectHideFlags: 0

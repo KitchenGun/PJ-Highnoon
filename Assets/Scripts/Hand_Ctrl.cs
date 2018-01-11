@@ -213,7 +213,7 @@ public class Hand_Ctrl : MonoBehaviour
             }
         }
     }
-    void H_changeL()//손모양 교체
+    public void H_changeL()//손모양 교체
     {
         G_isGrapL = true;
         G_gunhandL.SetActive(true);

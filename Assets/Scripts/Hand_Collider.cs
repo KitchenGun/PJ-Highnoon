@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hand_Collider : MonoBehaviour
 {
     float Grap_F;
+    public GameObject GunL;
     private void Update()
     {
         Grap_F =
@@ -17,7 +18,7 @@ public class Hand_Collider : MonoBehaviour
         if (c.gameObject.tag == "Player"&&Grap_F>=0.8)
         {
             Debug.Log("ddd");
-            c.gameObject.SendMessage("H_ChangeL");
+            GunL.SendMessage("H_changeL");
             Destroy(this.gameObject);
         }
     }
