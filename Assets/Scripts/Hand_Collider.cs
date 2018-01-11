@@ -10,11 +10,10 @@ public class Hand_Collider : MonoBehaviour
     {
         Grap_F =
             OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-        Debug.Log(Grap_F);
     }
     private void OnCollisionStay(Collision c)
     {
-        Debug.Log(c.transform.name);
+        //Debug.Log(c.transform.name);
         if (c.gameObject.tag == "Player"&&Grap_F>=0.8)
         {
             Debug.Log("ddd");

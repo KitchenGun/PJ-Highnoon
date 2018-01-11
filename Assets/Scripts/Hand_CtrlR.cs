@@ -217,17 +217,6 @@ public class Hand_CtrlR : MonoBehaviour
     {
         G_BulletR = 6;
     }
-    private void OnCollisionEnter(Collision collision)//손에 충돌시
-    {
-        //float HandRG =
-       //     OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-       // Debug.Log(HandRG);
-        if (collision.gameObject.tag == "Gun")
-        {
-            Debug.Log("충돌");
-            H_changeR();//손모양 교체
-        }
-    }
 
     void FireSfxR()//발사음 랜덤재생
     {
