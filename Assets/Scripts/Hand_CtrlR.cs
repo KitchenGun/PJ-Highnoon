@@ -102,6 +102,13 @@ public class Hand_CtrlR : MonoBehaviour
                 hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
 
+            if (hit.collider.tag == "E1Attack")//적 탐지시
+            {
+
+                //몬스터에 대미지 입히는 함수
+                hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
+            }
+
             if (hit.collider.tag == "Player")//적 탐지시
             {
                

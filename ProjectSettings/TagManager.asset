@@ -17,6 +17,7 @@ TagManager:
   - StopE1
   - FxTemporaire
   - APlus
+  - E1Attack
   layers:
   - Default
   - TransparentFX

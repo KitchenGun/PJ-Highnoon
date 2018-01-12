@@ -1980,7 +1980,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: d0f480ffc64d3bb48b3a34618e1bc637, type: 2}
     - target: {fileID: 100120, guid: fba414aa7de0d5943b1df388430c7862, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: E1Attack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba414aa7de0d5943b1df388430c7862, type: 3}

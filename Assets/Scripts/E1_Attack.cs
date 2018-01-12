@@ -6,7 +6,7 @@ public class E1_Attack : MonoBehaviour {
 
     public GameObject E1Attack;
     public GameObject e1;
-
+    private Animator animator;
 
 	// Use this for initialization
 	void Start ()
@@ -24,6 +24,7 @@ public class E1_Attack : MonoBehaviour {
         Debug.Log("hit");
         E1Attack.SetActiveRecursively(false);
         e1.SetActiveRecursively(true);
+        e1.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
 
     }
 }
