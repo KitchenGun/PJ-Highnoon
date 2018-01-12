@@ -101,9 +101,7 @@ public class Hand_Ctrl : MonoBehaviour
         {
             if (hit.collider.tag == "Enemy")//적 탐지시
             {
-                object[] _params = new object[2];//레이피격시 내부 정보추출
-                _params[0] = hit.point;
-                _params[1] = 50;
+                
                 //몬스터에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
