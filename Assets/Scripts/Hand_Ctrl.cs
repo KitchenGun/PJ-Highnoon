@@ -172,7 +172,7 @@ public class Hand_Ctrl : MonoBehaviour
         if (!GunSfxL.isPlaying)
         {
             GunSfxL.PlayOneShot(FireFSfx);
-            OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(FireFSfx));
+            //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(FireFSfx));이것 좃같은 물건이다.
         }
         Debug.Log("Icantfire");
         //오디오
@@ -191,7 +191,7 @@ public class Hand_Ctrl : MonoBehaviour
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
-                    OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));
+                    //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));이것 좃같은 물건이다.
                 }
                 G_isReadyL = false;
                 G_TriggerBackL = true;
@@ -202,7 +202,7 @@ public class Hand_Ctrl : MonoBehaviour
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
-                    OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));
+                    //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));이것 좃같은 물건이다.
                 }
                 HandRAniL.SetBool("GisReady", true);
                 HandRAniL.SetTrigger("Reload");
@@ -210,7 +210,7 @@ public class Hand_Ctrl : MonoBehaviour
                 if (!GunSfxL.isPlaying)
                 {
                     GunSfxL.PlayOneShot(Reload);
-                    OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));
+                    //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(Reload));이것 좃같은 물건이다.
                 }
                 Debug.Log("reload");
                 G_isReadyL = true;
@@ -234,7 +234,7 @@ public class Hand_Ctrl : MonoBehaviour
     void FireSfxL()//발사음 랜덤재생
     {
         GunSfxL.clip = FireSfx[Random.Range(0, 2)];
-        OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxL.clip));
+        //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxL.clip));이것 좃같은 물건이다.
         GunSfxL.Play();
     }
 }

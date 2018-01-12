@@ -161,7 +161,7 @@ public class Hand_CtrlR : MonoBehaviour
         G_TriggerBack = false;
         if (!GunSfxR.isPlaying)
         {
-            OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(FireFSfx));
+            //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(FireFSfx));이것 좃같은 물건이다.
             GunSfxR.PlayOneShot(FireFSfx);
         }
         Debug.Log("Icantfire");
@@ -180,7 +180,7 @@ public class Hand_CtrlR : MonoBehaviour
                 HandRAniR.SetTrigger("Reload");
                 if (!GunSfxR.isPlaying)
                 {
-                    OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));
+                    //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));이것 좃같은 물건이다.
                     GunSfxR.PlayOneShot(Reload);
                 }
                 G_isReadyR = false;
@@ -191,7 +191,7 @@ public class Hand_CtrlR : MonoBehaviour
                 GunSfxR.PlayOneShot(Reload);
                 if (!GunSfxR.isPlaying)
                 {
-                    OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));
+                    //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));이것 좃같은 물건이다.
                     GunSfxR.PlayOneShot(Reload);
                 }
                 HandRAniR.SetBool("GisReady", true);
@@ -199,7 +199,7 @@ public class Hand_CtrlR : MonoBehaviour
                
                 if (!GunSfxR.isPlaying)
                 {
-                    OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));
+                    //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Reload));이것 좃같은 물건이다.
                     GunSfxR.PlayOneShot(Reload);
                 }
                 Debug.Log("reload");
@@ -225,7 +225,7 @@ public class Hand_CtrlR : MonoBehaviour
     void FireSfxR()//발사음 랜덤재생
     {
         GunSfxR.clip = FireSfx[Random.Range(0, 2)];
-        OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(GunSfxR.clip));
+        //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(GunSfxR.clip));이것 좃같은 물건이다.
         GunSfxR.Play();
     }
 
