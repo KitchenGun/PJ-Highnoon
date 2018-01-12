@@ -16083,7 +16083,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012600100}
-  m_LocalRotation: {x: 0.28159246, y: -0.28159237, z: -0.64861846, w: 0.6486183}
+  m_LocalRotation: {x: 0.28159243, y: -0.28159234, z: -0.6486184, w: 0.6486182}
   m_LocalPosition: {x: -0.95901394, y: -5.565754, z: 42.780655}
   m_LocalScale: {x: 0.005066911, y: 0.005066915, z: 0.005066915}
   m_Children: []
@@ -16554,7 +16554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b68eeea0b6a3a47b1a86076d90a953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunR: {fileID: 1513618023}
+  GunR: {fileID: 1612486495}
 --- !u!65 &1029112297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16565,7 +16565,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.17, y: 0.7, z: 0.62}
+  m_Size: {x: 1.17, y: 1.28, z: 1}
   m_Center: {x: 0.04, y: 0, z: 0}
 --- !u!1 &1038232539
 GameObject:
@@ -18982,7 +18982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9516669aea0a14f9f16a9715dd1d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunL: {fileID: 1261772553}
+  GunL: {fileID: 349666056}
 --- !u!1 &1199759748
 GameObject:
   m_ObjectHideFlags: 0
@@ -34376,7 +34376,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1920211221
+  randomSeed: 1909019802
   InitialModule:
     serializedVersion: 3
     enabled: 1

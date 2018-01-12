@@ -210,7 +210,7 @@ public class Hand_CtrlR : MonoBehaviour
     }
 
 
-    void H_changeR()//손모양 교체
+    public void H_changeR()//손모양 교체
     {
         G_isGrapR = true;
         G_gunhandR.SetActive(true);

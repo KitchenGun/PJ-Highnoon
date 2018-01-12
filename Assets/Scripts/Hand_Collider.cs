@@ -9,7 +9,8 @@ public class Hand_Collider : MonoBehaviour
     private void Update()
     {
         Grap_F =
-            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+            OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger);
+        Debug.Log(Grap_F);
     }
     private void OnCollisionStay(Collision c)
     {
@@ -18,7 +19,7 @@ public class Hand_Collider : MonoBehaviour
         {
             Debug.Log("ddd");
             GunL.SendMessage("H_changeL");
-            Destroy(this.gameObject);
+           // Destroy(this.gameObject);
         }
     }
 }
