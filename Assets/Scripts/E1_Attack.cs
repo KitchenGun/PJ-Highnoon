@@ -5,6 +5,7 @@ using UnityEngine;
 public class E1_Attack : MonoBehaviour {
 
     public GameObject E1Attack;
+    public GameObject e1;
 
 
 	// Use this for initialization
@@ -20,6 +21,9 @@ public class E1_Attack : MonoBehaviour {
 
     void E_OnAttack()
     {
+        Debug.Log("hit");
         E1Attack.SetActiveRecursively(false);
+        e1.SetActiveRecursively(true);
+
     }
 }
