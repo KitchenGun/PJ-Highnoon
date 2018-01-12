@@ -92,6 +92,6 @@ public class E1_Ctrl : MonoBehaviour
     void E_OnAttack()
     {
         Debug.Log("Die");
-        isdie = true;
+        animator.SetBool("isdie", true);
     }
 }
