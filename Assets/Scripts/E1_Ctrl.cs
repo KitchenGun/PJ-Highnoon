@@ -17,7 +17,7 @@ public class E1_Ctrl : MonoBehaviour
     //현재 상태 저장
     public E1_State e1_state = E1_State.Idle;
     //캐릭터 이동 속도
-    public float speed = 3.0f;
+    public float speed = 1.0f;
     //적캐릭터 숨기기위한 변수
     public GameObject E1;
     //공격시 나올 적 캐릭터
@@ -35,6 +35,10 @@ public class E1_Ctrl : MonoBehaviour
     private void Update()
     {
         StartSigh -= Time.deltaTime;
+        if(ispdie)
+        {
+            PDie();
+        }
     }
 
     //일정 간격으로 몬스터행동 체크 및 스테이츠 변경
@@ -101,6 +105,12 @@ public class E1_Ctrl : MonoBehaviour
         Debug.Log("Die");
         animator.SetBool("isdie", true);
         GetComponent<AudioSource>().Play();
+    }
+
+    void PDie()
+    {
+        Debug.Log("Walk");
+        this.transform.position +=  new Vector3(0, 0, -speed)*Time.deltaTime;
     }
 
     void P_OnAttack()
