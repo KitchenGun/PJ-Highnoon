@@ -13,6 +13,8 @@ public class E1_Attack : MonoBehaviour {
     //총사운드
     public AudioSource GunSfxR;
     public AudioClip[] FireSfx;
+    //총격 이펙트
+    public GameObject G_MF;
     //총알수
     private int G_Bullet = 6;
     //발사위치
