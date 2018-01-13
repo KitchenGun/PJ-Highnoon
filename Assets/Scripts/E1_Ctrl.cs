@@ -12,12 +12,14 @@ public class E1_Ctrl : MonoBehaviour
     private bool isdie = false;
     //플레이어 사망여부ㅡ
     private bool ispdie = false;
+    //콜리더 충돌
+    private bool isStop = false;
     //시작신호
     public float StartSigh = 3.0f;
     //현재 상태 저장
     public E1_State e1_state = E1_State.Idle;
     //캐릭터 이동 속도
-    public float speed = 1.0f;
+    float speed = 3.0f;
     //적캐릭터 숨기기위한 변수
     public GameObject E1;
     //공격시 나올 적 캐릭터
@@ -38,6 +40,10 @@ public class E1_Ctrl : MonoBehaviour
         if(ispdie)
         {
             PDie();
+        }
+        if(isStop)
+        {
+            IsStop();
         }
     }
 
@@ -89,12 +95,12 @@ public class E1_Ctrl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        if (collision.gameObject.tag == "StopE1")
+        if (col.gameObject.tag == "StopE1")
         {
-            StopAllCoroutines();
-            speed = 0.0f;
+            Debug.Log("Stoped");
+            isStop = true;
             animator.SetTrigger("isspread");
         }
     }
@@ -117,5 +123,10 @@ public class E1_Ctrl : MonoBehaviour
     {
         ispdie = true;
         animator.SetTrigger("ispdie");
+    }
+
+    void IsStop()
+    {
+        speed = 0;
     }
 }
