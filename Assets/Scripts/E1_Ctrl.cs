@@ -52,7 +52,7 @@ public class E1_Ctrl : MonoBehaviour
             {
                 e1_state = E1_State.Attack;
             }
-            else
+            else if (ispdie == true) ;
             {
                 e1_state = E1_State.PDie;
             }
@@ -77,7 +77,6 @@ public class E1_Ctrl : MonoBehaviour
 
                 //pdie 상태
                 case E1_State.PDie:
-                    animator.SetBool("ispdie", true);
                     transform.Translate(new Vector3(0.0f, 0.0f, -speed) * Time.deltaTime);
                     break;
             }
@@ -98,5 +97,9 @@ public class E1_Ctrl : MonoBehaviour
     {
         Debug.Log("Die");
         animator.SetBool("isdie", true);
+    }
+    void P_OnAttack()
+    {
+        animator.SetBool("ispdie", true);
     }
 }
