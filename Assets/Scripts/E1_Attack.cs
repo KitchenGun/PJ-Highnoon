@@ -71,11 +71,10 @@ public class E1_Attack : MonoBehaviour {
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
-        G_Bullet--;
     }
     void FireSfxR()//발사음 랜덤재생
     {
-        GunSfxR.clip = FireSfx[Random.Range(0, 2)];
+        GunSfxR.clip = FireSfx[Random.Range(0, 3)];
         GunSfxR.Play();
     }
 
@@ -86,6 +85,8 @@ public class E1_Attack : MonoBehaviour {
 
         while (!e1die)
         {
+            this.G_Bullet -= 1;
+            Debug.Log(G_Bullet);
             if (G_Bullet > 3)
             {
                 FireSfxR();
@@ -94,6 +95,7 @@ public class E1_Attack : MonoBehaviour {
             {
                 G_Fire();
             }
+            yield return null;
         }
     }
 }
