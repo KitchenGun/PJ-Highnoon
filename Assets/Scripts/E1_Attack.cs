@@ -14,15 +14,21 @@ public class E1_Attack : MonoBehaviour {
     public AudioSource GunSfxR;
     public AudioClip[] FireSfx;
     //총알수
-    private int G_BulletR = 6;
+    private int G_Bullet = 6;
     //발사위치
     public Transform G_FirePosition;
+    //발사가능여부
+    private bool E1_FireReady = true;
+    //발사속도
+    public int E1_BulletRpm = 300;
+    //사망함수
+    private bool e1die = false;
 
 
     void Start ()
     {
         //발사
-        G_FireR();
+        G_Fire();
     }
 	
 
@@ -44,7 +50,7 @@ public class E1_Attack : MonoBehaviour {
 
     }
 
-    void G_FireR()//발사
+    void G_Fire()//발사
     {
         //이펙트 사운드
         FireSfxR();
@@ -65,11 +71,29 @@ public class E1_Attack : MonoBehaviour {
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
-        G_BulletR--;
+        G_Bullet--;
     }
     void FireSfxR()//발사음 랜덤재생
     {
         GunSfxR.clip = FireSfx[Random.Range(0, 2)];
         GunSfxR.Play();
+    }
+
+    IEnumerator CoReady()
+    {
+        yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+        this.E1_FireReady = true;
+
+        while (!e1die)
+        {
+            if (G_Bullet > 3)
+            {
+                FireSfxR();
+            }
+            else if (0 < G_Bullet && G_Bullet <=3)
+            {
+                G_Fire();
+            }
+        }
     }
 }
