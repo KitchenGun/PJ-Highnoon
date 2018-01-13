@@ -77,7 +77,8 @@ public class E1_Ctrl : MonoBehaviour
 
                 //pdie 상태
                 case E1_State.PDie:
-                    transform.Translate(new Vector3(0.0f, 0.0f, speed) * Time.deltaTime);
+                    Debug.Log("Walk");
+                    this.transform.position += this.transform.position + new Vector3(0, 0, speed);
                     break;
             }
             yield return null;
@@ -104,6 +105,7 @@ public class E1_Ctrl : MonoBehaviour
 
     void P_OnAttack()
     {
-        animator.SetBool("ispdie", true);
+        ispdie = true;
+        animator.SetTrigger("ispdie");
     }
 }
