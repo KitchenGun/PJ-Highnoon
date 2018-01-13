@@ -283,7 +283,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1748,7 +1748,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 879ccb0b013bd4e419bf4b5c295128d2, type: 3}
   - {fileID: 8300000, guid: 381358ae51c568143a9ba40be0588e8f, type: 3}
   G_FirePosition: {fileID: 1220999577}
-  E1_BulletRpm: 60
+  E1_BulletRpm: 10
 --- !u!136 &678959232
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1829,7 +1829,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

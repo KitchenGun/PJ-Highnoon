@@ -408,11 +408,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1498443434127744, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
       propertyPath: m_TagString
-      value: EZTB
+      value: BTB
       objectReference: {fileID: 0}
     - target: {fileID: 1498443434127744, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
       propertyPath: m_Name
-      value: EZTB (1)
+      value: BTB
       objectReference: {fileID: 0}
     - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
         type: 2}

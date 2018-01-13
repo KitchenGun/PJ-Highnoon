@@ -20,7 +20,7 @@ public class E1_Attack : MonoBehaviour {
     //발사가능여부
     private bool E1_FireReady = true;
     //발사속도
-    public int E1_BulletRpm = 300;
+    float E1_BulletRpm = 60.0f;
     //사망함수
     private bool e1die = false;
 
@@ -58,7 +58,7 @@ public class E1_Attack : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
         {
-            Debug.Log("PlayerDie");
+            Debug.Log(hit.transform.name);
             if (hit.collider.tag == "Player")//플레이어 탐지시
             {
                 //적 공격 오브젝트 비활성
@@ -71,29 +71,33 @@ public class E1_Attack : MonoBehaviour {
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
+        this.E1_FireReady = false;
     }
     void FireSfxR()//발사음 랜덤재생
     {
+        G_Bullet--;
         GunSfxR.clip = FireSfx[Random.Range(0, 3)];
         GunSfxR.Play();
     }
 
     IEnumerator CoReady()
     {
-        yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
-        this.E1_FireReady = true;
-
         while (!e1die)
         {
-            this.G_Bullet -= 1;
             Debug.Log(G_Bullet);
             if (G_Bullet > 3)
             {
                 FireSfxR();
+                yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
             }
             else if (0 < G_Bullet && G_Bullet <=3)
             {
                 G_Fire();
+                yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+            }
+            if (G_Bullet <= 0)
+            {
+                break;
             }
             yield return null;
         }
