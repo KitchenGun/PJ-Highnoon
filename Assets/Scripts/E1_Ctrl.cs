@@ -88,6 +88,7 @@ public class E1_Ctrl : MonoBehaviour
     {
         if (collision.gameObject.tag == "StopE1")
         {
+            StopAllCoroutines();
             speed = 0.0f;
             animator.SetTrigger("isspread");
         }
@@ -95,6 +96,7 @@ public class E1_Ctrl : MonoBehaviour
 
     void E_OnAttack()
     {
+        StopAllCoroutines();
         Debug.Log("Die");
         animator.SetBool("isdie", true);
         GetComponent<AudioSource>().Play();

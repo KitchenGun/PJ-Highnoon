@@ -27,8 +27,7 @@ public class E1_Attack : MonoBehaviour {
 
     void Start ()
     {
-        //발사
-        G_Fire();
+        StartCoroutine(CoReady());
     }
 	
 
@@ -40,6 +39,7 @@ public class E1_Attack : MonoBehaviour {
 
     void E_OnAttack()
     {
+        StopAllCoroutines();
         Debug.Log("hit");
         //적공격 오브젝트 비활성
         E1Attack.SetActive(false);
