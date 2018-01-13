@@ -87,7 +87,6 @@ public class E1_Ctrl : MonoBehaviour
 
                 //pdie 상태
                 case E1_State.PDie:
-                    Debug.Log("Walk");
                     this.transform.position += this.transform.position + new Vector3(0, 0, speed);
                     break;
             }
@@ -95,9 +94,9 @@ public class E1_Ctrl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnColliderEnter(Collision col)
     {
-        if (col.gameObject.tag == "StopE1")
+        if(col.gameObject.tag == "StopE1")
         {
             Debug.Log("Stoped");
             isStop = true;
