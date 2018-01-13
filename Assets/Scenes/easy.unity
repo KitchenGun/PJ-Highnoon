@@ -200,7 +200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartSigh: 5
   e1_state: 0
-  speed: 3
   E1: {fileID: 7438462}
   E1attack: {fileID: 678959230}
 --- !u!136 &7438464

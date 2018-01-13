@@ -34,17 +34,17 @@ public class Player_Ctrl : MonoBehaviour
 
     private void Awake()
     {
-        if (Playsc == null)//싱글톤 
-        {
-            Playsc = gameObject.GetComponent<Player_Ctrl>();
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            RHandG.SendMessage("G_allReload");
-            LHandG.SendMessage("G_allReload");
-        }
+        //if (Playsc == null)//싱글톤 
+        //{
+        //    Playsc = gameObject.GetComponent<Player_Ctrl>();
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    RHandG.SendMessage("G_allReload");
+        //    LHandG.SendMessage("G_allReload");
+        //}
         
     }
 
