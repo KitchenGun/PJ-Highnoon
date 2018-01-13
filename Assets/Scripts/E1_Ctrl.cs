@@ -71,8 +71,8 @@ public class E1_Ctrl : MonoBehaviour
 
                 //attack 상태
                 case E1_State.Attack:
-                    E1.SetActiveRecursively(false);
-                    E1attack.SetActiveRecursively(true);
+                    E1.SetActive(false);
+                    E1attack.SetActive(true);
                     break;
 
                 //pdie 상태

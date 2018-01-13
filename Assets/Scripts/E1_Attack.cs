@@ -4,45 +4,60 @@ using UnityEngine;
 
 public class E1_Attack : MonoBehaviour {
 
+    //적캐릭터 공격
     public GameObject E1Attack;
+    //적캐릭터 기본 
     public GameObject e1;
+    //애니메이터
     private Animator animator;
+    //총사운드
     public AudioSource GunSfxR;
     public AudioClip[] FireSfx;
-    private int G_BulletR = 6;//6발
-    public Transform G_FirePosition;//발사위치
+    //총알수
+    private int G_BulletR = 6;
+    //발사위치
+    public Transform G_FirePosition;
 
-    // Use this for initialization
+
     void Start ()
     {
-	}
+        //발사
+        G_FireR();
+    }
 	
-	// Update is called once per frame
+
 	void Update ()
     {
+        //레이그리기
         Debug.DrawRay(G_FirePosition.position, G_FirePosition.forward * 100, Color.green);
     }
 
     void E_OnAttack()
     {
         Debug.Log("hit");
+        //적공격 오브젝트 비활성
         E1Attack.SetActive(false);
+        //적기본 오브젝트 활성
         e1.SetActive(true);
+        //피격판정
         e1.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
 
     }
-    void E_Fire()//발사
+
+    void G_FireR()//발사
     {
         //이펙트 사운드
         FireSfxR();
-
-        RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
+        //레이케스트라인 안에 들어온 물체 변수
+        RaycastHit hit;
         if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
         {
             Debug.Log("PlayerDie");
             if (hit.collider.tag == "Player")//플레이어 탐지시
             {
+                //적 공격 오브젝트 비활성
                 E1Attack.SetActive(false);
+                //적 기본 오브젝트 활성
                 e1.SetActive(true);
                 //플레이어에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("P_Die", SendMessageOptions.DontRequireReceiver);
