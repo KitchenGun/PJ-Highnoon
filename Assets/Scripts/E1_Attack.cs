@@ -39,12 +39,14 @@ public class E1_Attack : MonoBehaviour {
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
         if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
         {
-            if (hit.collider.tag == "Player")//적 탐지시
+            Debug.Log("PlayerDie");
+            if (hit.collider.tag == "Player")//플레이어 탐지시
             {
+                
                 E1Attack.SetActiveRecursively(false);
                 e1.SetActiveRecursively(true);
                 //플레이어에 대미지 입히는 함수
-                hit.collider.gameObject.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("P_Die", SendMessageOptions.DontRequireReceiver);
                 //적캐릭터에게 플레이어 사망 전달
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }

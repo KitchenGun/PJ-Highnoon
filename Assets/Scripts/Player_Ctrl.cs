@@ -99,21 +99,9 @@ public class Player_Ctrl : MonoBehaviour
     //}
 
     //플레이어 피격
-    void P_OnAttack(object[] _params)
-    {
-        Debug.Log(string.Format("Hit ray {0} : {1}", _params[0], _params[1]));
-
-        //총에맞을시 플레이어 사망
-        P_Die();
-        GameObject.Find("E1").SendMessage("Player_Die");
-
-        //IsHit트리거 발생
-        //animator.SetTrigger("isHit");
-    }
 
     void P_Die()
     {
-        animator.SetBool("IsPDie", true);
         GetComponent<AudioSource>().Play();
     }
 }
