@@ -54,7 +54,7 @@ public class Player_Ctrl : MonoBehaviour
     }
     void SetDelay()
     {
-        this.transform.position = new Vector3(0, 1, -4.5f);
+        this.transform.position = new Vector3(-5, -14, 1.77f);
     }
     //void Init()//vr초기화
     //{

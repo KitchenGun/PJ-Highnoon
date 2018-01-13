@@ -136,7 +136,7 @@ public class Hand_CtrlR : MonoBehaviour
 
             if (hit.collider.tag == "EZTB")// 쉬움상대 버튼 탐지시
             {
-                P_Go.SendMessage("Set");
+                P_Go.SendMessage("Set");//위치 변경
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
             }
