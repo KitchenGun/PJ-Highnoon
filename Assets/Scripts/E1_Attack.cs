@@ -26,12 +26,12 @@ public class E1_Attack : MonoBehaviour {
     void E_OnAttack()
     {
         Debug.Log("hit");
-        E1Attack.SetActiveRecursively(false);
-        e1.SetActiveRecursively(true);
+        E1Attack.SetActive(false);
+        e1.SetActive(true);
         e1.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
 
     }
-    void G_FireR()//발사
+    void E_Fire()//발사
     {
         //이펙트 사운드
         FireSfxR();
@@ -42,9 +42,8 @@ public class E1_Attack : MonoBehaviour {
             Debug.Log("PlayerDie");
             if (hit.collider.tag == "Player")//플레이어 탐지시
             {
-                
-                E1Attack.SetActiveRecursively(false);
-                e1.SetActiveRecursively(true);
+                E1Attack.SetActive(false);
+                e1.SetActive(true);
                 //플레이어에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("P_Die", SendMessageOptions.DontRequireReceiver);
                 //적캐릭터에게 플레이어 사망 전달
