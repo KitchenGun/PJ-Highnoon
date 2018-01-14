@@ -20,11 +20,13 @@ public class E1_Attack : MonoBehaviour {
     //발사위치
     public Transform G_FirePosition;
     //발사가능여부
-    private bool E1_FireReady = true;
+    //private bool E1_FireReady = true;
     //발사속도
     float E1_BulletRpm = 60.0f;
     //사망함수
     private bool e1die = false;
+    //스탑포지션 콜리더
+    //private bool isStop = false;
 
 
     void Start ()
@@ -73,7 +75,7 @@ public class E1_Attack : MonoBehaviour {
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
-        this.E1_FireReady = false;
+        //this.E1_FireReady = false;
     }
     void FireSfxR()//발사음 랜덤재생
     {
