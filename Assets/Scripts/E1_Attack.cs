@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class E1_Attack : MonoBehaviour {
 
+
+    public GameObject P_Go;//플레이어 게임오브젝트
     //적캐릭터 공격
     public GameObject E1Attack;
     //적캐릭터 기본 
@@ -50,12 +52,13 @@ public class E1_Attack : MonoBehaviour {
         //적기본 오브젝트 활성
         e1.SetActive(true);
         //피격판정
-        e1.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
+        e1.SendMessage("E_OnAttack");
 
     }
 
     void G_Fire()//발사
     {
+        this.transform.LookAt(P_Go.transform);
         //이펙트 사운드
         FireSfxR();
         G_MF.SendMessage("Play");

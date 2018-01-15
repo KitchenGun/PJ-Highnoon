@@ -232,7 +232,7 @@ public class Hand_Ctrl : MonoBehaviour
         GrapCL++;
     }
 
-    void G_allReload()//총의 총알 초기화
+    public void G_allReload()//총의 총알 초기화
     {
         G_BulletL = 6;
     }

@@ -24,9 +24,14 @@ public class E1_Ctrl : MonoBehaviour
     public GameObject E1;
     //공격시 나올 적 캐릭터
     public GameObject E1attack;
+    //적 피격판정 콜라이더
+    Collider E1Collider;
+    //적 피격횟수
+    private int E_HitCount=0;
 
     void Start()
     {
+        E1Collider=GetComponent<Collider>();
         //적캐릭터 행동 상태 체크
         StartCoroutine(CheckE1State());
         //적캐릭터의 상태에따라 동작
@@ -92,10 +97,18 @@ public class E1_Ctrl : MonoBehaviour
 
     void E_OnAttack()
     {
-        StopAllCoroutines();
-        Debug.Log("Die");
-        animator.SetBool("isdie", true);
-        GetComponent<AudioSource>().Play();
+        if (E_HitCount>=1)//피격횟수가 초과시 죽음
+        {
+            StopAllCoroutines();
+            Debug.Log("Die");
+            animator.SetBool("isdie", true);
+            GetComponent<AudioSource>().Play();
+            Destroy(E1attack);
+            E1Collider.enabled=!E1Collider.enabled;//콜라이더 제거
+        }
+        Debug.Log("Hit");
+        //피격 애니메이션 사운드 필요
+        E_HitCount++;//적피격
     }
 
     void PDie()
