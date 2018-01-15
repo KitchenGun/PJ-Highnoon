@@ -10,7 +10,7 @@ public class Hand_Collider : MonoBehaviour
     {
         Grap_F =
             OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger);
-        Debug.Log(Grap_F);
+        //Debug.Log(Grap_F);
     }
     private void OnCollisionStay(Collision c)
     {

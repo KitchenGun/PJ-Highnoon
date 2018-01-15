@@ -11,7 +11,7 @@ public class Hand_Collider1 : MonoBehaviour {
     {
         Grap_FR =
             OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
-        Debug.Log(Grap_FR);
+        //Debug.Log(Grap_FR);
     }
     private void OnCollisionStay(Collision c)//충돌판정
     {
