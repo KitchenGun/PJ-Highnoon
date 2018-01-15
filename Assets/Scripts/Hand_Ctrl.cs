@@ -21,6 +21,7 @@ public class Hand_Ctrl : MonoBehaviour
     public Animator HandRAniL;//애니메이터
 
     public AudioSource GunSfxL;
+    public AudioSource GrapL;
     public AudioClip Reload;//사운드
     public AudioClip[] FireSfx;
     public AudioClip FireFSfx;
@@ -222,7 +223,7 @@ public class Hand_Ctrl : MonoBehaviour
     {
         if (GrapCL < 1)//사운드
         {
-            GunSfxL.PlayOneShot(Grap);
+            GrapL.PlayOneShot(Grap);
             //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Grap));이것 좃같은 물건이다.
         }
         G_isGrapL = true;

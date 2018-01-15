@@ -8,6 +8,8 @@ public class MM_GameManager : MonoBehaviour
     public MeshRenderer a; //버튼이 되는병
     public Collider b;//콜라이더
     public GameObject B_Piece;//병 조각
+    public AudioClip[] BottleBrokenSfx;//병깨지는 소리
+    public AudioSource BottleSfx;
 
 
     private void Start()
@@ -15,11 +17,17 @@ public class MM_GameManager : MonoBehaviour
         a.enabled = true;
        
     }
-
+    void BottleSfxP()//발사음 랜덤재생
+    {
+        BottleSfx.clip = BottleBrokenSfx[Random.Range(0, 5)];
+        //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(GunSfxR.clip));이것 좃같은 물건이다.
+        BottleSfx.Play();
+    }
     public void StartScene()
     { 
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("StartScene1", 2.0f);
     }
@@ -28,6 +36,7 @@ public class MM_GameManager : MonoBehaviour
     {
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("LevelScene1", 2.0f);
     }
@@ -36,6 +45,7 @@ public class MM_GameManager : MonoBehaviour
     {
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("EasyScene1", 2.0f);
     }
@@ -44,6 +54,7 @@ public class MM_GameManager : MonoBehaviour
     {
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("NormalScene1", 2.0f);
     }
@@ -52,6 +63,7 @@ public class MM_GameManager : MonoBehaviour
     {
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("HardScene1", 2.0f);
     }
@@ -60,6 +72,7 @@ public class MM_GameManager : MonoBehaviour
     {
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("HowToPlayScene1", 2.0f);
     }
@@ -68,6 +81,7 @@ public class MM_GameManager : MonoBehaviour
     {
         a.enabled = false;
         Destroy(b);
+        BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
         Invoke("ExitScene1", 2.0f);
     }
