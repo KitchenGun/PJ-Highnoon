@@ -293,6 +293,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4538424134420844, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -31.882
@@ -339,9 +344,129 @@ Prefab:
       value: 
       objectReference: {fileID: 1712123869524464, guid: d44e2de920d0b974dbd9cd017955fd24,
         type: 2}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a7f6f29a0ba4f243bb54a8751aae432, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b2c436093355d44438e4ef6088e9f46a, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d29a9be3f5f53a4db6824b60388986f, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: ded199c255186ab4c863e127621a0889, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: c263d65b4f669a44da7a7479b24467bf, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4578b138f2318b540a3abfb00967a6f2, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleSfx
+      value: 
+      objectReference: {fileID: 285244188}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &285244187 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1498443434127744, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 285244186}
+--- !u!82 &285244188
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285244187}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &308047015
 Prefab:
   m_ObjectHideFlags: 0
@@ -515,6 +640,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4538424134420844, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -32
@@ -561,9 +691,129 @@ Prefab:
       value: 
       objectReference: {fileID: 1712123869524464, guid: d44e2de920d0b974dbd9cd017955fd24,
         type: 2}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a7f6f29a0ba4f243bb54a8751aae432, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b2c436093355d44438e4ef6088e9f46a, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d29a9be3f5f53a4db6824b60388986f, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: ded199c255186ab4c863e127621a0889, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: c263d65b4f669a44da7a7479b24467bf, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4578b138f2318b540a3abfb00967a6f2, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleSfx
+      value: 
+      objectReference: {fileID: 512644681}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &512644680 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1498443434127744, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 512644679}
+--- !u!82 &512644681
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512644680}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &526639075
 Prefab:
   m_ObjectHideFlags: 0
@@ -1164,6 +1414,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4538424134420844, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -31.88
@@ -1210,9 +1465,129 @@ Prefab:
       value: 
       objectReference: {fileID: 1712123869524464, guid: d44e2de920d0b974dbd9cd017955fd24,
         type: 2}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a7f6f29a0ba4f243bb54a8751aae432, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b2c436093355d44438e4ef6088e9f46a, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d29a9be3f5f53a4db6824b60388986f, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: ded199c255186ab4c863e127621a0889, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: c263d65b4f669a44da7a7479b24467bf, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleBrokenSfx.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4578b138f2318b540a3abfb00967a6f2, type: 3}
+    - target: {fileID: 114559928225873034, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+        type: 2}
+      propertyPath: BottleSfx
+      value: 
+      objectReference: {fileID: 1529717589}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 072fd28a489f1f244a42ca8d0511fb9e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1529717588 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1498443434127744, guid: 072fd28a489f1f244a42ca8d0511fb9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1529717587}
+--- !u!82 &1529717589
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529717588}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &1564329358
 Prefab:
   m_ObjectHideFlags: 0
