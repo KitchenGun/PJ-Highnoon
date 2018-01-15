@@ -10,6 +10,8 @@ public class Hand_Ctrl : MonoBehaviour
 
     public GameObject P_Go;//플레이어 오브젝트
 
+    public GameObject BeltGunL;
+
     public Transform G_FirePositionL;//발사위치
     public GameObject HandnGunL;//총없는손
     public GameObject G_gunhandL;//총있는손
@@ -224,6 +226,7 @@ public class Hand_Ctrl : MonoBehaviour
         if (GrapCL < 1)//사운드
         {
             GrapL.PlayOneShot(Grap);
+            Destroy(BeltGunL);
             //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Grap));이것 좃같은 물건이다.
         }
         G_isGrapL = true;

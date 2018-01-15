@@ -7,6 +7,7 @@ public class Hand_CtrlR : MonoBehaviour
 {
     public GameObject P_Go;//플레이어
     //public OVRInput.Controller Controller;
+    public GameObject BeltGunR;
 
     public Transform G_FirePositionR;//발사위치
     public GameObject HandnGunR;//총없는손
@@ -220,6 +221,7 @@ public class Hand_CtrlR : MonoBehaviour
         if(GrapCR<1)//사운드
         {
             GrapR.PlayOneShot(Grap);
+            Destroy(BeltGunR);
             //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Grap));이것 좃같은 물건이다.
         }
 
