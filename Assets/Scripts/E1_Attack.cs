@@ -58,6 +58,7 @@ public class E1_Attack : MonoBehaviour {
     {
         //이펙트 사운드
         FireSfxR();
+        G_MF.SendMessage("Play");
         //레이케스트라인 안에 들어온 물체 변수
         RaycastHit hit;
         if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
