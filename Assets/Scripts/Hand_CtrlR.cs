@@ -22,7 +22,8 @@ public class Hand_CtrlR : MonoBehaviour
     public AudioClip Reload;//사운드&진동
     public AudioClip[] FireSfx;
     public AudioClip FireFSfx;
-    private int wave = 0;
+    public AudioClip Grap;
+    private int GrapCR=0;//잡는 함수 호출 횟수
 
     private int G_BulletR = 6;//6발
 
@@ -215,9 +216,16 @@ public class Hand_CtrlR : MonoBehaviour
 
     public void H_changeR()//손모양 교체
     {
+        if(GrapCR<1)//사운드
+        {
+            GunSfxR.PlayOneShot(Grap);
+            //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Grap));이것 좃같은 물건이다.
+        }
+
         G_isGrapR = true;
         G_gunhandR.SetActive(true);
         HandnGunR.SetActive(false);
+        GrapCR++;//잡았다.
     }
 
     void G_allReload()//총의 총알 초기화

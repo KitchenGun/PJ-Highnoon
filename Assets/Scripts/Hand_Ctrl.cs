@@ -24,6 +24,8 @@ public class Hand_Ctrl : MonoBehaviour
     public AudioClip Reload;//사운드
     public AudioClip[] FireSfx;
     public AudioClip FireFSfx;
+    public AudioClip Grap;
+    private int GrapCL=0;
 
     private int G_BulletL = 6;//6발
 
@@ -218,9 +220,15 @@ public class Hand_Ctrl : MonoBehaviour
     }
     public void H_changeL()//손모양 교체
     {
+        if (GrapCL < 1)//사운드
+        {
+            GunSfxL.PlayOneShot(Grap);
+            //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(Grap));이것 좃같은 물건이다.
+        }
         G_isGrapL = true;
         G_gunhandL.SetActive(true);
         HandnGunL.SetActive(false);
+        GrapCL++;
     }
 
     void G_allReload()//총의 총알 초기화
