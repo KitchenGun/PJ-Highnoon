@@ -1313,7 +1313,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1683205079487892, guid: 86d84285ef39db64c986f37878b14861, type: 2}
       propertyPath: m_Name
-      value: Candle1 (3)
+      value: Candle1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86d84285ef39db64c986f37878b14861, type: 2}
@@ -1915,7 +1915,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1233580066405178, guid: 6b93fd896c90c094c8577de7399669b5, type: 2}
       propertyPath: m_Name
-      value: Candle2 (1)
+      value: Candle2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b93fd896c90c094c8577de7399669b5, type: 2}
@@ -2709,7 +2709,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1233580066405178, guid: 6b93fd896c90c094c8577de7399669b5, type: 2}
       propertyPath: m_Name
-      value: Candle2 (3)
+      value: Candle2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b93fd896c90c094c8577de7399669b5, type: 2}
@@ -3067,7 +3067,7 @@ Transform:
   - {fileID: 1805178508}
   - {fileID: 1585919259}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340293425
 GameObject:
@@ -5659,10 +5659,12 @@ MonoBehaviour:
   e1: {fileID: 7438462}
   GunSfxR: {fileID: 678959233}
   FireSfx:
-  - {fileID: 8300000, guid: 185bd83417f9a4c4eb1a680d9c43bded, type: 3}
-  - {fileID: 8300000, guid: 0613cc9d9eae5fd45ad7518c524d0de8, type: 3}
-  - {fileID: 8300000, guid: 879ccb0b013bd4e419bf4b5c295128d2, type: 3}
-  - {fileID: 8300000, guid: 381358ae51c568143a9ba40be0588e8f, type: 3}
+  - {fileID: 8300000, guid: 5bae66e883b57974b9de2ee4d52ac13a, type: 3}
+  - {fileID: 8300000, guid: ea5ef43fb45e34846838f1022875238e, type: 3}
+  - {fileID: 8300000, guid: 2c71b51bb958d864fa711f065bc03bec, type: 3}
+  - {fileID: 8300000, guid: df7eb549156933747ab3c427521654a4, type: 3}
+  - {fileID: 8300000, guid: 3105971d6e9460a4f92b7adad55a3372, type: 3}
+  - {fileID: 8300000, guid: 470d60c4e1fcf6d4da12c6aa1c661033, type: 3}
   G_MF: {fileID: 0}
   G_FirePosition: {fileID: 1220999577}
 --- !u!136 &678959232
@@ -5872,7 +5874,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1233580066405178, guid: 6b93fd896c90c094c8577de7399669b5, type: 2}
       propertyPath: m_Name
-      value: Candle2 (2)
+      value: Candle2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b93fd896c90c094c8577de7399669b5, type: 2}
@@ -8865,7 +8867,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1683205079487892, guid: 86d84285ef39db64c986f37878b14861, type: 2}
       propertyPath: m_Name
-      value: Candle1 (1)
+      value: Candle1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86d84285ef39db64c986f37878b14861, type: 2}
@@ -16214,7 +16216,7 @@ Transform:
   - {fileID: 1643721416}
   - {fileID: 176276387}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1858708844
 Prefab:
@@ -16257,7 +16259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1683205079487892, guid: 86d84285ef39db64c986f37878b14861, type: 2}
       propertyPath: m_Name
-      value: Candle1 (2)
+      value: Candle1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86d84285ef39db64c986f37878b14861, type: 2}
