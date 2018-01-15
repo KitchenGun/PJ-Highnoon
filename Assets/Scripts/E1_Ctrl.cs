@@ -97,15 +97,15 @@ public class E1_Ctrl : MonoBehaviour
 
     void E_OnAttack()
     {
+        Debug.Log("Die");
         if (E_HitCount>=1)//피격횟수가 초과시 죽음
         {
             StopAllCoroutines();
-            Debug.Log("Die");
+            //Debug.Log("Die");
             animator.SetBool("isdie", true);
             GetComponent<AudioSource>().Play();
             Destroy(E1attack);
             E1Collider.enabled=!E1Collider.enabled;//콜라이더 제거
-            PDie();
         }
 
         //피격 애니메이션 사운드 필요

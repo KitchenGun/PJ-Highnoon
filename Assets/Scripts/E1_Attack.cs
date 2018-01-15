@@ -60,12 +60,6 @@ public class E1_Attack : MonoBehaviour {
 
     void G_Fire()//발사
     {
-        if (P_Go == null)
-        {
-            G_Bullet = 1;
-            G_Bullet--;
-            return;
-        }
         //이펙트 사운드
         FireSfxR();
         G_MF.SendMessage("Play");
@@ -76,31 +70,42 @@ public class E1_Attack : MonoBehaviour {
             Debug.Log(hit.transform.name);
             if (hit.collider.tag == "Player")//플레이어 탐지시
             {
+                Debug.Log("Hit");
                 //적 공격 오브젝트 비활성
                 E1Attack.SetActive(false);
                 //적 기본 오브젝트 활성
                 e1.SetActive(true);
                 //플레이어에 대미지 입히는 함수
-                hit.collider.gameObject.SendMessage("P_Die", SendMessageOptions.DontRequireReceiver);
+                //hit.collider.gameObject.SendMessage("P_Die", SendMessageOptions.DontRequireReceiver);
                 //적캐릭터에게 플레이어 사망 전달
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
-        this.transform.LookAt(P_Go.transform);//플레이어 따라 시선 이동
+        if (P_Go == null)
+        {
+            //적캐릭터에게 플레이어 사망 전달
+            e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            this.transform.LookAt(P_Go.transform);//플레이어 따라 시선 이동
+        }
+        
         //this.E1_FireReady = false;
     }
     void FireSfxR()//발사음 랜덤재생
     {
-        WhizSfxR();
+        
         E1GunSfx.clip = FireSfx[Random.Range(0, 4)];
         E1GunSfx.Play();
-        G_Bullet--;
+        WhizSfxR();
     }
     void WhizSfxR()//탄 지나가는 사운드
     {
         Debug.Log("DD");
         WhizSfx.clip = WhizBSfx[Random.Range(0, 6)];
         WhizSfx.Play();
+        G_Bullet--;
     }
 
 
