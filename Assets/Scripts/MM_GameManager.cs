@@ -11,7 +11,6 @@ public class MM_GameManager : MonoBehaviour
     public AudioClip[] BottleBrokenSfx;//병깨지는 소리
     public AudioSource BottleSfx;
 
-
     private void Start()
     {
         a.enabled = true;
@@ -120,4 +119,6 @@ public class MM_GameManager : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+    
 }
