@@ -13,7 +13,9 @@ public class E1_Attack : MonoBehaviour {
     //애니메이터
     private Animator animator;
     //총사운드
-    public AudioSource GunSfxR;
+    public AudioSource E1GunSfx;
+    public AudioSource WhizSfx;
+    public AudioClip[] WhizBSfx;
     public AudioClip[] FireSfx;
     //총격 이펙트
     public GameObject G_MF;
@@ -31,13 +33,13 @@ public class E1_Attack : MonoBehaviour {
     //private bool isStop = false;
 
 
-    void Start ()
+    void Start()
     {
         StartCoroutine(CoReady());
     }
-	
 
-	void Update ()
+
+    void Update()
     {
         //레이그리기
         Debug.DrawRay(G_FirePosition.position, G_FirePosition.forward * 100, Color.green);
@@ -58,7 +60,12 @@ public class E1_Attack : MonoBehaviour {
 
     void G_Fire()//발사
     {
-        this.transform.LookAt(P_Go.transform);
+        if (P_Go == null)
+        {
+            G_Bullet = 1;
+            G_Bullet--;
+            return;
+        }
         //이펙트 사운드
         FireSfxR();
         G_MF.SendMessage("Play");
@@ -79,14 +86,23 @@ public class E1_Attack : MonoBehaviour {
                 e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
+        this.transform.LookAt(P_Go.transform);//플레이어 따라 시선 이동
         //this.E1_FireReady = false;
     }
     void FireSfxR()//발사음 랜덤재생
     {
+        WhizSfxR();
+        E1GunSfx.clip = FireSfx[Random.Range(0, 4)];
+        E1GunSfx.Play();
         G_Bullet--;
-        GunSfxR.clip = FireSfx[Random.Range(0, 3)];
-        GunSfxR.Play();
     }
+    void WhizSfxR()//탄 지나가는 사운드
+    {
+        Debug.Log("DD");
+        WhizSfx.clip = WhizBSfx[Random.Range(0, 6)];
+        WhizSfx.Play();
+    }
+
 
     IEnumerator CoReady()
     {

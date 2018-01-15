@@ -105,8 +105,9 @@ public class E1_Ctrl : MonoBehaviour
             GetComponent<AudioSource>().Play();
             Destroy(E1attack);
             E1Collider.enabled=!E1Collider.enabled;//콜라이더 제거
+            PDie();
         }
-        Debug.Log("Hit");
+
         //피격 애니메이션 사운드 필요
         E_HitCount++;//적피격
     }
