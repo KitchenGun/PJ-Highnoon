@@ -8,6 +8,7 @@ public class Hand_CtrlR : MonoBehaviour
     public GameObject P_Go;//플레이어
     //public OVRInput.Controller Controller;
     public GameObject BeltGunR;
+    public GameObject ReloadUIR;
 
     public Transform G_FirePositionR;//발사위치
     public GameObject HandnGunR;//총없는손
@@ -16,6 +17,8 @@ public class Hand_CtrlR : MonoBehaviour
     private bool G_isReadyR = false;//총을 쏠수 있는가?
     private bool G_TriggerBack;//노리쇠후퇴
     public GameObject G_MFR;//머즐플래쉬
+
+
 
     public Animator HandRAniR;//애니메이터
 
@@ -32,6 +35,7 @@ public class Hand_CtrlR : MonoBehaviour
 
     private void Start()
     {
+        
         G_isGrapR = false;
         G_isReadyR = true;
         G_TriggerBack = true;
@@ -94,7 +98,7 @@ public class Hand_CtrlR : MonoBehaviour
         FireSfxR();
         HandRAniR.SetTrigger("Fire");
         G_MFR.SendMessage("Play");
-
+        
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
         if (Physics.Raycast(G_FirePositionR.position, G_FirePositionR.forward, out hit, 100.0f))//레이 탐색 
         {
@@ -158,7 +162,7 @@ public class Hand_CtrlR : MonoBehaviour
 
         }
         G_BulletR--;
-
+        ReloadUIR.SendMessage("GunUI", G_BulletR);
         G_isReadyR = false;
     }
     void G_FireFR()//총발사 실패

@@ -11,7 +11,8 @@ public class Hand_Ctrl : MonoBehaviour
     public GameObject P_Go;//플레이어 오브젝트
 
     public GameObject BeltGunL;
-
+    public GameObject ReloadUIL;
+   
     public Transform G_FirePositionL;//발사위치
     public GameObject HandnGunL;//총없는손
     public GameObject G_gunhandL;//총있는손
@@ -35,6 +36,7 @@ public class Hand_Ctrl : MonoBehaviour
 
     private void Start()
     {
+        
         G_isGrapL = false;
         G_isReadyL = true;
         G_TriggerBackL = true;
@@ -100,13 +102,12 @@ public class Hand_Ctrl : MonoBehaviour
         G_TriggerBackL = false;
         FireSfxL();
         G_MFL.SendMessage("Play");
-
         RaycastHit hit;//레이케스트라인 안에 들어온 물체 변수
         if (Physics.Raycast(G_FirePositionL.position, G_FirePositionL.forward, out hit, 100.0f))//레이 탐색 
         {
             if (hit.collider.tag == "Enemy")//적 탐지시
             {
-                
+
                 //몬스터에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("E_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
@@ -165,7 +166,7 @@ public class Hand_Ctrl : MonoBehaviour
 
         }
         G_BulletL--;
-
+        ReloadUIL.SendMessage("GunUI", G_BulletL);
         G_isReadyL = false;
     }
     void G_FireFL()//총발사 실패
