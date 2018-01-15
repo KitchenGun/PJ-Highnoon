@@ -20,11 +20,6 @@ public class E2_Ctrl : MonoBehaviour
         public E2_State e2_state = E2_State.Idle;
         //캐릭터 이동 속도
         float speed = 3.0f;
-        //적캐릭터 숨기기위한 변수
-        public GameObject E1;
-        //공격시 나올 적 캐릭터
-        public GameObject E1attack;
-
         void Start()
         {
             //적캐릭터 행동 상태 체크
@@ -77,8 +72,6 @@ public class E2_Ctrl : MonoBehaviour
 
                     //attack 상태
                     case E2_State.Attack:
-                        E1.SetActive(false);
-                        E1attack.SetActive(true);
                         break;
 
                     //pdie 상태

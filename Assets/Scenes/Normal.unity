@@ -184,6 +184,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -5.775753
       objectReference: {fileID: 0}
+    - target: {fileID: 82011565471462442, guid: fbf3175ece16381468f1a8d9a4b94e6b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbf3175ece16381468f1a8d9a4b94e6b, type: 2}
   m_IsPrefabParent: 0
@@ -321,5 +326,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartSigh: 3
   e2_state: 0
-  E1: {fileID: 0}
-  E1attack: {fileID: 0}
