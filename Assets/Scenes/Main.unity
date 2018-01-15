@@ -12628,6 +12628,10 @@ Prefab:
       propertyPath: m_Name
       value: Directional light
       objectReference: {fileID: 0}
+    - target: {fileID: 1258317985179270, guid: bf14354ea0e53cc4cab90edc40057e8e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf14354ea0e53cc4cab90edc40057e8e, type: 2}
   m_IsPrefabParent: 0
