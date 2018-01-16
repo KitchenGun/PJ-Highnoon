@@ -15,6 +15,7 @@ public class E1_Attack : MonoBehaviour {
     //총사운드
     public AudioSource E1GunSfx;
     public AudioSource WhizSfx;
+
     public AudioClip[] WhizBSfx;
     public AudioClip[] FireSfx;
     //총격 이펙트
@@ -35,7 +36,7 @@ public class E1_Attack : MonoBehaviour {
 
     void Start()
     {
-            StartCoroutine(CoReady());
+        StartCoroutine(CoReady());
     }
 
 
@@ -95,14 +96,11 @@ public class E1_Attack : MonoBehaviour {
     }
     void FireSfxR()//발사음 랜덤재생
     {
-        
         E1GunSfx.clip = FireSfx[Random.Range(0, 4)];
         E1GunSfx.Play();
-        WhizSfxR();
     }
     void WhizSfxR()//탄 지나가는 사운드
     {
-        Debug.Log("DD");
         WhizSfx.clip = WhizBSfx[Random.Range(0, 6)];
         WhizSfx.Play();
         G_Bullet--;
@@ -117,6 +115,7 @@ public class E1_Attack : MonoBehaviour {
             if (G_Bullet > 3)
             {
                 FireSfxR();
+                WhizSfxR();
                 yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
             }
             else if (0 < G_Bullet && G_Bullet <=3)

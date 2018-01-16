@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public enum E1_State { Idle, Attack, Die, Hit, PDie };
 public class E1_Ctrl : MonoBehaviour
@@ -28,6 +30,14 @@ public class E1_Ctrl : MonoBehaviour
     Collider E1Collider;
     //적 피격횟수
     private int E_HitCount=0;
+    //게임관리 오디오 소스
+    public AudioSource GameplaySfx;
+    public AudioClip GameStartSfx;
+    public AudioClip GameEndSfx;
+    //적 캐릭터 음성 소스
+    public AudioSource E1Sfx;
+ 
+
 
     void Start()
     {
@@ -98,44 +108,57 @@ public class E1_Ctrl : MonoBehaviour
     void E_OnAttack()
     {
         Debug.Log("Die");
-        if (E_HitCount>=1)//피격횟수가 초과시 죽음
-        {
-            StopAllCoroutines();
-            //Debug.Log("Die");
-            animator.SetBool("isdie", true);
-            GetComponent<AudioSource>().Play();
-            Destroy(E1attack);
-            E1Collider.enabled=!E1Collider.enabled;//콜라이더 제거
-        }
-
+        
+        StopAllCoroutines();
+        //Debug.Log("Die");
+        animator.SetTrigger("isdie");
+        Destroy(E1attack);
+        E1Collider.enabled=!E1Collider.enabled;//콜라이더 제거
+        GameEnd();//게임끝 
+        
         //피격 애니메이션 사운드 필요
         E_HitCount++;//적피격
     }
 
-    void PDie()
+    void PDie()//플레이어가 죽음
     {
         Debug.Log("Walk");
         this.transform.position +=  new Vector3(0, 0, -speed)*Time.deltaTime;
     }
 
-    void P_OnAttack()
+    void P_OnAttack()//플레이어가 공격을 당함(걸어가는 애니메이션 실행)
     {
         ispdie = true;
         animator.SetTrigger("ispdie");
+        GameEnd();
     }
 
-    void IsStop()
+    void IsStop()//정지 명령
     {
         speed = 0;
         animator.SetTrigger("isspread");
     }
 
+    void GameStart()//게임 시작 관리
+    {
+        GameplaySfx.PlayOneShot(GameStartSfx);
+    }
+    void GameEnd()//게임 끝 관리
+    {
+        GameplaySfx.PlayOneShot(GameEndSfx);
+        Invoke("GameEndCall", 2.0f);
+    }
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "StopE1")
+        if (col.gameObject.tag == "StopE1")//정지 콜라이더 충돌시 정지
         {
             Debug.Log("Stoped");
             IsStop();
         }
     }
+    void GameEndCall()
+    {
+        SceneManager.LoadScene(1);
+    }
+    
 }
