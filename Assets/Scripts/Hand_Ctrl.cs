@@ -114,9 +114,9 @@ public class Hand_Ctrl : MonoBehaviour
 
             if (hit.collider.tag == "Player")//적 탐지시
             {
-                object[] _params = new object[2];//레이피격시 내부 정보추출
-                _params[0] = hit.point;
-                _params[1] = 100;
+                //object[] _params = new object[2];//레이피격시 내부 정보추출
+                //_params[0] = hit.point;
+                //_params[1] = 100;
                 //몬스터에 대미지 입히는 함수
                 hit.collider.gameObject.SendMessage("OnAttack", SendMessageOptions.DontRequireReceiver);
             }
@@ -139,13 +139,13 @@ public class Hand_Ctrl : MonoBehaviour
             {
                 G_BulletL++;
                 //씬호출
-                hit.collider.gameObject.SendMessage(" ExitScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("ExitScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "EZTB")// 쉬움상대 버튼 탐지시
             {
                 G_BulletL++;
-                P_Go.SendMessage("Set");//위치 변경
+                //P_Go.SendMessage("Set");//위치 변경
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
             }
@@ -154,14 +154,14 @@ public class Hand_Ctrl : MonoBehaviour
             {
                 G_BulletL++;
                 //씬호출
-                hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("NormalScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "BTB")// 어려운상대 버튼 탐지시
             {
                 G_BulletL++;
                 //씬호출
-                hit.collider.gameObject.SendMessage(" ExitScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("HardScene", SendMessageOptions.DontRequireReceiver);
             }
 
         }

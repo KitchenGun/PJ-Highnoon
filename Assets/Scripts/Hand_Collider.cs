@@ -23,7 +23,7 @@ public class Hand_Collider : MonoBehaviour
     private void OnCollisionStay(Collision c)
     {
         //Debug.Log(c.transform.name);
-        if (c.gameObject.tag == "Player"&&Grap_F>=0.8)
+        if (c.gameObject.tag == "Player"&&Grap_F>=0.8 && GunReady == true)
         {
             Debug.Log("ddd");
             GunL.SendMessage("H_changeL");

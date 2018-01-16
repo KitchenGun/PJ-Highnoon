@@ -138,12 +138,12 @@ public class Hand_CtrlR : MonoBehaviour
             if (hit.collider.tag == "EB")//나가기 버튼 탐지시
             {
                 //씬호출
-                hit.collider.gameObject.SendMessage(" ExitScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("ExitScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "EZTB")// 쉬움상대 버튼 탐지시
             {
-                P_Go.SendMessage("Set");//위치 변경
+                //P_Go.SendMessage("Set");//위치 변경
                 //씬호출
                 hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
             }
@@ -151,13 +151,13 @@ public class Hand_CtrlR : MonoBehaviour
             if (hit.collider.tag == "NTB")// 중간상대 버튼 탐지시
             {
                 //씬호출
-                hit.collider.gameObject.SendMessage("EasyScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("NormalScene", SendMessageOptions.DontRequireReceiver);
             }
 
             if (hit.collider.tag == "BTB")// 어려운상대 버튼 탐지시
             {
                 //씬호출
-                hit.collider.gameObject.SendMessage(" ExitScene", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("HardScene", SendMessageOptions.DontRequireReceiver);
             }
 
         }
