@@ -327,9 +327,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 381358ae51c568143a9ba40be0588e8f, type: 3}
   G_MF: {fileID: 1629616464}
   E3: {fileID: 174082616}
-  GameplaySfx: {fileID: 0}
-  GameStartSfx: {fileID: 0}
-  GameEndSfx: {fileID: 0}
+  GameplaySfx: {fileID: 1092767387}
+  GameStartSfx: {fileID: 8300000, guid: a1d2a8027af8f4e45b4c7be0c60959af, type: 3}
+  GameEndSfx: {fileID: 8300000, guid: 10581e1cfbca7cc4fbf5a41f7929d567, type: 3}
 --- !u!4 &174082622 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 5f3b0e72dbafa494893b20b7d82dfb1f, type: 3}
@@ -506,6 +506,11 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 82442518914315638, guid: fbf3175ece16381468f1a8d9a4b94e6b,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82823454820497394, guid: fbf3175ece16381468f1a8d9a4b94e6b,
         type: 2}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -771,6 +776,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1092767387 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82442518914315638, guid: fbf3175ece16381468f1a8d9a4b94e6b,
+    type: 2}
+  m_PrefabInternal: {fileID: 536513124}
 --- !u!1 &1343079444
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,6 +58,7 @@ public class E3_Ctrl : MonoBehaviour
 
     void Start()
     {
+        Invoke("GameStart", 6.0f);
         E3Collider = GetComponent<Collider>();
         //적캐릭터 행동 상태 체크
         StartCoroutine(CheckE3State());
@@ -226,7 +227,6 @@ public class E3_Ctrl : MonoBehaviour
 
     void E_Startattack()
     {
-        Invoke("GameStart", 6.0f);
         animator.SetTrigger("isattack");
     }
     void G_Fire()//발사
