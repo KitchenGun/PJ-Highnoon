@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 588d275c57e5d6e48a4574958bbd1c36, type: 3}
+        m_Texture: {fileID: 2800000, guid: 65062bc3b9ff4e9499e57119d15d5e11, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Control:
@@ -35,7 +35,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
-        m_Texture: {fileID: 2800000, guid: 588d275c57e5d6e48a4574958bbd1c36, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2ebdaa82f717c124faa1f7fd17c88eb6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -43,11 +43,11 @@ Material:
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 1, y: 1}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4ef50d406cff71a44aedbcc917b10bc7, type: 3}
+        m_Texture: {fileID: 2800000, guid: ba31d08bfc06d82468c28eca1b9b5d60, type: 3}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 1, y: 1}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: dab5060081ae0b443b8a706d95a3deee, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1723b41468592fa4e97b7e8bec17926f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal0:
@@ -67,15 +67,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 54ba17982dfbcee4f99dc16c64d193b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: fc8667b06d3f26f46a81a1d422d4541e, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab4dff37c71332642aae75f25fa7f62d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 77590702ed73a514bb67e92cebbb8737, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3d60bd075c6f0b340bb6b5aff4e26cd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat0:
