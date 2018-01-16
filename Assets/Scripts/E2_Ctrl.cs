@@ -12,6 +12,8 @@ public class E2_Ctrl : MonoBehaviour
     private bool isdie = false;
     //플레이어 사망여부ㅡ
     private bool ispdie = false;
+    //공격시작판정
+    private bool isattack = false;
     //콜리더 충돌
     // bool isStop = false;
     //시작신호
@@ -20,6 +22,9 @@ public class E2_Ctrl : MonoBehaviour
     public E2_State e2_state = E2_State.Idle;
     //캐릭터 이동 속도
     float speed =3.0f;
+    //적캐릭터지정
+    public GameObject e2;
+
     void Start()
     {
         //적캐릭터 행동 상태 체크
@@ -31,7 +36,10 @@ public class E2_Ctrl : MonoBehaviour
 
     private void Update()
     {
-        StartSigh -= Time.deltaTime;
+        if(isattack)
+        {
+            StartSigh -= Time.deltaTime;
+        }
         if (ispdie)
         {
             PDie();
@@ -74,7 +82,8 @@ public class E2_Ctrl : MonoBehaviour
 
                //attack 상태
                case E2_State.Attack:
-                   break;
+                    animator.SetTrigger("isattack");
+                    break;
 
                //pdie 상태
                case E2_State.PDie:
@@ -94,8 +103,7 @@ public class E2_Ctrl : MonoBehaviour
 
     void PDie()
     {
-        Debug.Log("Walk");
-        this.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
+        animator.SetTrigger("ispdie");
     }
 
     void P_OnAttack()
@@ -104,13 +112,15 @@ public class E2_Ctrl : MonoBehaviour
         animator.SetTrigger("ispdie");
     }
 
-        void IsStop()
+    void IsStop()
     {
         speed = 0;
-        animator.SetTrigger("isturn");
-        animator.SetBool("isattack", true);
-        
+        transform.Rotate(new Vector3(0, 90.0f, 0));
+    }
 
+    void Attack()
+    {
+        e2.SendMessage("StartAttack");
     }
 
     void OnCollisionEnter(Collision col)
@@ -119,6 +129,9 @@ public class E2_Ctrl : MonoBehaviour
         {
             Debug.Log("Stoped");
             IsStop();
+            isattack = true;
+            animator.SetTrigger("isturn");
+            Invoke("Attack", 3.0f);
         }
     }
  }

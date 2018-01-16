@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_Attack : MonoBehaviour {
+public class E2_Attack : MonoBehaviour
+{
 
 
     public GameObject P_Go;//플레이어 게임오브젝트
-    //적캐릭터 공격
-    public GameObject E1Attack;
     //적캐릭터 기본 
-    public GameObject e1;
+    public GameObject e2;
     //애니메이터
     private Animator animator;
     //총사운드
@@ -35,7 +34,6 @@ public class E1_Attack : MonoBehaviour {
 
     void Start()
     {
-            StartCoroutine(CoReady());
     }
 
 
@@ -49,12 +47,8 @@ public class E1_Attack : MonoBehaviour {
     {
         StopAllCoroutines();
         Debug.Log("hit");
-        //적공격 오브젝트 비활성
-        E1Attack.SetActive(false);
-        //적기본 오브젝트 활성
-        e1.SetActive(true);
         //피격판정
-        e1.SendMessage("E_OnAttack");
+        e2.SendMessage("E_OnAttack");
 
     }
 
@@ -71,31 +65,27 @@ public class E1_Attack : MonoBehaviour {
             if (hit.collider.tag == "Player")//플레이어 탐지시
             {
                 Debug.Log("Hit");
-                //적 공격 오브젝트 비활성
-                E1Attack.SetActive(false);
-                //적 기본 오브젝트 활성
-                e1.SetActive(true);
                 //플레이어에 대미지 입히는 함수
                 //hit.collider.gameObject.SendMessage("P_Die", SendMessageOptions.DontRequireReceiver);
                 //적캐릭터에게 플레이어 사망 전달
-                e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
+                e2.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
             }
         }
         if (P_Go == null)
         {
             //적캐릭터에게 플레이어 사망 전달
-            e1.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
+            e2.SendMessage("P_OnAttack", SendMessageOptions.DontRequireReceiver);
         }
         else
         {
             this.transform.LookAt(P_Go.transform);//플레이어 따라 시선 이동
         }
-        
+
         //this.E1_FireReady = false;
     }
     void FireSfxR()//발사음 랜덤재생
     {
-        
+
         E1GunSfx.clip = FireSfx[Random.Range(0, 4)];
         E1GunSfx.Play();
         WhizSfxR();
@@ -106,6 +96,10 @@ public class E1_Attack : MonoBehaviour {
         WhizSfx.clip = WhizBSfx[Random.Range(0, 6)];
         WhizSfx.Play();
         G_Bullet--;
+    }
+    void StartAttack()
+    {
+        StartCoroutine(CoReady());
     }
 
 
@@ -119,7 +113,7 @@ public class E1_Attack : MonoBehaviour {
                 FireSfxR();
                 yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
             }
-            else if (0 < G_Bullet && G_Bullet <=3)
+            else if (0 < G_Bullet && G_Bullet <= 3)
             {
                 G_Fire();
                 yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);

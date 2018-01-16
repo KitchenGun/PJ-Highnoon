@@ -27,7 +27,12 @@ ModelImporter:
     4300004: table
     4300006: chair
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: c0eae32b378fb1944a0dd055c824c7c5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -65,7 +70,7 @@ ModelImporter:
     importCameras: 0
     importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

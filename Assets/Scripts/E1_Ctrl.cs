@@ -19,7 +19,7 @@ public class E1_Ctrl : MonoBehaviour
     //현재 상태 저장
     public E1_State e1_state = E1_State.Idle;
     //캐릭터 이동 속도
-    float speed = 3.0f;
+    float speed = 2.0f;
     //적캐릭터 숨기기위한 변수
     public GameObject E1;
     //공격시 나올 적 캐릭터
