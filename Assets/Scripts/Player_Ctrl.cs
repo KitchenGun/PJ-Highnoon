@@ -27,9 +27,7 @@ public class Player_Ctrl : MonoBehaviour
     {
         //AudioSource 컴포넌트를 추출한 후 변수에 할당
         source = GetComponent<AudioSource>();
-
-        RHandG.SendMessage("G_allReload");
-        LHandG.SendMessage("G_allReload");
+        
     }
 
     private void Awake()

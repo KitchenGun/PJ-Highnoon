@@ -15,7 +15,6 @@ public class Hand_Collider1 : MonoBehaviour {
     }
     private void OnCollisionStay(Collision c)//충돌판정
     {
-        Debug.Log(c.transform.name);
         if (c.gameObject.tag == "Player" && Grap_FR >= 0.8)//손이 플레이어충돌하고 그랩인풋값들어왔을때
         {
             Debug.Log("ggg");

@@ -13,6 +13,7 @@ public class E2_Ctrl : MonoBehaviour
     private bool isdie = false;
     //플레이어 사망여부
     private bool ispdie = false;
+    int a = 0;
     //적캐릭터 대기시작
     private bool isIdle = false;
     //캐릭터 회전
@@ -30,6 +31,7 @@ public class E2_Ctrl : MonoBehaviour
     Collider E2Collider;
     //적 피격횟수
     public int E_HitCount = 0;
+    int b = 0;
     //발사위치
     public Transform G_FirePosition;
     //총알수
@@ -45,15 +47,15 @@ public class E2_Ctrl : MonoBehaviour
     public GameObject G_MF;
     public GameObject E2;
     //발사속도
-    float E1_BulletRpm = 30.0f;
+    float E1_BulletRpm = 120.0f;
 
     void Start()
     {
         E2Collider = GetComponent<Collider>();
         //적캐릭터 행동 상태 체크
-        StartCoroutine(CheckE1State());
+        StartCoroutine(CheckE2State());
         //적캐릭터의 상태에따라 동작
-        StartCoroutine(E1Action());
+        StartCoroutine(E2Action());
         animator = this.gameObject.GetComponent<Animator>();
     }
 
@@ -62,26 +64,26 @@ public class E2_Ctrl : MonoBehaviour
         this.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
         //레이그리기
         Debug.DrawRay(G_FirePosition.position, G_FirePosition.forward * 100, Color.green);
-        if (E_HitCount <= 1)
-        {
-            Debug.Log("reattack");
-            animator.SetBool("isattack", true);
-            animator.SetBool("ishit", false);
-        }
+        //if (E_HitCount <= 1)
+        //{
+        //    Debug.Log("reattack");
+        //    animator.SetBool("isattack", true);
+        //    animator.SetBool("ishit", false);
+        //}
         if (isIdle)
         {
             //시작카운트 차감 시작
             StartSigh -= Time.deltaTime;
             
         }
-        if (ispdie)
+        if(isdie)
         {
             PDie();
         }
     }
 
     //일정 간격으로 몬스터행동 체크 및 스테이츠 변경
-    IEnumerator CheckE1State()
+    IEnumerator CheckE2State()
     {
         while (!isdie)
         {
@@ -97,12 +99,13 @@ public class E2_Ctrl : MonoBehaviour
             }
             else if (ispdie == true)
             {
+                yield return new WaitForSeconds(0.2f);
                 e2_state = E2_State.PDie;
             }
         }
     }
 
-    IEnumerator E1Action()
+    IEnumerator E2Action()
     {
         while (!isdie)
         {
@@ -114,49 +117,69 @@ public class E2_Ctrl : MonoBehaviour
 
                 //attack 상태
                 case E2_State.Attack:
-                    StartTurn();
-                    if (G_Bullet > 3)
                     {
-                        FireSfxR();
-                        WhizSfxR();
-                        yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
-                    }
-                    else if (0 < G_Bullet && G_Bullet <= 4)
-                    {
-                        G_Fire();
-                        yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
-                    }
-                    if (G_Bullet <= 0)
-                    {
-                        break;
-                    }
-                    break;
+                        StartTurn();
+                        yield return new WaitForSeconds(1.2f);
+                        if (G_Bullet > 4)
+                        {
+                            FireSfxR();
+                            Invoke("WhizSfxR", 0.1f);
+                            yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+                        }
+                        else if (0 < G_Bullet && G_Bullet <= 4)
+                        {
 
+                            if (!ispdie)
+                            {
+                                yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+                                G_Fire();
+                            }
+                            else if(ispdie)
+                            {
+                                PDie();
+                                break;
+                            }
+                        }
+                        if (G_Bullet <= 0)
+                        {
+                            break;
+                        }
+                        break;
+
+                    }
                 //pdie 상태
                 case E2_State.PDie:
+                    {
+                        PDie();
+                    }
                     break;
             }
             yield return null;
         }
     }
 
-    void E_OnAttack()
+    void E_OnAttack()//적 공격받음
     {
         E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
         Debug.Log("Die");
-        if (E_HitCount > 1)//피격횟수가 초과시 죽음
+        if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
             StopAllCoroutines();
-            animator.SetBool("isdie", true);
+            animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();
             E2Collider.enabled = !E2Collider.enabled;//콜라이더 제거
         }
 
-        if (E_HitCount <= 1)//피격획수 미달시 다시 공격
+        if (E_HitCount == 0)//피격획수 미달시 다시 공격
         {
-            Debug.Log("reattack");
-            animator.SetTrigger("reattack");
-            animator.SetBool("ishit",true);
+            animator.SetTrigger("ishit");
+            if (b<1)
+            {
+                Debug.Log("reattack");
+                animator.SetTrigger("reattack");
+            }
+            b++;
+            
         }
         //피격 애니메이션 사운드 필요
         E_HitCount++;//적피격
@@ -164,9 +187,13 @@ public class E2_Ctrl : MonoBehaviour
 
     void PDie()
     {
-        E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
-        Debug.Log("Kiss");
-        animator.SetTrigger("ispdie");
+        if(a<1)
+        {
+            E2.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
+            Debug.Log("Kiss");
+            animator.SetTrigger("ispdie");
+        }
+        a++;
     }
 
     void P_OnAttack()
@@ -174,7 +201,7 @@ public class E2_Ctrl : MonoBehaviour
         ispdie = true;
     }
 
-    void IsStop()
+    void IsStop()//시작부분 정지
     {
         speed = 0;
         animator.SetTrigger("isidle");
@@ -200,7 +227,7 @@ public class E2_Ctrl : MonoBehaviour
     {
         //이펙트 사운드
         FireSfxR();
-        G_MF.SendMessage("Play");
+        
         //레이케스트라인 안에 들어온 물체 변수
         RaycastHit hit;
         if (Physics.Raycast(G_FirePosition.position, G_FirePosition.forward, out hit, 100.0f))//레이 탐색 
@@ -229,7 +256,7 @@ public class E2_Ctrl : MonoBehaviour
     }
     void FireSfxR()//발사음 랜덤재생
     {
-
+        G_MF.SendMessage("Play");
         E1GunSfx.clip = FireSfx[Random.Range(0, 4)];
         E1GunSfx.Play();
         G_Bullet--;

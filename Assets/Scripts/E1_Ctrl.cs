@@ -98,7 +98,7 @@ public class E1_Ctrl : MonoBehaviour
 
                 //pdie 상태
                 case E1_State.PDie:
-                    this.transform.position += this.transform.position + new Vector3(0, 0, speed);
+                    this.transform.position += this.transform.position + new Vector3(0, 0, speed)*Time.deltaTime;
                     break;
             }
             yield return null;
