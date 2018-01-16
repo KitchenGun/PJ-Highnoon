@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum E2_State { Walk, Idle, Attack, Die, Hit, PDie };
 public class E2_Ctrl : MonoBehaviour
@@ -46,6 +47,10 @@ public class E2_Ctrl : MonoBehaviour
     //총격 이펙트
     public GameObject G_MF;
     public GameObject E2;
+    //게임관리 오디오 소스
+    public AudioSource GameplaySfx;
+    public AudioClip GameStartSfx;
+    public AudioClip GameEndSfx;
     //발사속도
     float E1_BulletRpm = 120.0f;
 
@@ -168,6 +173,8 @@ public class E2_Ctrl : MonoBehaviour
             animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();
             E2Collider.enabled = !E2Collider.enabled;//콜라이더 제거
+            GameEnd();
+            GameEndCall();
         }
 
         if (E_HitCount == 0)//피격획수 미달시 다시 공격
@@ -215,6 +222,7 @@ public class E2_Ctrl : MonoBehaviour
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
+            Invoke("GameStart", 2.0f);
         }
     }
 
@@ -271,6 +279,20 @@ public class E2_Ctrl : MonoBehaviour
     {
         animator.SetTrigger("isturn");
         E_Startattack();
+    }
+
+    void GameStart()//게임 시작 관리
+    {
+        GameplaySfx.PlayOneShot(GameStartSfx);
+    }
+    void GameEnd()//게임 끝 관리
+    {
+        GameplaySfx.PlayOneShot(GameEndSfx);
+    }
+
+    void GameEndCall()
+    {
+        SceneManager.LoadScene(1);
     }
     
 }

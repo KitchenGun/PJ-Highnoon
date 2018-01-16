@@ -99,7 +99,7 @@ public class MM_GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void NormalScene1()//쉬움씬 시작
+    public void NormalScene1()//보통씬 시작
     {
         SceneManager.LoadScene(3);
     }

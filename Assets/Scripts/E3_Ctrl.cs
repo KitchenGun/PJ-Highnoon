@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum E3_State { Idle, Attack, Die, Hit, PDie };
 public class E3_Ctrl : MonoBehaviour
@@ -13,7 +14,7 @@ public class E3_Ctrl : MonoBehaviour
     private bool isdie = false;
     //플레이어 사망여부
     private bool ispdie = false;
-    int a = 0;
+    //int a = 0;
     //적캐릭터 대기시작
     private bool islough = false;
     //캐릭터 회전
@@ -76,9 +77,9 @@ public class E3_Ctrl : MonoBehaviour
         //    animator.SetBool("isattack", true);
         //    animator.SetBool("ishit", false);
         //}
-        if (isdie)
+        if (ispdie)
         {
-            PDie();
+            Invoke("PDie", 2.0f);
         }
     }
 
@@ -120,30 +121,25 @@ public class E3_Ctrl : MonoBehaviour
                     {
                         E_Startattack();
                         yield return new WaitForSeconds(1.2f);
-                        if (G_Bullet > 4)
+                        if (G_Bullet > 5)
                         {
-                            FireSfxR();
-                            Invoke("WhizSfxR", 0.1f);
                             yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+                            G_Fire();
                         }
-                        else if (0 < G_Bullet && G_Bullet <= 4)
-                        {
+                        //else if (0< G_Bullet && G_Bullet <= 4)
+                        //{
 
-                            if (!ispdie)
-                            {
-                                yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
-                                G_Fire();
-                            }
-                            else if (ispdie)
-                            {
-                                PDie();
-                                break;
-                            }
-                        }
-                        if (G_Bullet <= 0)
-                        {
-                            break;
-                        }
+                        // if (!ispdie)
+                        //{
+                        //  yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+                        //G_Fire();
+                        //}
+                        //else if (ispdie)
+                        //{
+                        //PDie();
+                        //  break;
+                        //}
+                        // }
                         break;
 
                     }
@@ -163,6 +159,8 @@ public class E3_Ctrl : MonoBehaviour
         Debug.Log("Die");
         if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
+            iswalk = false;
+            E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
             StopAllCoroutines();
             animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();
@@ -174,6 +172,7 @@ public class E3_Ctrl : MonoBehaviour
             animator.SetTrigger("ishit");
             if (b < 1)
             {
+                E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
                 Debug.Log("reattack");
                 animator.SetTrigger("reattack");
             }
@@ -186,17 +185,19 @@ public class E3_Ctrl : MonoBehaviour
 
     void PDie()
     {
-        if (a < 1)
-        {
-            iswalk = true;
-            Debug.Log("Walk");
-            animator.SetTrigger("ispdie");
-        }
-        a++;
+        //if (a < 1)
+        //{
+        iswalk = true;
+        Debug.Log("Walk");
+        E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
+        animator.SetTrigger("ispdie");
+        //}
+        //a++;
     }
 
     void P_OnAttack()
     {
+        Debug.Log("Yess");
         ispdie = true;
     }
 
@@ -214,6 +215,7 @@ public class E3_Ctrl : MonoBehaviour
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
+            Invoke("GameEndCall", 2.0f);
         }
     }
 
@@ -245,10 +247,10 @@ public class E3_Ctrl : MonoBehaviour
             //적캐릭터에게 플레이어 사망 전달
             P_OnAttack();
         }
-        else
-        {
-            this.transform.LookAt(P_Go.transform);//플레이어 따라 시선 이동
-        }
+        //else
+        //{
+           // this.transform.LookAt(P_Go.transform);//플레이어 따라 시선 이동
+        //}
 
         //this.E1_FireReady = false;
     }
@@ -266,4 +268,8 @@ public class E3_Ctrl : MonoBehaviour
 
     }
 
+    void GameEndCall()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
