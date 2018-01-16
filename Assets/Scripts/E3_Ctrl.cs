@@ -55,10 +55,13 @@ public class E3_Ctrl : MonoBehaviour
     public AudioSource GameplaySfx;
     public AudioClip GameStartSfx;
     public AudioClip GameEndSfx;
+    //양손오브젝트
+    public GameObject L_Hand;
+    public GameObject R_Hand;
 
     void Start()
     {
-        Invoke("GameStart", 6.0f);
+        Invoke("GameStart", 3.5f);
         E3Collider = GetComponent<Collider>();
         //적캐릭터 행동 상태 체크
         StartCoroutine(CheckE3State());
@@ -274,6 +277,7 @@ public class E3_Ctrl : MonoBehaviour
     }
     void GameStart()//게임 시작 관리
     {
+        Invoke("Gun_isReady", 3.5f);
         GameplaySfx.PlayOneShot(GameStartSfx);
     }
     void GameEnd()//게임 끝 관리
@@ -284,5 +288,11 @@ public class E3_Ctrl : MonoBehaviour
     void GameEndCall()
     {
         SceneManager.LoadScene(1);
+    }
+
+    void Gun_isReady()
+    {
+        L_Hand.SendMessage("Gun_isReady");
+        R_Hand.SendMessage("Gun_isReady");
     }
 }

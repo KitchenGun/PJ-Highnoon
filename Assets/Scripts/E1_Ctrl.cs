@@ -36,7 +36,6 @@ public class E1_Ctrl : MonoBehaviour
     public AudioClip GameEndSfx;
     //적 캐릭터 음성 소스
     public AudioSource E1Sfx;
- 
 
 
     void Start()
@@ -92,6 +91,7 @@ public class E1_Ctrl : MonoBehaviour
 
                 //attack 상태
                 case E1_State.Attack:
+                    E1attack.SendMessage("Gun_isReady");
                     E1.SetActive(false);
                     E1attack.SetActive(true);
                     break;
@@ -159,6 +159,5 @@ public class E1_Ctrl : MonoBehaviour
     void GameEndCall()
     {
         SceneManager.LoadScene(1);
-    }
-    
+    } 
 }

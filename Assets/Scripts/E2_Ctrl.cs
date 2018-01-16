@@ -53,6 +53,9 @@ public class E2_Ctrl : MonoBehaviour
     public AudioClip GameEndSfx;
     //발사속도
     float E1_BulletRpm = 120.0f;
+    //양손오브젝트
+    public GameObject L_Hand;
+    public GameObject R_Hand;
 
     void Start()
     {
@@ -222,7 +225,7 @@ public class E2_Ctrl : MonoBehaviour
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
-            Invoke("GameStart", 3.0f);
+            Invoke("GameStart", 0.5f);
         }
     }
 
@@ -283,6 +286,7 @@ public class E2_Ctrl : MonoBehaviour
 
     void GameStart()//게임 시작 관리
     {
+        Invoke("Gun_isReady", 2.0f);
         GameplaySfx.PlayOneShot(GameStartSfx);
     }
     void GameEnd()//게임 끝 관리
@@ -294,5 +298,11 @@ public class E2_Ctrl : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    
+    void Gun_isReady()
+    {
+        Debug.Log("GunReady");
+        L_Hand.SendMessage("Gun_isReady");
+        R_Hand.SendMessage("Gun_isReady");
+    }
+
 }
