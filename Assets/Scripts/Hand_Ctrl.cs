@@ -5,7 +5,7 @@ using UnityEngine.XR;
 
 public class Hand_Ctrl : MonoBehaviour
 {
-
+    
     //public OVRInput.Controller Controller;
 
     public GameObject P_Go;//플레이어 오브젝트
@@ -248,4 +248,5 @@ public class Hand_Ctrl : MonoBehaviour
         //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxL.clip));이것 좃같은 물건이다.
         GunSfxL.Play();
     }
+    
 }
