@@ -115,7 +115,7 @@ public class E1_Ctrl : MonoBehaviour
         Destroy(E1attack);
         E1Collider.enabled=!E1Collider.enabled;//콜라이더 제거
         GameEnd();//게임끝 
-        
+        Invoke("GameEndCall", 2.0f);
         //피격 애니메이션 사운드 필요
         E_HitCount++;//적피격
     }
@@ -137,6 +137,7 @@ public class E1_Ctrl : MonoBehaviour
     {
         speed = 0;
         animator.SetTrigger("isspread");
+        Invoke("GameEndCall", 2.0f);
     }
 
     void GameStart()//게임 시작 관리
@@ -146,7 +147,6 @@ public class E1_Ctrl : MonoBehaviour
     void GameEnd()//게임 끝 관리
     {
         GameplaySfx.PlayOneShot(GameEndSfx);
-        Invoke("GameEndCall", 2.0f);
     }
     void OnCollisionEnter(Collision col)
     {
