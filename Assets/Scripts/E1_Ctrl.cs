@@ -91,9 +91,9 @@ public class E1_Ctrl : MonoBehaviour
 
                 //attack 상태
                 case E1_State.Attack:
+                    E1attack.SetActive(true);
                     E1attack.SendMessage("Gun_isReady");
                     E1.SetActive(false);
-                    E1attack.SetActive(true);
                     break;
 
                 //pdie 상태
