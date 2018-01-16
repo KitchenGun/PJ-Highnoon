@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 89d66432c5ae56f4296aae97615890ef
-timeCreated: 1515993387
+guid: dda7d6a2867eaf9449be2cab99f90a9e
+timeCreated: 1516089995
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -155,13 +155,12 @@ ModelImporter:
     4300004: Box001
     7400000: Take 001
     7400002: Turn
-    7400004: Attack
+    7400004: Shoot
     7400006: Hit
-    7400008: Walk
-    7400010: Dead
+    7400008: Dead
+    7400010: Walk
     7400012: Kiss
-    7400014: Walk
-    7400016: Attack2
+    7400014: Idle
     9500000: //RootNode
     13700000: Object001
   externalObjects: {}
@@ -192,10 +191,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Turn
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 430
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -220,17 +219,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Turn
+      name: Shoot
       takeName: Take 001
-      firstFrame: 0
-      lastFrame: 36
+      firstFrame: 73
+      lastFrame: 93
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -276,17 +275,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk
+      name: Dead
       takeName: Take 001
-      firstFrame: 238
-      lastFrame: 279
+      firstFrame: 143
+      lastFrame: 229
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -304,17 +303,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dead
+      name: Walk
       takeName: Take 001
-      firstFrame: 143
-      lastFrame: 229
+      firstFrame: 237
+      lastFrame: 279
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -360,10 +359,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack2
+      name: Idle
       takeName: Take 001
-      firstFrame: 67
-      lastFrame: 93
+      firstFrame: 445
+      lastFrame: 560
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -398,7 +397,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
