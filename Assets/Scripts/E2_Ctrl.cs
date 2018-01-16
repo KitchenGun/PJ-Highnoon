@@ -45,7 +45,7 @@ public class E2_Ctrl : MonoBehaviour
     public GameObject G_MF;
     public GameObject E2;
     //발사속도
-    float E1_BulletRpm = 60.0f;
+    float E1_BulletRpm = 30.0f;
 
     void Start()
     {
@@ -77,12 +77,6 @@ public class E2_Ctrl : MonoBehaviour
         if (ispdie)
         {
             PDie();
-        }
-        if(isturn)
-        {
-            Debug.Log("StopTurn");
-            //transform.Rotate(new Vector3(0, -180.0f, 0) * Time.deltaTime);
-            //E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
         }
     }
 
@@ -121,6 +115,21 @@ public class E2_Ctrl : MonoBehaviour
                 //attack 상태
                 case E2_State.Attack:
                     StartTurn();
+                    if (G_Bullet > 3)
+                    {
+                        FireSfxR();
+                        WhizSfxR();
+                        yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+                    }
+                    else if (0 < G_Bullet && G_Bullet <= 4)
+                    {
+                        G_Fire();
+                        yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
+                    }
+                    if (G_Bullet <= 0)
+                    {
+                        break;
+                    }
                     break;
 
                 //pdie 상태
@@ -138,7 +147,6 @@ public class E2_Ctrl : MonoBehaviour
         if (E_HitCount > 1)//피격횟수가 초과시 죽음
         {
             StopAllCoroutines();
-            //Debug.Log("Die");
             animator.SetBool("isdie", true);
             GetComponent<AudioSource>().Play();
             E2Collider.enabled = !E2Collider.enabled;//콜라이더 제거
@@ -159,7 +167,6 @@ public class E2_Ctrl : MonoBehaviour
         E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
         Debug.Log("Kiss");
         animator.SetTrigger("ispdie");
-        //this.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
     }
 
     void P_OnAttack()
@@ -186,11 +193,8 @@ public class E2_Ctrl : MonoBehaviour
 
     void E_Startattack()
     {
-        isturn = true;
-        //transform.Rotate(new Vector3(0,90.0f, 0)*Time.deltaTime);
         E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
         animator.SetTrigger("isattack");
-        StartCoroutine(CoReady());
     }
     void G_Fire()//발사
     {
@@ -228,41 +232,18 @@ public class E2_Ctrl : MonoBehaviour
 
         E1GunSfx.clip = FireSfx[Random.Range(0, 4)];
         E1GunSfx.Play();
-        WhizSfxR();
+        G_Bullet--;
     }
     void WhizSfxR()//탄 지나가는 사운드
     {
-        Debug.Log("DD");
         WhizSfx.clip = WhizBSfx[Random.Range(0, 6)];
         WhizSfx.Play();
-        G_Bullet--;
+        
     }
     void StartTurn()
     {
         animator.SetTrigger("isturn");
         E_Startattack();
     }
-
-    IEnumerator CoReady()
-    {
-        while (!isdie)
-        {
-            Debug.Log(G_Bullet);
-            if (G_Bullet > 3)
-            {
-                FireSfxR();
-                yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
-            }
-            else if (0 < G_Bullet && G_Bullet <= 3)
-            {
-                G_Fire();
-                yield return new WaitForSeconds(60.0f / this.E1_BulletRpm);
-            }
-            if (G_Bullet <= 0)
-            {
-                break;
-            }
-            yield return null;
-        }
-    }
+    
 }
