@@ -137,7 +137,7 @@ public class E1_Ctrl : MonoBehaviour
     {
         speed = 0;
         animator.SetTrigger("isspread");
-        Invoke("GameEndCall", 2.0f);
+        Invoke("GameEndCall", 7.0f);
     }
 
     void GameStart()//게임 시작 관리
