@@ -174,7 +174,7 @@ public class E2_Ctrl : MonoBehaviour
             GetComponent<AudioSource>().Play();
             E2Collider.enabled = !E2Collider.enabled;//콜라이더 제거
             GameEnd();
-            GameEndCall();
+            Invoke("GameEndCall", 3.0f);
         }
 
         if (E_HitCount == 0)//피격획수 미달시 다시 공격
@@ -222,7 +222,7 @@ public class E2_Ctrl : MonoBehaviour
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
-            Invoke("GameStart", 2.0f);
+            Invoke("GameStart", 3.0f);
         }
     }
 

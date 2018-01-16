@@ -25,7 +25,7 @@ public class E3_Ctrl : MonoBehaviour
     //콜리더 충돌
     // bool isStop = false;
     //시작신호
-    public float StartSigh = 3.0f;
+    public float StartSigh = 6.0f;
     //현재 상태 저장
     public E3_State e3_state = E3_State.Idle;
     //캐릭터 이동 속도
@@ -51,6 +51,10 @@ public class E3_Ctrl : MonoBehaviour
     public GameObject E3;
     //발사속도
     float E1_BulletRpm = 120.0f;
+    //게임관리 오디오 소스
+    public AudioSource GameplaySfx;
+    public AudioClip GameStartSfx;
+    public AudioClip GameEndSfx;
 
     void Start()
     {
@@ -215,12 +219,14 @@ public class E3_Ctrl : MonoBehaviour
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
-            Invoke("GameEndCall", 2.0f);
+            GameEnd();
+            Invoke("GameEndCall", 4.0f);
         }
     }
 
     void E_Startattack()
     {
+        Invoke("GameStart", 6.0f);
         animator.SetTrigger("isattack");
     }
     void G_Fire()//발사
@@ -265,7 +271,14 @@ public class E3_Ctrl : MonoBehaviour
     {
         WhizSfx.clip = WhizBSfx[Random.Range(0, 6)];
         WhizSfx.Play();
-
+    }
+    void GameStart()//게임 시작 관리
+    {
+        GameplaySfx.PlayOneShot(GameStartSfx);
+    }
+    void GameEnd()//게임 끝 관리
+    {
+        GameplaySfx.PlayOneShot(GameEndSfx);
     }
 
     void GameEndCall()
