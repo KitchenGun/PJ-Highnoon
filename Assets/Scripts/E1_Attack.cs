@@ -30,10 +30,6 @@ public class E1_Attack : MonoBehaviour {
     float E1_BulletRpm = 60.0f;
     //사망함수
     private bool e1die = false;
-    //양손오브젝트
-    public GameObject L_Hand;
-    public GameObject R_Hand;
-
     //스탑포지션 콜리더
     //private bool isStop = false;
 
@@ -133,11 +129,5 @@ public class E1_Attack : MonoBehaviour {
             }
             yield return null;
         }
-    }
-    void Gun_isReady()
-    {
-        Debug.Log("GunReady");
-        L_Hand.SendMessage("Gun_isReady");
-        R_Hand.SendMessage("Gun_isReady");
     }
 }
