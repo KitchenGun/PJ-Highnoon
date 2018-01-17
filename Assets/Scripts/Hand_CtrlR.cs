@@ -19,6 +19,7 @@ public class Hand_CtrlR : MonoBehaviour
     public GameObject G_MFR;//머즐플래쉬
 
     private bool isInf=false;//총알 무제한
+    public GameObject GunDR;//사망시 떨굴 총
 
     public Animator HandRAniR;//애니메이터
 
@@ -41,6 +42,7 @@ public class Hand_CtrlR : MonoBehaviour
         G_TriggerBack = true;
         G_gunhandR.SetActive(false);
         HandnGunR.SetActive(true);
+        GunDR.SetActive(false);
     }
 
     void Update()
@@ -253,6 +255,13 @@ public class Hand_CtrlR : MonoBehaviour
     public void G_isInf()//시작 하고 레벨씬 총알 무제한 
     {
         isInf = true;
+    }
+
+    public void PDie()//플레이어 사망시 모델링 교체 
+    {
+        G_gunhandR.SetActive(false);
+        HandnGunR.SetActive(true);
+        GunDR.SetActive(true);
     }
 
 }

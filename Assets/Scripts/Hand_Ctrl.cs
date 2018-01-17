@@ -34,6 +34,8 @@ public class Hand_Ctrl : MonoBehaviour
     private int G_BulletL = 6;//6발
 
     private bool isInf = false;//총알 무제한
+    public GameObject GunDL;//사망시 떨굴 총
+    
 
 
     private void Start()
@@ -44,6 +46,7 @@ public class Hand_Ctrl : MonoBehaviour
         G_TriggerBackL = true;
         G_gunhandL.SetActive(false);
         HandnGunL.SetActive(true);
+        GunDL.SetActive(false);
     }
 
     void Update()
@@ -257,5 +260,12 @@ public class Hand_Ctrl : MonoBehaviour
     public void G_isInf()//시작 하고 레벨씬 총알 무제한 
     {
         isInf = true;
+    }
+    public void PDie()//플레이어 사망시 모델링 교체 
+    {
+        G_gunhandL.SetActive(false);
+        HandnGunL.SetActive(true);
+        GunDL.SetActive(true);
+
     }
 }
