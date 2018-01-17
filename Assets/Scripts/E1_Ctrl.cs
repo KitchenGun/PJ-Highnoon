@@ -108,7 +108,7 @@ public class E1_Ctrl : MonoBehaviour
     void E_OnAttack()
     {
         Debug.Log("Die");
-        
+        Time.timeScale = 0.5f;//시간 느려지는거
         StopAllCoroutines();
         //Debug.Log("Die");
         animator.SetTrigger("isdie");

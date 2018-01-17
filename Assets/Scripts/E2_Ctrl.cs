@@ -174,6 +174,7 @@ public class E2_Ctrl : MonoBehaviour
         Debug.Log("Die");
         if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
+            Time.timeScale = 0.5f;//시간 느려지는거
             StopAllCoroutines();
             animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();

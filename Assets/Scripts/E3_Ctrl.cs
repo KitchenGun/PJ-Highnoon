@@ -170,6 +170,7 @@ public class E3_Ctrl : MonoBehaviour
             isdie = true;
             iswalk = false;
             speed = 0;
+            Time.timeScale = 0.5f;//시간 느려지는거
             E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
             animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();
