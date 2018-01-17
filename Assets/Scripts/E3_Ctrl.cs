@@ -59,6 +59,8 @@ public class E3_Ctrl : MonoBehaviour
     public GameObject L_Hand;
     public GameObject R_Hand;
 
+    public GameObject HandR;
+    public GameObject HandL;
     void Start()
     {
         Invoke("GameStart", 3.5f);
@@ -167,6 +169,7 @@ public class E3_Ctrl : MonoBehaviour
         Debug.Log("Die");
         if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
+
             isdie = true;
             iswalk = false;
             speed = 0;
@@ -195,6 +198,8 @@ public class E3_Ctrl : MonoBehaviour
 
     void PDie()
     {
+        HandL.SendMessage("PDie");
+        HandR.SendMessage("PDie");
         iswalk = true;
         Debug.Log("Walk");
         E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
@@ -281,6 +286,7 @@ public class E3_Ctrl : MonoBehaviour
     void GameEnd()//게임 끝 관리
     {
         GameplaySfx.PlayOneShot(GameEndSfx);
+        Invoke("GameEndCall", 2.0f);
     }
 
     void GameEndCall()

@@ -36,6 +36,9 @@ public class E1_Ctrl : MonoBehaviour
     public AudioClip GameEndSfx;
     //적 캐릭터 음성 소스
     public AudioSource E1Sfx;
+    //플레이어 손
+    public GameObject HandL;
+    public GameObject HandR;
 
 
     void Start()
@@ -124,6 +127,9 @@ public class E1_Ctrl : MonoBehaviour
     {
         Debug.Log("Walk");
         this.transform.position +=  new Vector3(0, 0, -speed)*Time.deltaTime;
+        HandL.SendMessage("PDie");
+        HandR.SendMessage("PDie");
+        
     }
 
     void P_OnAttack()//플레이어가 공격을 당함(걸어가는 애니메이션 실행)

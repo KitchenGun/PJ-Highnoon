@@ -59,6 +59,9 @@ public class E2_Ctrl : MonoBehaviour
     //rotation angle
     private float angle = 90.0f;
 
+    public GameObject HandR;
+    public GameObject HandL;
+
     void Start()
     {
         E2Collider = GetComponent<Collider>();
@@ -202,6 +205,8 @@ public class E2_Ctrl : MonoBehaviour
     {
         if(a<1)
         {
+            HandL.SendMessage("PDie");
+            HandR.SendMessage("PDie");
             angle = 180.0f;
             Debug.Log("Kiss");
             animator.SetTrigger("ispdie");
