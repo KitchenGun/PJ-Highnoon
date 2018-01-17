@@ -15,32 +15,32 @@ public class CutScene_Normal_Player : MonoBehaviour {
     void Pset1()
     {
         PlayerSfx.PlayOneShot(P1);
-        if(!PlayerSfx.isPlaying)
-        {
-            E2.SendMessage("E2set2");
-        }
+        Invoke("SendE2set2", 3.0f);
     }
 
     void Pset2()
     {
         PlayerSfx.PlayOneShot(P2);
-        {
-            if(!PlayerSfx.isPlaying)
-            {
-                E2.SendMessage("E2set3");
-            }
-        }
+        Invoke("SendE2set3", 2.0f);
     }
 
     void Pset3()
     {
         PlayerSfx.PlayOneShot(P3);
-        {
-            if (!PlayerSfx.isPlaying)
-            {
-                E2.SendMessage("E2set4");
-            }
-        }
+        Invoke("SendE2set4", 2.0f);
+    }
+
+    void SendE2set2()
+    {
+      E2.SendMessage("E2set2");
+    }
+    void SendE2set3()
+    {
+        E2.SendMessage("E2set3");
+    }
+    void SendE2set4()
+    {
+        E2.SendMessage("E2set4");
     }
 
 }
