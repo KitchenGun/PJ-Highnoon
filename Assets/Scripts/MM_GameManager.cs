@@ -86,32 +86,32 @@ public class MM_GameManager : MonoBehaviour
     }
     public void StartScene1()//시작화면씬 시작
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void LevelScene1()//레벨씬 시작
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void EasyScene1()//쉬움씬 시작
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void NormalScene1()//쉬움씬 시작
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
     public void HardScene1()//어려움씬 시작
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }
 
     public void HowToPlayScene1()//튜토리얼씬 시작
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(6);
     }
 
     public void ExitScene1()//프로그램 종료
