@@ -5,7 +5,6 @@ using UnityEngine;
 public class CutScene_Hard_Player : MonoBehaviour
 {
     public GameObject E3;
-
     public AudioSource PlayerSfx;
 
     public AudioClip P31;

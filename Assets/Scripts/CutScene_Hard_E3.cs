@@ -16,7 +16,7 @@ public class CutScene_Hard_E3 : MonoBehaviour {
     public AudioClip E3;
     public AudioClip E4;
     public AudioClip E5;
-    public AudioClip E6;
+    //public AudioClip E6;
 
     private void Start()
     {
@@ -25,58 +25,56 @@ public class CutScene_Hard_E3 : MonoBehaviour {
 
     void E3set1()
     {
-        E3Ani.SetTrigger("e3ani1");
+        //E3Ani.SetTrigger("e3ani1");
         E3Sfx.PlayOneShot(E1);
-        if (!E3Sfx.isPlaying)
-        {
-            Player.SendMessage("Pset1");
-        }
+        Invoke("StartPSet1", 3.0f);
     }
 
     void E3set2()
     {
-        E3Ani.SetTrigger("e3ani2");
+        E3Ani.SetTrigger("e3ani1");
         E3Sfx.PlayOneShot(E2);
-        if (!E3Sfx.isPlaying)
-        {
-            Player.SendMessage("Pset2");
-        }
+        Invoke("StartPSet2",3.0f);
     }
     void E3set3()
     {
-        E3Ani.SetTrigger("e3ani3");
+        E3Ani.SetTrigger("e3ani2");
         E3Sfx.PlayOneShot(E3);
-        if (!E3Sfx.isPlaying)
-        {
-            E3set4();
-        }
+        Invoke("E3set4", 3.0f);
     }
     void E3set4()
     {
-        E3Ani.SetTrigger("e3ani4");
+        E3Ani.SetTrigger("e3ani3");
         E3Sfx.PlayOneShot(E4);
-        if (!E3Sfx.isPlaying)
-        {
-            E3set5();
-        }
+        Invoke("E3set5", 3.0f);
     }
     void E3set5()
     {
-        E3Ani.SetTrigger("e3ani5");
+        E3Ani.SetTrigger("e3ani4");
         E3Sfx.PlayOneShot(E5);
-        if (!E3Sfx.isPlaying)
-        {
-            Player.SendMessage("Pset3");
-        }
+        Invoke("StartPSet3", 3.0f);
     }
 
-    void E3set6()
+    //void E3set6()
+    //{
+       // E3Ani.SetTrigger("e3ani6");
+        //E3Sfx.PlayOneShot(E6);
+        //if (!E3Sfx.isPlaying)
+        //{
+          //  SceneManager.LoadScene(3);
+        //}
+    //}
+
+    void StartPSet1()
     {
-        E3Ani.SetTrigger("e3ani6");
-        E3Sfx.PlayOneShot(E6);
-        if (!E3Sfx.isPlaying)
-        {
-            SceneManager.LoadScene(3);
-        }
+        Player.SendMessage("Pset1");
+    }
+    void StartPSet2()
+    {
+        Player.SendMessage("Pset2");
+    }
+    void StartPSet3()
+    {
+        Player.SendMessage("Pset3");
     }
 }
