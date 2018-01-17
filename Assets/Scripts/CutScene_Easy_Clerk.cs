@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CutScene_Easy_Clerk : MonoBehaviour {
-
-    private Animator animator;
+    
     public GameObject E1;//적캐릭터
     public GameObject Player;//플레이어 
     //대사
@@ -20,6 +19,7 @@ public class CutScene_Easy_Clerk : MonoBehaviour {
 
     void Cset1()
     {
+        Debug.Log("dd");
         CAni.SetTrigger("Cani1");
         ClerkSfx.PlayOneShot(C1);
         if(!ClerkSfx.isPlaying)

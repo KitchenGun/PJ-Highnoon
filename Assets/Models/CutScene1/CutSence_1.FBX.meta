@@ -147,12 +147,16 @@ ModelImporter:
     3300000: Line001
     4300000: Object001
     4300002: Line001
-    7400000: Take 001
+    7400000: 2
     7400002: Man-1
     7400004: Man-2
     7400006: Man-3
     7400008: Man-4
     7400010: Man_5
+    7400012: 1
+    7400014: 3
+    7400016: 4
+    7400018: 5
     9500000: //RootNode
     13700000: Object001
   externalObjects: {}
@@ -183,35 +187,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 480
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Man-1
+      name: 1
       takeName: Take 001
       firstFrame: 0
       lastFrame: 151
@@ -239,7 +215,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Man-2
+      name: 2
       takeName: Take 001
       firstFrame: 165
       lastFrame: 275
@@ -267,7 +243,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Man-3
+      name: 3
       takeName: Take 001
       firstFrame: 276
       lastFrame: 365
@@ -295,10 +271,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Man-4
+      name: 4
       takeName: Take 001
-      firstFrame: 413
-      lastFrame: 480
+      firstFrame: 378
+      lastFrame: 400
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -323,9 +299,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Man_5
+      name: 5
       takeName: Take 001
-      firstFrame: 0
+      firstFrame: 413
       lastFrame: 480
       wrapMode: 0
       orientationOffsetY: 0

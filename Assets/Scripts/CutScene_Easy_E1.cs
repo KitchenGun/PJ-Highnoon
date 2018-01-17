@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CutScene_Easy : MonoBehaviour
+public class CutScene_Easy_E1 : MonoBehaviour
 {
-    private Animator animator;
     public GameObject Clerk;//점원
     public GameObject Player;//플레이어 
     //대사
@@ -28,13 +27,13 @@ public class CutScene_Easy : MonoBehaviour
     void E1set1()//술마시는 애니메이션 만
     {
         E1Ani.SetTrigger("e1ani1");
-        Invoke("E1set2", 3.0f);
+        Invoke("E1set2", 1.0f);
     }
     void E1set2()//점원호출
     {
         E1Ani.SetTrigger("e1ani2");
         E1Sfx.PlayOneShot(E1);
-        if(E1Sfx.isPlaying)
+        if(!E1Sfx.isPlaying)
         {
             Clerk.SendMessage("Cset1");
         }
@@ -43,7 +42,7 @@ public class CutScene_Easy : MonoBehaviour
     {
         E1Ani.SetTrigger("e1ani3");
         E1Sfx.PlayOneShot(E2);
-        if (E1Sfx.isPlaying)
+        if (!E1Sfx.isPlaying)
         {
             Clerk.SendMessage("Cset2");
         }
@@ -53,7 +52,7 @@ public class CutScene_Easy : MonoBehaviour
     {
         E1Ani.SetTrigger("e1ani4");
         E1Sfx.PlayOneShot(E3);
-        if (E1Sfx.isPlaying)
+        if (!E1Sfx.isPlaying)
         {
             E1set5();
         }
@@ -62,17 +61,9 @@ public class CutScene_Easy : MonoBehaviour
     {
         E1Ani.SetTrigger("e1ani5");
         E1Sfx.PlayOneShot(E4);
-        if (E1Sfx.isPlaying)
+        if (!E1Sfx.isPlaying)
         {
-            E1set6();
-        }
-    }
-    void E1set6()
-    {
-        E1Ani.SetTrigger("e1ani6");
-        E1Sfx.PlayOneShot(E5);
-        if (E1Sfx.isPlaying)
-        {
+
             SceneManager.LoadScene(3);//씬이동
         }
     }
