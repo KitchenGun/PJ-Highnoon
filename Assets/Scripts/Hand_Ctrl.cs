@@ -261,6 +261,7 @@ public class Hand_Ctrl : MonoBehaviour
     {
         isInf = true;
     }
+    
     public void PDie()//플레이어 사망시 모델링 교체 
     {
         G_gunhandL.SetActive(false);

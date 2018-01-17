@@ -54,7 +54,7 @@ public class E2_Ctrl : MonoBehaviour
     //발사속도
     float E1_BulletRpm = 120.0f;
     //양손오브젝트
-    public GameObject L_Hand;
+    public GameObject L_Hand;//핸드 콜라이더
     public GameObject R_Hand;
     //rotation angle
     private float angle = 90.0f;

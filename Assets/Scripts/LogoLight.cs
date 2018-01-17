@@ -66,7 +66,7 @@ public class LogoLight : MonoBehaviour
     }
     void Scene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
 }

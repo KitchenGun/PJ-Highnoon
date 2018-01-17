@@ -56,7 +56,7 @@ public class E3_Ctrl : MonoBehaviour
     public AudioClip GameStartSfx;
     public AudioClip GameEndSfx;
     //양손오브젝트
-    public GameObject L_Hand;
+    public GameObject L_Hand;//핸드 콜라이더
     public GameObject R_Hand;
 
     public GameObject HandR;

@@ -36,6 +36,9 @@ public class E1_Ctrl : MonoBehaviour
     public AudioClip GameEndSfx;
     //적 캐릭터 음성 소스
     public AudioSource E1Sfx;
+    //핸드 콜라이더
+    public GameObject L_Hand;
+    public GameObject R_Hand;
     //플레이어 손
     public GameObject HandL;
     public GameObject HandR;
@@ -95,7 +98,8 @@ public class E1_Ctrl : MonoBehaviour
                 //attack 상태
                 case E1_State.Attack:
                     E1attack.SetActive(true);
-                    E1attack.SendMessage("Gun_isReady");
+                    R_Hand.SendMessage("Gun_isReady");
+                    L_Hand.SendMessage("Gun_isReady");
                     E1.SetActive(false);
                     break;
 
