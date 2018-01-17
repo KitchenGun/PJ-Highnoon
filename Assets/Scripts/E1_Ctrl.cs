@@ -43,6 +43,8 @@ public class E1_Ctrl : MonoBehaviour
     public GameObject HandL;
     public GameObject HandR;
 
+    public GameObject water;
+
 
     void Start()
     {
@@ -52,6 +54,7 @@ public class E1_Ctrl : MonoBehaviour
         //적캐릭터의 상태에따라 동작
         StartCoroutine(E1Action());
         animator = this.gameObject.GetComponent<Animator>();
+        water.SetActive(false);
     }
 
     private void Update()
@@ -147,6 +150,7 @@ public class E1_Ctrl : MonoBehaviour
     {
         speed = 0;
         animator.SetTrigger("isspread");
+        
         Invoke("GameEndCall", 7.0f);
     }
 
@@ -157,6 +161,7 @@ public class E1_Ctrl : MonoBehaviour
     void GameEnd()//게임 끝 관리
     {
         GameplaySfx.PlayOneShot(GameEndSfx);
+        Invoke("Water",11.0f);
     }
     void OnCollisionEnter(Collision col)
     {
@@ -165,6 +170,10 @@ public class E1_Ctrl : MonoBehaviour
             Debug.Log("Stoped");
             IsStop();
         }
+    }
+    void Water()
+    {
+        water.SetActive(true);
     }
     void GameEndCall()
     {

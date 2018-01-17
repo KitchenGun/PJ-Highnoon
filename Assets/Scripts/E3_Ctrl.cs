@@ -177,6 +177,7 @@ public class E3_Ctrl : MonoBehaviour
             E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
             animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();
+            GameEnd();
             E3Collider.enabled = !E3Collider.enabled;//콜라이더 제거}
         }
 
@@ -227,7 +228,7 @@ public class E3_Ctrl : MonoBehaviour
             IsStop();
             Destroy(col.gameObject);
             GameEnd();
-            Invoke("GameEndCall", 4.0f);
+            Invoke("GameEndCall", 2.0f);
         }
     }
 
