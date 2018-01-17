@@ -167,12 +167,13 @@ public class E3_Ctrl : MonoBehaviour
         Debug.Log("Die");
         if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
+            isdie = true;
             iswalk = false;
+            speed = 0;
             E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
-            StopAllCoroutines();
             animator.SetTrigger("isdie");
             GetComponent<AudioSource>().Play();
-            E3Collider.enabled = !E3Collider.enabled;//콜라이더 제거
+            E3Collider.enabled = !E3Collider.enabled;//콜라이더 제거}
         }
 
         if (E_HitCount == 0)//피격획수 미달시 다시 공격
@@ -193,14 +194,10 @@ public class E3_Ctrl : MonoBehaviour
 
     void PDie()
     {
-        //if (a < 1)
-        //{
         iswalk = true;
         Debug.Log("Walk");
         E3.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
         animator.SetTrigger("ispdie");
-        //}
-        //a++;
     }
 
     void P_OnAttack()

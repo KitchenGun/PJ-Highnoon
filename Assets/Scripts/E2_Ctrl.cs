@@ -56,6 +56,8 @@ public class E2_Ctrl : MonoBehaviour
     //양손오브젝트
     public GameObject L_Hand;
     public GameObject R_Hand;
+    //rotation angle
+    private float angle = 90.0f;
 
     void Start()
     {
@@ -168,7 +170,7 @@ public class E2_Ctrl : MonoBehaviour
 
     void E_OnAttack()//적 공격받음
     {
-        E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
+        E2.transform.rotation = Quaternion.Euler(0, angle, 0);
         Debug.Log("Die");
         if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
@@ -199,7 +201,7 @@ public class E2_Ctrl : MonoBehaviour
     {
         if(a<1)
         {
-            E2.transform.rotation = Quaternion.Euler(0, 180.0f, 0);
+            angle = 180.0f;
             Debug.Log("Kiss");
             animator.SetTrigger("ispdie");
         }
@@ -231,7 +233,7 @@ public class E2_Ctrl : MonoBehaviour
 
     void E_Startattack()
     {
-        E2.transform.rotation = Quaternion.Euler(0, 90.0f, 0);
+        E2.transform.rotation = Quaternion.Euler(0, angle, 0);
         animator.SetTrigger("isattack");
     }
     void G_Fire()//발사
