@@ -33,6 +33,8 @@ public class Hand_Ctrl : MonoBehaviour
 
     private int G_BulletL = 6;//6발
 
+    private bool isInf = false;//총알 무제한
+
 
     private void Start()
     {
@@ -166,6 +168,10 @@ public class Hand_Ctrl : MonoBehaviour
 
         }
         G_BulletL--;
+        if (isInf == true)//무한 상황에서
+        {
+            G_allReload();
+        }
         ReloadUIL.SendMessage("GunUI", G_BulletL);
         G_isReadyL = false;
     }
@@ -248,5 +254,8 @@ public class Hand_Ctrl : MonoBehaviour
         //OVRHaptics.Channels[0].Preempt(new OVRHapticsClip(GunSfxL.clip));이것 좃같은 물건이다.
         GunSfxL.Play();
     }
-    
+    public void G_isInf()//시작 하고 레벨씬 총알 무제한 
+    {
+        isInf = true;
+    }
 }

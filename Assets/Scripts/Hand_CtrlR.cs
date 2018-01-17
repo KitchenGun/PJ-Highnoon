@@ -18,7 +18,7 @@ public class Hand_CtrlR : MonoBehaviour
     private bool G_TriggerBack;//노리쇠후퇴
     public GameObject G_MFR;//머즐플래쉬
 
-
+    private bool isInf=false;//총알 무제한
 
     public Animator HandRAniR;//애니메이터
 
@@ -162,6 +162,10 @@ public class Hand_CtrlR : MonoBehaviour
 
         }
         G_BulletR--;
+        if(isInf==true)//무한 상황에서
+        {
+            G_allReload();
+        }
         ReloadUIR.SendMessage("GunUI", G_BulletR);
         G_isReadyR = false;
     }
@@ -245,6 +249,10 @@ public class Hand_CtrlR : MonoBehaviour
         GunSfxR.clip = FireSfx[Random.Range(0, 2)];
         //OVRHaptics.Channels[1].Preempt(new OVRHapticsClip(GunSfxR.clip));이것 좃같은 물건이다.
         GunSfxR.Play();
+    }
+    public void G_isInf()//시작 하고 레벨씬 총알 무제한 
+    {
+        isInf = true;
     }
 
 }
