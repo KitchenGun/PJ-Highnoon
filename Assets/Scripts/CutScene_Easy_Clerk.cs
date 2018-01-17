@@ -24,7 +24,7 @@ public class CutScene_Easy_Clerk : MonoBehaviour {
         ClerkSfx.PlayOneShot(C1);
         if(!ClerkSfx.isPlaying)
         {
-            E1.SendMessage("E1set3")
+            E1.SendMessage("E1set3");
         }
     }
 

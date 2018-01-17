@@ -36,7 +36,7 @@ public class CutScene_Easy : MonoBehaviour
         E1Sfx.PlayOneShot(E1);
         if(E1Sfx.isPlaying)
         {
-            Clerk.SendMessage("Cset1")
+            Clerk.SendMessage("Cset1");
         }
     }
     void E1Set3()//
@@ -73,7 +73,7 @@ public class CutScene_Easy : MonoBehaviour
         E1Sfx.PlayOneShot(E5);
         if (E1Sfx.isPlaying)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(3);//씬이동
         }
     }
 

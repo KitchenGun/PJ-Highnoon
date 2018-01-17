@@ -11,13 +11,13 @@ public class CutScene_Easy_Player : MonoBehaviour
     //대사
     public AudioSource PlayerSfx;
 
-    public AudioClip P1;
-    public AudioClip P2;
-    public AudioClip P3;
+    public AudioClip P11;
+    public AudioClip P12;
+    public AudioClip P13;
 
     void Pset1()
     {
-        PlayerSfx.PlayOneShot(p1);
+        PlayerSfx.PlayOneShot(P11);
         if(!PlayerSfx.isPlaying)
         {
             Pset2();
@@ -26,7 +26,7 @@ public class CutScene_Easy_Player : MonoBehaviour
 
     void Pset2()
     {
-        PlayerSfx.PlayOneShot(p2);
+        PlayerSfx.PlayOneShot(P12);
         if (!PlayerSfx.isPlaying)
         {
             Pset3();
@@ -34,7 +34,7 @@ public class CutScene_Easy_Player : MonoBehaviour
     }
     void Pset3()
     {
-        PlayerSfx.PlayOneShot(p3);
+        PlayerSfx.PlayOneShot(P13);
         if (!PlayerSfx.isPlaying)
         {
             E1.SendMessage("E1set4");
