@@ -52,9 +52,13 @@ public class E3_Ctrl : MonoBehaviour
     //발사속도
     float E1_BulletRpm = 120.0f;
     //게임관리 오디오 소스
+    public AudioSource Enemyment;
     public AudioSource GameplaySfx;
     public AudioClip GameStartSfx;
     public AudioClip GameEndSfx;
+    public AudioClip E3start;
+    public AudioClip E3die;
+    public AudioClip[] E3pdie;
     //양손오브젝트
     public GameObject L_Hand;//핸드 콜라이더
     public GameObject R_Hand;
@@ -63,6 +67,7 @@ public class E3_Ctrl : MonoBehaviour
     public GameObject HandL;
     void Start()
     {
+        Enemyment.PlayOneShot(E3start);
         Invoke("GameStart", 3.5f);
         E3Collider = GetComponent<Collider>();
         //적캐릭터 행동 상태 체크
@@ -169,7 +174,7 @@ public class E3_Ctrl : MonoBehaviour
         Debug.Log("Die");
         if (E_HitCount == 1)//피격횟수가 초과시 죽음
         {
-
+            Enemyment.PlayOneShot(E3die);
             isdie = true;
             iswalk = false;
             speed = 0;
@@ -224,6 +229,8 @@ public class E3_Ctrl : MonoBehaviour
     {
         if (col.gameObject.tag == "StopE1")
         {
+            Enemyment.clip = E3pdie[Random.Range(0, 2)];
+            Enemyment.Play();
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
@@ -295,7 +302,7 @@ public class E3_Ctrl : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    void Gun_isReady()
+    void Gun_isReady3()
     {
         L_Hand.SendMessage("Gun_isReady");
         R_Hand.SendMessage("Gun_isReady");

@@ -67,7 +67,7 @@ public class CutScene_Normal_E2 : MonoBehaviour {
     }
     void NextScene()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
 }

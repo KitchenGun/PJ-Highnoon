@@ -212,9 +212,13 @@ MonoBehaviour:
   e1_state: 0
   E1: {fileID: 244729978}
   E1attack: {fileID: 678959230}
+  EnemyMent: {fileID: 1644364423}
   GameplaySfx: {fileID: 1511884337}
   GameStartSfx: {fileID: 8300000, guid: a1d2a8027af8f4e45b4c7be0c60959af, type: 3}
   GameEndSfx: {fileID: 8300000, guid: 10581e1cfbca7cc4fbf5a41f7929d567, type: 3}
+  E1Die: {fileID: 8300000, guid: 3535146006f28c04d877af8683eccff7, type: 3}
+  E1start: {fileID: 8300000, guid: a781432c99b9de84091d2ad09998dc83, type: 3}
+  E1Pdie: {fileID: 8300000, guid: 4f98a2c88456a4a46a7746dcc1140f57, type: 3}
   E1Sfx: {fileID: 244729979}
   L_Hand: {fileID: 855832599}
   R_Hand: {fileID: 1108750914}

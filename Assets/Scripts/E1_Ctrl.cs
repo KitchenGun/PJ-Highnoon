@@ -31,9 +31,13 @@ public class E1_Ctrl : MonoBehaviour
     //적 피격횟수
     private int E_HitCount=0;
     //게임관리 오디오 소스
+    public AudioSource EnemyMent;
     public AudioSource GameplaySfx;
     public AudioClip GameStartSfx;
     public AudioClip GameEndSfx;
+    public AudioClip E1Die;
+    public AudioClip E1start;
+    public AudioClip E1Pdie;
     //적 캐릭터 음성 소스
     public AudioSource E1Sfx;
     //핸드 콜라이더
@@ -48,6 +52,7 @@ public class E1_Ctrl : MonoBehaviour
 
     void Start()
     {
+        EnemyMent.PlayOneShot(E1start);
         E1Collider=GetComponent<Collider>();
         //적캐릭터 행동 상태 체크
         StartCoroutine(CheckE1State());
@@ -127,6 +132,7 @@ public class E1_Ctrl : MonoBehaviour
         GameEnd();//게임끝 
         Invoke("GameEndCall", 2.0f);
         //피격 애니메이션 사운드 필요
+        EnemyMent.PlayOneShot(E1Die);
         E_HitCount++;//적피격
     }
 
@@ -150,7 +156,7 @@ public class E1_Ctrl : MonoBehaviour
     {
         speed = 0;
         animator.SetTrigger("isspread");
-        
+        EnemyMent.PlayOneShot(E1Pdie);
         Invoke("GameEndCall", 7.0f);
     }
 

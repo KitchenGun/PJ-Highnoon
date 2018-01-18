@@ -55,7 +55,7 @@ public class MM_GameManager : MonoBehaviour
         Destroy(b);
         BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
-        Invoke("NormalScene1", 2.0f);
+        Invoke("CutScennormal", 2.0f);
     }
 
     public void HardScene()
@@ -64,7 +64,7 @@ public class MM_GameManager : MonoBehaviour
         Destroy(b);
         BottleSfxP();
         Instantiate(B_Piece, this.transform.position, this.transform.rotation);
-        Invoke("HardScene1", 2.0f);
+        Invoke("CutSceneHard", 2.0f);
     }
 
     public void HowToPlayScene()
@@ -99,7 +99,7 @@ public class MM_GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    public void NormalScene1()//쉬움씬 시작
+    public void NormalScene1()//보통씬 시작
     {
         SceneManager.LoadScene(4);
     }
@@ -112,6 +112,16 @@ public class MM_GameManager : MonoBehaviour
     public void HowToPlayScene1()//튜토리얼씬 시작
     {
         SceneManager.LoadScene(6);
+    }
+
+    public void CutScennormal()//노말컷신
+    {
+        SceneManager.LoadScene(7);
+    }
+
+    public void CutSceneHard()//어려움컷신
+    {
+        SceneManager.LoadScene(8);
     }
 
     public void ExitScene1()//프로그램 종료

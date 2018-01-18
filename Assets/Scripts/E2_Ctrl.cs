@@ -48,9 +48,13 @@ public class E2_Ctrl : MonoBehaviour
     public GameObject G_MF;
     public GameObject E2;
     //게임관리 오디오 소스
+    public AudioSource EnemyMent;
     public AudioSource GameplaySfx;
     public AudioClip GameStartSfx;
     public AudioClip GameEndSfx;
+    public AudioClip E2start;
+    public AudioClip E2die;
+    public AudioClip []E2pdie;
     //발사속도
     float E1_BulletRpm = 120.0f;
     //양손오브젝트
@@ -205,6 +209,8 @@ public class E2_Ctrl : MonoBehaviour
     {
         if(a<1)
         {
+            EnemyMent.clip = E2pdie[Random.Range(0, 2)];
+            EnemyMent.Play();
             HandL.SendMessage("PDie");
             HandR.SendMessage("PDie");
             angle = 180.0f;
@@ -230,6 +236,7 @@ public class E2_Ctrl : MonoBehaviour
     {
         if (col.gameObject.tag == "StopE1")
         {
+            EnemyMent.PlayOneShot(E2start);
             Debug.Log("Stoped");
             IsStop();
             Destroy(col.gameObject);
@@ -299,6 +306,7 @@ public class E2_Ctrl : MonoBehaviour
     }
     void GameEnd()//게임 끝 관리
     {
+        EnemyMent.PlayOneShot(E2die);
         GameplaySfx.PlayOneShot(GameEndSfx);
     }
 
@@ -306,7 +314,7 @@ public class E2_Ctrl : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    void Gun_isReady()
+    void Gun_isReady2()
     {
         Debug.Log("GunReady");
         L_Hand.SendMessage("Gun_isReady");

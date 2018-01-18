@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutScene_Hard_Player : MonoBehaviour
 {
@@ -16,28 +17,34 @@ public class CutScene_Hard_Player : MonoBehaviour
     void Pset1()
     {
         PlayerSfx.PlayOneShot(P31);
-        if (!PlayerSfx.isPlaying)
-        {
-            E3.SendMessage("E3set2");
-        }
+        Invoke("SendESet1", 3.0f);
     }
     void Pset2()
     {
 
         PlayerSfx.PlayOneShot(P32);
-        if (!PlayerSfx.isPlaying)
-         {
-             E3.SendMessage("E3set3");
-         }
+        Invoke("SendESet2", 3.0f);
         
     }
     void Pset3()
     {
         PlayerSfx.PlayOneShot(P33);
-        if (!PlayerSfx.isPlaying)
-        {
-            E3.SendMessage("E3set6");
-        }
+        Invoke("SendESet3", 3.0f);
         
-    }       
+    }
+    
+    void SendESet1()
+    {
+        E3.SendMessage("E3set2");
+    }
+
+    void SendESet2()
+    {
+        E3.SendMessage("E3set3");
+    }
+
+    void SendESet3()
+    {
+        SceneManager.LoadScene(5);
+    }
 }

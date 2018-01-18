@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a2126534b3a11b34e977105bd9e3cc03, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
@@ -294,6 +294,14 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 69c394b55c68c0a4883dfbb779e23284, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f18aeb0701d57514a8c543f641a3c74e, type: 2}
+    - target: {fileID: 9500000, guid: 69c394b55c68c0a4883dfbb779e23284, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b122db612a12d9140b0928efa9b44f2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69c394b55c68c0a4883dfbb779e23284, type: 3}
   m_IsPrefabParent: 0
@@ -529,6 +537,10 @@ Prefab:
       propertyPath: m_Name
       value: monster3_ddakgal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 1bfaea261dfa077478a5d0a8640c3d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 335b9a9f42d40d740be99842247903bc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bfaea261dfa077478a5d0a8640c3d84, type: 3}
   m_IsPrefabParent: 0
@@ -680,10 +692,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   E3: {fileID: 968926865}
-  PlayerSfx: {fileID: 0}
-  P31: {fileID: 0}
-  P32: {fileID: 0}
-  P33: {fileID: 0}
+  PlayerSfx: {fileID: 1914781041}
+  P31: {fileID: 8300000, guid: 4f5f2f8ae260ee64ab4de19cac2dc433, type: 3}
+  P32: {fileID: 8300000, guid: 526183cf3f3e4954893e84c48f005337, type: 3}
+  P33: {fileID: 8300000, guid: e097a6d973c44594fb5046eff9d1a328, type: 3}
+--- !u!82 &1914781041 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82746135054186252, guid: 9ad6703cb637b73458b3c48f6f1ebcac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1914781038}
 --- !u!1001 &1947828779
 Prefab:
   m_ObjectHideFlags: 0
@@ -739,6 +756,16 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.6486182
       objectReference: {fileID: 0}
+    - target: {fileID: 82560234817497906, guid: fbf3175ece16381468f1a8d9a4b94e6b,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82412789968283062, guid: fbf3175ece16381468f1a8d9a4b94e6b,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbf3175ece16381468f1a8d9a4b94e6b, type: 2}
   m_IsPrefabParent: 0
@@ -789,6 +816,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 1bfaea261dfa077478a5d0a8640c3d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 335b9a9f42d40d740be99842247903bc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bfaea261dfa077478a5d0a8640c3d84, type: 3}
   m_IsPrefabParent: 0

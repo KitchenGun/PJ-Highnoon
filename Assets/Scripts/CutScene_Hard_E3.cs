@@ -46,13 +46,13 @@ public class CutScene_Hard_E3 : MonoBehaviour {
     {
         E3Ani.SetTrigger("e3ani3");
         E3Sfx.PlayOneShot(E4);
-        Invoke("E3set5", 3.0f);
+        Invoke("E3set5", 2.0f);
     }
     void E3set5()
     {
         E3Ani.SetTrigger("e3ani4");
         E3Sfx.PlayOneShot(E5);
-        Invoke("StartPSet3", 3.0f);
+        Invoke("StartPSet3", 5.0f);
     }
 
     //void E3set6()

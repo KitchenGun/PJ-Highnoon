@@ -51,8 +51,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 9
     m_Resolution: 2
@@ -2661,9 +2661,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 381358ae51c568143a9ba40be0588e8f, type: 3}
   G_MF: {fileID: 1629616464}
   E3: {fileID: 174082616}
+  Enemyment: {fileID: 1656900755}
   GameplaySfx: {fileID: 508584847}
   GameStartSfx: {fileID: 8300000, guid: a1d2a8027af8f4e45b4c7be0c60959af, type: 3}
   GameEndSfx: {fileID: 8300000, guid: 10581e1cfbca7cc4fbf5a41f7929d567, type: 3}
+  E3start: {fileID: 8300000, guid: d0f96084745deb84785595ca55b7e802, type: 3}
+  E3die: {fileID: 8300000, guid: 28da769365c8fe24da724f5b63287d27, type: 3}
+  E3pdie:
+  - {fileID: 8300000, guid: a5cd726127ccf6c409f072a7ca4db49e, type: 3}
+  - {fileID: 8300000, guid: 536deccc605371049a0693de7b028daf, type: 3}
+  - {fileID: 8300000, guid: df08e043dd138654caffb8e8fec9dd30, type: 3}
   L_Hand: {fileID: 1156120918}
   R_Hand: {fileID: 770994355}
   HandR: {fileID: 1107545827}
@@ -15964,7 +15971,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1154299233}
-  m_LocalRotation: {x: 0.28159246, y: -0.28159237, z: -0.64861846, w: 0.6486183}
+  m_LocalRotation: {x: 0.28159243, y: -0.28159234, z: -0.6486184, w: 0.6486182}
   m_LocalPosition: {x: -9.630962, y: -5.565754, z: 42.91368}
   m_LocalScale: {x: 0.005066911, y: 0.005066915, z: 0.005066915}
   m_Children: []
@@ -22730,6 +22737,115 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1644345535}
   m_Mesh: {fileID: 4300000, guid: 049ae6d76f36aef409981f9358cb012a, type: 3}
+--- !u!1 &1656900754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1656900756}
+  - component: {fileID: 1656900755}
+  m_Layer: 0
+  m_Name: E3Ment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1656900755
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1656900754}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &1656900756
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1656900754}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.18333352, y: 0.71666634, z: -0.42500004}
+  m_LocalScale: {x: 0.8333335, y: 0.83333325, z: 0.8333335}
+  m_Children: []
+  m_Father: {fileID: 174082619}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1667159633
 GameObject:
   m_ObjectHideFlags: 0
